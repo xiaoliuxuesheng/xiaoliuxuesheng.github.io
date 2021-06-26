@@ -65,7 +65,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">3k字</span>
+            <span class="post-count">3.2k字</span>
         </span>
     </span>
 
@@ -74,7 +74,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">12分钟</span>
+            <span class="post-count">14分钟</span>
         </span>
     </span>
 </div>
@@ -488,9 +488,19 @@
 
 </li>
 </ol>
-<h1 id="第四章-SpringBoot-Logback"><a href="#第四章-SpringBoot-Logback" class="headerlink" title="第四章 SpringBoot Logback"></a>第四章 SpringBoot Logback</h1><h2 id="4-1-默认配置"><a href="#4-1-默认配置" class="headerlink" title="4.1 默认配置"></a>4.1 默认配置</h2><h2 id="4-2-读取配置文件"><a href="#4-2-读取配置文件" class="headerlink" title="4.2 读取配置文件"></a>4.2 读取配置文件</h2><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>logback默认加载的日志文件名称是logback.xml，并且logback.xml加载早于application.properties，所以如果你在logback.xml使用了变量时，而恰好这个变量是写在application.properties时，那么就会获取不到；SpringBoot对Logback做了扩展，如果logback的配置文件改成logback-spring.xml则SpringBoot会首先会加载配置文件并处理配置文件，然后将处理好的配置文件交给Logback框架，使得logback-spring.xml具有是SpringBoot的Profile特性；</p>
-<h3 id="4-3-Profile"><a href="#4-3-Profile" class="headerlink" title="4.3 Profile"></a>4.3 Profile</h3><ul>
-<li>springProfile的name属性指定SpringBoot项目运行的Profile环境，不同的环境可以指定不同的日志记录器；</li>
+<h1 id="第四章-SpringBoot-Logback"><a href="#第四章-SpringBoot-Logback" class="headerlink" title="第四章 SpringBoot Logback"></a>第四章 SpringBoot Logback</h1><h2 id="4-1-属性配置"><a href="#4-1-属性配置" class="headerlink" title="4.1 属性配置"></a>4.1 属性配置</h2><ul>
+<li><p>读取Spring属性：<code>&lt;springProperty&gt;</code>标签允许读取Spring中配置的属性，Environment 以便在Logback中使用；标签的工作方式与Logback的标准 <code>&lt;property&gt;</code>标签类似，但不是直接value 指定source属性（从Environment）指定。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">springProperty</span> <span class="attr">scope</span>=<span class="string">"context"</span> <span class="attr">name</span>=<span class="string">"APP_NAME"</span> <span class="attr">source</span>=<span class="string">"spring.application.name"</span> <span class="attr">defaultValue</span>=<span class="string">"springBoot"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>scope：如果需要将属性存储在local范围之外的其他位置，则可以使用该属性；</li>
+<li>defaultValue：如果需要一个后备值，以防该属性未设置；</li>
+</ul>
+</li>
+<li><pre><code class="xml"><span class="tag">&lt;<span class="name">springProperty</span> <span class="attr">scope</span>=<span class="string">"context"</span> <span class="attr">name</span>=<span class="string">"EXCEPTION_LOCATION"</span> <span class="attr">source</span>=<span class="string">"exception-location"</span>/&gt;</span>
+<span class="comment"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 4.2 读取配置文件</span><br><span class="line"></span><br><span class="line">&lt;span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;&#x2F;span&gt;logback默认加载的日志文件名称是logback.xml，并且logback.xml加载早于application.properties，所以如果你在logback.xml使用了变量时，而恰好这个变量是写在application.properties时，那么就会获取不到；SpringBoot对Logback做了扩展，如果logback的配置文件改成logback-spring.xml则SpringBoot会首先会加载配置文件并处理配置文件，然后将处理好的配置文件交给Logback框架，使得logback-spring.xml具有是SpringBoot的Profile特性；</span><br><span class="line"></span><br><span class="line">### 4.3 Profile</span><br><span class="line"></span><br><span class="line">- springProfile的name属性指定SpringBoot项目运行的Profile环境，不同的环境可以指定不同的日志记录器；</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;xml</span><br><span class="line">  在logback-spring.xml中</span><br><span class="line">  &lt;springProfile name&#x3D;&quot;dev&quot;&gt;</span><br><span class="line">      &lt;!-- 开发环境时激活 --&gt;</span><br><span class="line">  &lt;&#x2F;springProfile&gt;</span><br><span class="line">   </span><br><span class="line">  &lt;springProfile name&#x3D;&quot;dev,test&quot;&gt;</span><br><span class="line">      &lt;!-- 开发，测试的时候激活--&gt;</span><br><span class="line">  &lt;&#x2F;springProfile&gt;</span><br><span class="line">   </span><br><span class="line">  &lt;springProfile name&#x3D;&quot;!prod&quot;&gt;</span><br><span class="line">      &lt;!-- 当 &quot;生产&quot; 环境时，该配置不激活--&gt;</span><br><span class="line">  &lt;&#x2F;springProfile&gt;</span><br></pre></td></tr></table></figure></span>
+</code></pre>
+</li>
 </ul>
 <h1 id="第五章-Logback-MDC"><a href="#第五章-Logback-MDC" class="headerlink" title="第五章 Logback MDC"></a>第五章 Logback MDC</h1><h2 id="5-1-MDC概述"><a href="#5-1-MDC概述" class="headerlink" title="5.1 MDC概述"></a>5.1 MDC概述</h2><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Logback是在logback-classic模块中实现了SLF4J的MDC功能。</p>
 <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>MDC中管理的数据（简称MDC数据）是以单个线程为单位进行访问的，即对MDC数据的操作（如put, get）只对当前线程有效，所以也永远是线程安全的。在服务端，为每个请求分配一个线程进行处理，所以每个服务端线程处理的请求，都具有唯一的MDC上下文数据。</p>
@@ -592,7 +602,7 @@
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%B7%A5%E5%85%B7%E9%9B%86/" rel="tag">Java工具集</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java%E5%B7%A5%E5%85%B7/" rel="tag">Java工具</a></li></ul>
 
 
     </footer>
@@ -613,9 +623,9 @@
       </a>
     
     
-      <a href="/2005/05/01/0505-Security/" class="article-nav-link">
+      <a href="/2005/06/01/0506-Gateway/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">0505_Security</div>
+        <div class="article-nav-title">0506-Gateway</div>
       </a>
     
   </nav>

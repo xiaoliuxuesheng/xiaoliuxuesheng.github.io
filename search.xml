@@ -1,6 +1,681 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>0502-JavaIO</title>
+    <url>/2021/06/21/0502-JavaIO/</url>
+    <content><![CDATA[<h1 id="第一章-File"><a href="#第一章-File" class="headerlink" title="第一章 File"></a>第一章 File</h1><h2 id="1-1-File概述"><a href="#1-1-File概述" class="headerlink" title="1.1 File概述"></a>1.1 File概述</h2><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>File是对系统中的文件的<strong>抽象</strong>：将电脑中的文件（file）、文件夹（directory）、路径（path）封装为一个File类，用于对电脑中的文件和文件夹进行操作：①创建文件或文件夹②删除文件或文件夹③判断文件夹或文件夹状态④获取文件信息；</p>
+<h2 id="1-2-系统路径"><a href="#1-2-系统路径" class="headerlink" title="1.2 系统路径"></a>1.2 系统路径</h2><ul>
+<li>相对路径 : 查看路径是参照当前文件的路径为参照</li>
+<li>绝对路径 : 查看路径是参照当系统根路径为参照</li>
+</ul>
+<h2 id="1-3-File类API"><a href="#1-3-File类API" class="headerlink" title="1.3 File类API"></a>1.3 File类API</h2><h3 id="1-静态常量"><a href="#1-静态常量" class="headerlink" title="1. 静态常量"></a>1. 静态常量</h3><table>
+<thead>
+<tr>
+<th>静态成员变量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>String <code>pathSeparator</code></td>
+<td>与系统有关的<strong>字符串</strong>的路径分隔符</td>
+</tr>
+<tr>
+<td>char <code>pathSeparatorChar</code></td>
+<td>与系统有关的<strong>字符</strong>的路径分隔符 <strong>分隔符</strong></td>
+</tr>
+<tr>
+<td>String <code>separator</code></td>
+<td>与系统有关的默认<strong>字符串</strong>的名称分隔符</td>
+</tr>
+<tr>
+<td>char<code>separatorChar</code></td>
+<td>与系统有关的默认<strong>字符</strong>的名称分隔符</td>
+</tr>
+</tbody></table>
+<h3 id="2-构造方法"><a href="#2-构造方法" class="headerlink" title="2. 构造方法"></a>2. 构造方法</h3><ul>
+<li>File(File parent, String child)：</li>
+<li>File(String pathname)：</li>
+<li>File(String parent, String child)：</li>
+</ul>
+<h3 id="3-获取文件信息"><a href="#3-获取文件信息" class="headerlink" title="3. 获取文件信息"></a>3. 获取文件信息</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>File getAbsoluteFile()</td>
+<td>返回此路径名的绝对路径名形式</td>
+</tr>
+<tr>
+<td>String getAbsolutePath()</td>
+<td>返回此路径名的绝对路径名字符串</td>
+</tr>
+<tr>
+<td>File getCanonicalFile()</td>
+<td>返回此路径名的规范形式</td>
+</tr>
+<tr>
+<td>String getCanonicalPath()</td>
+<td>返回此路径名的规范路径名字符串</td>
+</tr>
+<tr>
+<td>String getName()</td>
+<td>返回由此路径名表示的文件或目录的名称</td>
+</tr>
+<tr>
+<td>String getParent()</td>
+<td>返回此路径名父目录的路径名字符串或null。</td>
+</tr>
+<tr>
+<td>File getParentFile()</td>
+<td>返回此路径名父目录的路径名或null</td>
+</tr>
+<tr>
+<td>String getPath()</td>
+<td>将此路径名转换为一个路径名字符串</td>
+</tr>
+<tr>
+<td>long lastModified()</td>
+<td>返回此路径名表示的文件最后一次被修改的时间</td>
+</tr>
+<tr>
+<td>long length()</td>
+<td>返回由此路径名表示的文件的长度</td>
+</tr>
+<tr>
+<td>String[] list()</td>
+<td>返回此路径名表示的目录中的文件和目录的字符串数组</td>
+</tr>
+<tr>
+<td>File[] listFiles()</td>
+<td>返回此路径名表示的目录中的文件和目录的文件数组</td>
+</tr>
+<tr>
+<td>String[] list(FilenameFilter filter)</td>
+<td>满足指定过滤器的文件和目录的字符串数组</td>
+</tr>
+<tr>
+<td>File[] listFiles(FileFilter filter)</td>
+<td>满足指定过滤器的文件和目录的文件数组</td>
+</tr>
+<tr>
+<td>File[] listFiles(FilenameFilter filter)</td>
+<td>满足指定过滤器的文件和目录的文件数组</td>
+</tr>
+<tr>
+<td>long getTotalSpace()</td>
+<td>返回此抽象路径名指定的分区大小</td>
+</tr>
+<tr>
+<td>ong getFreeSpace()</td>
+<td>返回此路径指定的分区中未分配的字节数</td>
+</tr>
+</tbody></table>
+<h3 id="4-文件判断"><a href="#4-文件判断" class="headerlink" title="4. 文件判断"></a>4. 文件判断</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean canExecute()</td>
+<td>测试应用程序是否可以执行此路径表示的文件</td>
+</tr>
+<tr>
+<td>boolean canRead()</td>
+<td>测试是否可以读取此路径表示的文件</td>
+</tr>
+<tr>
+<td>boolean canWrite()</td>
+<td>测试是否可以修改此路径表示的文件。</td>
+</tr>
+<tr>
+<td>boolean exists()</td>
+<td>测试此路径表示的文件或目录是否存在。</td>
+</tr>
+<tr>
+<td>boolean isAbsolute()</td>
+<td>测试此路径是否为绝对路径名</td>
+</tr>
+<tr>
+<td>boolean isDirectory()</td>
+<td>测试此路径表示的文件是否是一个目录</td>
+</tr>
+<tr>
+<td>boolean isFile()</td>
+<td>测试此路径表示的文件是否是一个标准文件</td>
+</tr>
+<tr>
+<td>boolean isHidden()</td>
+<td>测试此路径名指定的文件是否是一个隐藏文件。</td>
+</tr>
+</tbody></table>
+<h3 id="5-文件的创建"><a href="#5-文件的创建" class="headerlink" title="5. 文件的创建"></a>5. 文件的创建</h3><ul>
+<li>static File <code>createTempFile(String prefix, String suffix)</code><ul>
+<li>创建一个空文件，使用给定前缀和后缀生成其名称</li>
+</ul>
+</li>
+<li>static File <code>createTempFile(String prefix, String suffix, File directory)</code><ul>
+<li>创建一个新的空文件，使用给定的前缀和后缀字符串生成其名称</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean createNewFile()</td>
+<td>当且仅当不存在具有此路径名指定名称的文件时创建一个新的空文件</td>
+</tr>
+<tr>
+<td>boolean mkdir()</td>
+<td>创建此路径名指定的目录</td>
+</tr>
+<tr>
+<td>boolean mkdirs()</td>
+<td>创建此抽象路径名指定的目录，包括所有必需但不存在的父目录</td>
+</tr>
+</tbody></table>
+<h3 id="4-文件的修改"><a href="#4-文件的修改" class="headerlink" title="4. 文件的修改"></a>4. 文件的修改</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean delete()</td>
+<td>删除此路径名表示的文件或目录</td>
+</tr>
+<tr>
+<td>void deleteOnExit()</td>
+<td>在虚拟机终止时，请求删除此路径名表示的文件或目录</td>
+</tr>
+<tr>
+<td>boolean renameTo(File dest)</td>
+<td>重新命名此路径名表示的文件</td>
+</tr>
+<tr>
+<td>boolean setExecutable(boolean executable)</td>
+<td>设置此路径名所有者执行权限</td>
+</tr>
+<tr>
+<td>boolean setExecutable(boolean e, boolean o)</td>
+<td>设置此路径的所有者或所有用户的执行权限</td>
+</tr>
+<tr>
+<td>boolean setLastModified(long time)</td>
+<td>设置此路径名指定的文件或目录的最后一次修改时间</td>
+</tr>
+<tr>
+<td>boolean setReadable(boolean readable)</td>
+<td>设置此路径名所有者读权限</td>
+</tr>
+<tr>
+<td>boolean setReadable(boolean r, boolean o)</td>
+<td>设置此路径名的所有者或所有用户的读权限</td>
+</tr>
+<tr>
+<td>boolean setReadOnly()</td>
+<td>标记此路径指定的文件或目录只能对其进行读操作</td>
+</tr>
+<tr>
+<td>boolean setWritable(boolean writable)</td>
+<td>设置此路径名所有者写权限</td>
+</tr>
+<tr>
+<td>boolean setWritable(boolean w, boolean o)</td>
+<td>设置此路径名的所有者或所有用户的写权限</td>
+</tr>
+</tbody></table>
+<h3 id="5-其他"><a href="#5-其他" class="headerlink" title="5. 其他"></a>5. 其他</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int compareTo(File pathname)</td>
+<td>按字母顺序比较两个抽象路径名</td>
+</tr>
+<tr>
+<td>boolean equals(Object obj)</td>
+<td>测试此抽象路径名与给定对象是否相等</td>
+</tr>
+<tr>
+<td>long getUsableSpace()</td>
+<td>返回此抽象路径名指定的分区上可用于此虚拟机的字节数</td>
+</tr>
+<tr>
+<td>int hashCode()</td>
+<td>计算此抽象路径名的哈希码</td>
+</tr>
+<tr>
+<td>String toString()</td>
+<td>返回此抽象路径名的路径名字符串</td>
+</tr>
+<tr>
+<td>URI toURI()</td>
+<td>构造一个表示此抽象路径名的 file: URI</td>
+</tr>
+</tbody></table>
+<h1 id="第二章-I-O流"><a href="#第二章-I-O流" class="headerlink" title="第二章 I/O流"></a>第二章 I/O流</h1><h2 id="2-1-IO流概述"><a href="#2-1-IO流概述" class="headerlink" title="2.1 IO流概述"></a>2.1 IO流概述</h2><ol>
+<li><p><strong>什么是IO</strong></p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>在电脑操作系统内，所有文件都是以二进制的形式存储在磁盘中，所以在操作系统中数据传输始终是二进制的数据流在磁盘或网络中通过应用程序进行传输；</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>在Java程序中操作文件中数据流过程是：通过程序将磁盘中文件加载到内存中，程序操作内存中数据然后在写回到磁盘中；在这个过程中把数据加载到内存的过程称为输入流（InputStream），把内存中数据写入到磁盘称为输出流（OutputStream）；</p>
+</li>
+<li><p><strong>IO流分类</strong></p>
+<ul>
+<li><p>以程序为中心按<strong>流的方向</strong>：分为输入流和输出流</p>
+</li>
+<li><p>根据程序操作的<strong>流的内容</strong>：分为字节流和字符流：一切皆字节</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>输入流：Input</th>
+<th>输出流：Output</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>字节流：Stream</strong></td>
+<td>字节输入流 <strong>InputStream</strong></td>
+<td>字节输出流 <strong>OutPutStream</strong></td>
+</tr>
+<tr>
+<td><strong>字符流：read和write</strong></td>
+<td>字符输入流 <strong>Reader</strong></td>
+<td>字符输出流 <strong>Writer</strong></td>
+</tr>
+</tbody></table>
+<img src="https://z3.ax1x.com/2021/06/26/R37Rat.png" alt="R37Rat.png" border="0" />
+
+<img src="https://z3.ax1x.com/2021/06/26/R372VI.png" alt="R372VI.png" border="0" />
+
+
+
+</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li><p><strong>IO设计模式-装饰器</strong></p>
+<ul>
+<li><p>IO流的装饰作用是为了提高IO流的操作性能</p>
+</li>
+<li><p>装饰器模式相关对象</p>
+<ul>
+<li>抽象组件：定义需要装饰的<strong>抽象类</strong></li>
+<li>具体组件：是抽象组件的具体实现，是需要被装饰的<strong>类</strong></li>
+<li>抽象装饰类：包含了具体组件，是对抽象类的实现是由被装饰组件实现，并对原有实现进行的增强</li>
+<li>具体装饰类：被装饰的对象</li>
+</ul>
+</li>
+<li><p>核心代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 装饰器类 <span class="keyword">implements</span> 抽象组件</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> 被装饰器类 decorator;</span><br><span class="line">    <span class="keyword">public</span> 装饰器类(被装饰器类 decorator)&#123;</span><br><span class="line">    	<span class="keyword">this</span>.decorator = decorator</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@OverRide</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> 增强方法()&#123;</span><br><span class="line">        decorator.增强方法() + 方法的增强;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>try新语法with -resource</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 流无需手动关闭</span></span><br><span class="line"><span class="keyword">try</span>(</span><br><span class="line">    流的声明</span><br><span class="line">)&#123;</span><br><span class="line">    </span><br><span class="line">&#125;cache()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Java IO流体系</strong></p>
+<img src="https://z3.ax1x.com/2021/06/20/RFJe0O.jpg" alt="RFJe0O.jpg" border="0" />
+
+</li>
+</ol>
+<h2 id="2-2-文件字节流"><a href="#2-2-文件字节流" class="headerlink" title="2.2 文件字节流"></a>2.2 文件字节流</h2><ol>
+<li><p><strong>文件字节流概述</strong>：包括文件字节输入流（FileInputStream）：作用是从本地磁盘的文件中读取数据；文件字节输出流（FileOutputStream）：作用是将流中的字节写入到磁盘的文件中；</p>
+</li>
+<li><p><strong>常用API说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>FileInputStream</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>read()</td>
+<td>从输入流中读取一个字节的数据，返回读取到的字节如果是文件末尾返回-1</td>
+</tr>
+<tr>
+<td>read(byte b[])</td>
+<td>从输入流中读取的字节保存到字节数组b中，返回读取到的长度；</td>
+</tr>
+<tr>
+<td>skip(long n)</td>
+<td>跳过并丢弃输入流中的n个数据，返回实际跳过的字节数</td>
+</tr>
+<tr>
+<td>available()</td>
+<td>可以从此输入流中读取的剩余字节数</td>
+</tr>
+<tr>
+<td>getChannel()</td>
+<td>返回与此文件输入流关联的通道</td>
+</tr>
+<tr>
+<td>close()</td>
+<td>关闭流</td>
+</tr>
+<tr>
+<td><strong>FileOutputStream</strong></td>
+<td><strong>描述</strong></td>
+</tr>
+<tr>
+<td>write(int b)</td>
+<td>将单个字节写入到输出流中</td>
+</tr>
+<tr>
+<td>write(byte b[])</td>
+<td>将字节数组中字节写入到输出流中</td>
+</tr>
+<tr>
+<td>write(byte b[], int off, int len)</td>
+<td>将字节数组中字节写入到输出流中；指定起始偏移量，和写入长度</td>
+</tr>
+<tr>
+<td>close()</td>
+<td>关闭流</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>案例演示</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo01FileStreamTest</span> </span>&#123;</span><br><span class="line">    File file = <span class="keyword">new</span> File(<span class="string">"Demo01FileStreamTest.txt"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFileOutputStream</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String fileMsg = <span class="string">"Hello Java IO"</span>;</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                OutputStream os = <span class="keyword">new</span> FileOutputStream(file)</span><br><span class="line">        ) &#123;</span><br><span class="line">            os.write(fileMsg.getBytes());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(<span class="string">"e="</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFileInputStream01</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                InputStream is = <span class="keyword">new</span> FileInputStream(file)</span><br><span class="line">        ) &#123;</span><br><span class="line">            <span class="keyword">int</span> c = is.read();</span><br><span class="line">            log.info(<span class="string">"read()读取到一个字节=&#123;&#125;"</span>, (<span class="keyword">char</span>) c);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(<span class="string">"e="</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFileInputStream02</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                InputStream is = <span class="keyword">new</span> FileInputStream(file)</span><br><span class="line">        ) &#123;</span><br><span class="line">            <span class="keyword">int</span> c;</span><br><span class="line">            <span class="keyword">while</span> ((c = is.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">                log.info(<span class="string">"read()读取到一个字节=&#123;&#125;"</span>, (<span class="keyword">char</span>) c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(<span class="string">"e="</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFileInputStream03</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                InputStream is = <span class="keyword">new</span> FileInputStream(file)</span><br><span class="line">        ) &#123;</span><br><span class="line">            <span class="keyword">int</span> len;</span><br><span class="line">            <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4</span>];</span><br><span class="line">            <span class="keyword">while</span> ((len = is.read(buf)) &gt; <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">                log.info(<span class="string">"read()读取到长度 = &#123;&#125;, buf = &#123;&#125;"</span>, len, <span class="keyword">new</span> String(buf));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(<span class="string">"e="</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="2-3-缓存字节流"><a href="#2-3-缓存字节流" class="headerlink" title="2.3 缓存字节流"></a>2.3 缓存字节流</h2><ol>
+<li><p>缓冲流概述：<code>BufferedInputStream</code>和<code>BufferedOutputStream</code>这两个类分别是<code>FilterInputStream</code>和<code>FilterOutputStream</code>的子类，作为装饰器子类，使用它们可以防止每次读取/发送数据时进行实际的写操作：带缓冲的流，可以一次读很多字节，但不向磁盘中写入，只是先放到内存里。等凑够了缓冲区大小的时候一次性写入磁盘，这种方式可以减少磁盘操作次数，速度就会提高很多！</p>
+</li>
+<li><p>缓存流API</p>
+<table>
+<thead>
+<tr>
+<th>BufferedInputStream</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>close()</td>
+<td>关闭流</td>
+</tr>
+<tr>
+<td><strong>BufferedOutputStream</strong></td>
+<td><strong>描述</strong></td>
+</tr>
+<tr>
+<td>flush()</td>
+<td>强行将缓冲区中的数据写出，否则可能无法写出数据</td>
+</tr>
+<tr>
+<td>close()</td>
+<td>强行将缓冲区中的数据写出，并关闭流</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>案例演示</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo02BufferStreamTest</span> </span>&#123;</span><br><span class="line">    File file = <span class="keyword">new</span> File(<span class="string">"Demo01FileStreamTest.txt"</span>);</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testBufferInputStream</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">                InputStream is = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">                BufferedInputStream bis = <span class="keyword">new</span> BufferedInputStream(is)</span><br><span class="line">        ) &#123;</span><br><span class="line">            <span class="keyword">int</span> len;</span><br><span class="line">            <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">3</span>];</span><br><span class="line">            <span class="keyword">while</span> ((len = bis.read(buf)) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                log.info(<span class="string">"len=&#123;&#125;,buf=&#123;&#125;"</span>, len, <span class="keyword">new</span> String(buf));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(<span class="string">"e="</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="2-4-数据字节流"><a href="#2-4-数据字节流" class="headerlink" title="2.4 数据字节流"></a>2.4 数据字节流</h2><ol>
+<li><p><strong>数据字节流概述</strong>：DataInputStream 和 DataOutputStream 是数据字节流，分别继承自 FilterInputStream 和 FilterOutputStream 和 实现了 DataInput 和 DataOutput。用来装饰其他的字节流。</p>
+<ul>
+<li>DataInputStream：数据字节输入流，用来装饰其他的输入流，<strong>允许应用程序以与机器无关方式从底层输入流中读取基本 Java 数据类型。</strong>应用程序可以使用 DataOutputStream (数据字节输出流)写入由 DataInputStream (数据字节输入流)读取的数据。</li>
+<li>DataOutputStream ：数据字节输出流，用来装饰其他输出流，将 DataOutputStream 和 DataInputStream 输入流配合使用，<strong>允许应用程序以与机器无关方式从底层输入流中读写基本 Java 数据类型</strong>。</li>
+</ul>
+</li>
+<li><p>数据字节流API</p>
+<table>
+<thead>
+<tr>
+<th>DataInputStream</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>read()</td>
+<td>读取一个字节并返回读取到的字节，如果读取不到返回-1</td>
+</tr>
+<tr>
+<td>read(byte[] b)</td>
+<td>读取输入字节到数据b中，并返回读取到的长度；</td>
+</tr>
+<tr>
+<td>read(byte b[], int off, int len)</td>
+<td>读取输入字节到数组b中，最多读取长度为len</td>
+</tr>
+<tr>
+<td>readBoolean()</td>
+<td>读取一个输入字节：返回true该字节不为0，返回false该字节为0</td>
+</tr>
+<tr>
+<td>readByte()</td>
+<td>读取一个输入字节并返回一个byte值</td>
+</tr>
+<tr>
+<td>readChar()</td>
+<td>读取两个字节并返回一个char值</td>
+</tr>
+<tr>
+<td>readShort()</td>
+<td>读取两个输入字节并返回一个short值</td>
+</tr>
+<tr>
+<td>readInt()</td>
+<td>读取四个输入字节并返回一个int值</td>
+</tr>
+<tr>
+<td>readFloat()</td>
+<td>读取四个输入字节并返回一个float值</td>
+</tr>
+<tr>
+<td>readLong()</td>
+<td>读取八个输入字节并返回一个long值</td>
+</tr>
+<tr>
+<td>readDouble()</td>
+<td>读取八个输入字节并返回一个double值</td>
+</tr>
+<tr>
+<td>readUTF()</td>
+<td>读取已经使用UTF-8格式编码的字符串</td>
+</tr>
+<tr>
+<td><strong>DataOutputStream</strong></td>
+<td><strong>描述</strong></td>
+</tr>
+<tr>
+<td>wrte(int b)</td>
+<td>写入一个字节</td>
+</tr>
+<tr>
+<td>write(byte b[], int off, int len)</td>
+<td>写入长度为len的字节数组</td>
+</tr>
+<tr>
+<td>writeBoolean(boolean v)</td>
+<td></td>
+</tr>
+<tr>
+<td>writeByte(int v)</td>
+<td></td>
+</tr>
+<tr>
+<td>writeShort(int v)</td>
+<td></td>
+</tr>
+<tr>
+<td>writeChar(int v)</td>
+<td></td>
+</tr>
+<tr>
+<td>writeChars(String s)</td>
+<td></td>
+</tr>
+<tr>
+<td>writeInt(int v)</td>
+<td></td>
+</tr>
+<tr>
+<td>writeLong(long v)</td>
+<td></td>
+</tr>
+<tr>
+<td>writeFloat(float v)</td>
+<td></td>
+</tr>
+<tr>
+<td>writeDouble(double v)</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>案例代码</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="2-5-对象字节流"><a href="#2-5-对象字节流" class="headerlink" title="2.5 对象字节流"></a>2.5 对象字节流</h2><ol>
+<li><p><strong>对象字节流概述</strong>：也称序列化和反序列化，前体是类必须实现 Seriaizable；</p>
+</li>
+<li><p><strong>对象字节流API</strong></p>
+<table>
+<thead>
+<tr>
+<th>ObjectInputStream</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>readObject()</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ObjectOutputStream</strong></td>
+<td><strong>描述</strong></td>
+</tr>
+<tr>
+<td>writeObject(Object o)</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="2-6-管道字节流"><a href="#2-6-管道字节流" class="headerlink" title="2.6 管道字节流"></a>2.6 管道字节流</h2><h2 id="2-7-数组字节流"><a href="#2-7-数组字节流" class="headerlink" title="2.7 数组字节流"></a>2.7 数组字节流</h2><h2 id="2-8-文件字符流"><a href="#2-8-文件字符流" class="headerlink" title="2.8 文件字符流"></a>2.8 文件字符流</h2><ol>
+<li><p><strong>文件字符流概述</strong>：读取磁盘中本文文件并转为字符流；FileReader和FileWriter</p>
+</li>
+<li><p><strong>文件字符流API</strong></p>
+<table>
+<thead>
+<tr>
+<th>FileReader</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>read()</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FileWriter</strong></td>
+<td><strong>描述</strong></td>
+</tr>
+<tr>
+<td>write()</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>案例代码</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="2-9-缓存字符流"><a href="#2-9-缓存字符流" class="headerlink" title="2.9 缓存字符流"></a>2.9 缓存字符流</h2><ol>
+<li><p>缓存字符流概述：带缓冲区的字符流，是个Reader的装饰器；BufferedReader；BufferedWriter</p>
+</li>
+<li><p>缓存字符流API</p>
+<table>
+<thead>
+<tr>
+<th>BufferedReader</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>lines()</td>
+<td>将文件中所有的行封装为一个Stream流</td>
+</tr>
+<tr>
+<td>readLine()</td>
+<td>读取文件中一行数据（换行符标识），读不到返回null</td>
+</tr>
+<tr>
+<td><strong>BufferedWriter</strong></td>
+<td><strong>描述</strong></td>
+</tr>
+<tr>
+<td>newLine()</td>
+<td>表示是一个换行符</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>案例代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="2-10-字符转换流"><a href="#2-10-字符转换流" class="headerlink" title="2.10 字符转换流"></a>2.10 字符转换流</h2><ol>
+<li><p><strong>转换流概述</strong>：提供字节流与字符流之间的转换；InputStreamReader :将一个字节的输入流转换为字符的输入流；InputStreamWriter:将一个字符的输出流转换为字节的输出流；</p>
+</li>
+<li><p><strong>转换流API</strong></p>
+<table>
+<thead>
+<tr>
+<th>InputStreamReader</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>InputStreamReader(InputStream in)</td>
+<td>InputStream封装为转换流，使用系统默认字符集</td>
+</tr>
+<tr>
+<td>InputStreamReader(InputStream in, Charset cs)</td>
+<td>InputStream封装为转换流，并指定字符集</td>
+</tr>
+<tr>
+<td><strong>InputStreamWriter</strong></td>
+<td><strong>描述</strong></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>案例代码</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="第三章-IO工具包"><a href="#第三章-IO工具包" class="headerlink" title="第三章 IO工具包"></a>第三章 IO工具包</h1><h2 id="3-1-commons-io"><a href="#3-1-commons-io" class="headerlink" title="3.1 commons-io"></a>3.1 commons-io</h2><h2 id="3-2-HuTool"><a href="#3-2-HuTool" class="headerlink" title="3.2 HuTool"></a>3.2 HuTool</h2>]]></content>
+      <categories>
+        <category>JAVA全栈</category>
+      </categories>
+  </entry>
+  <entry>
     <title>0603_Vue</title>
     <url>/2006/03/01/0603-Vue/</url>
     <content><![CDATA[<h1 id="第三章-组件化开发"><a href="#第三章-组件化开发" class="headerlink" title="第三章 组件化开发"></a>第三章 组件化开发</h1><h2 id="3-1-组件化入门"><a href="#3-1-组件化入门" class="headerlink" title="3.1 组件化入门"></a>3.1 组件化入门</h2><h3 id="1-组件概述"><a href="#1-组件概述" class="headerlink" title="1. 组件概述"></a>1. 组件概述</h3><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>前端代码开发中，程序实现是希望尽可能多的做到代码重用，然而前端在代码重用中可能会产生CSS样式和JS业务逻辑的冲突；由此产生的Web Components开发标准：其核心思想是通过创建封装特定功能的定制元素（Vue的实现方式是用一个自定义标签封装独立的前端代码并且具有特定的功能），并且能够解决冲突问题；</p>
@@ -1028,6 +1703,12 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>前端全栈</category>
+      </categories>
+      <tags>
+        <tag>JSFW</tag>
+      </tags>
   </entry>
   <entry>
     <title>0602-模块化</title>
@@ -1146,6 +1827,12 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>前端全栈</category>
+      </categories>
+      <tags>
+        <tag>JSFW</tag>
+      </tags>
   </entry>
   <entry>
     <title>0601-ES2016</title>
@@ -2423,7 +3110,71 @@
 <td>匹配标签id属性值的一个元素</td>
 </tr>
 </tbody></table>
-<h2 id="第二章-结构选择器"><a href="#第二章-结构选择器" class="headerlink" title="第二章 结构选择器"></a>第二章 结构选择器</h2><h2 id="第三章-属性选择器"><a href="#第三章-属性选择器" class="headerlink" title="第三章 属性选择器"></a>第三章 属性选择器</h2><h2 id="第四章-伪类选择器"><a href="#第四章-伪类选择器" class="headerlink" title="第四章 伪类选择器"></a>第四章 伪类选择器</h2><h2 id="第五章-表达选择器"><a href="#第五章-表达选择器" class="headerlink" title="第五章 表达选择器"></a>第五章 表达选择器</h2><h1 id="第三部分-CSS属性"><a href="#第三部分-CSS属性" class="headerlink" title="第三部分 CSS属性"></a>第三部分 CSS属性</h1><h1 id="第四部分-CSS布局"><a href="#第四部分-CSS布局" class="headerlink" title="第四部分 CSS布局"></a>第四部分 CSS布局</h1><h2 id="第五章-flex布局"><a href="#第五章-flex布局" class="headerlink" title="第五章 flex布局"></a>第五章 flex布局</h2><h3 id="5-1-Flex布局特点"><a href="#5-1-Flex布局特点" class="headerlink" title="5.1 Flex布局特点"></a>5.1 Flex布局特点</h3><ul>
+<h2 id="第二章-结构选择器"><a href="#第二章-结构选择器" class="headerlink" title="第二章 结构选择器"></a>第二章 结构选择器</h2><h2 id="第三章-属性选择器"><a href="#第三章-属性选择器" class="headerlink" title="第三章 属性选择器"></a>第三章 属性选择器</h2><h2 id="第四章-伪类选择器"><a href="#第四章-伪类选择器" class="headerlink" title="第四章 伪类选择器"></a>第四章 伪类选择器</h2><h2 id="第五章-表达选择器"><a href="#第五章-表达选择器" class="headerlink" title="第五章 表达选择器"></a>第五章 表达选择器</h2><h1 id="第三部分-CSS属性"><a href="#第三部分-CSS属性" class="headerlink" title="第三部分 CSS属性"></a>第三部分 CSS属性</h1><h1 id="第四部分-CSS布局"><a href="#第四部分-CSS布局" class="headerlink" title="第四部分 CSS布局"></a>第四部分 CSS布局</h1><h2 id="第一章-流式布局"><a href="#第一章-流式布局" class="headerlink" title="第一章 流式布局"></a>第一章 流式布局</h2><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>标准流</strong>也称为普通流或文档流，就是指标签按照HTML标签默认方式进行排列；在标准流中的元素分为行内元素、块级元素、行内块元素；其在标准流中排列特点是：</p>
+<ul>
+<li>块级元素：在标准流中独占一行，按顺序从上到下进行排列；</li>
+<li>行内块元素：在标准流中具有width和height属性，按顺序从左到右进行排列，超过父盒子宽度后自动换行；</li>
+<li>行内元素：在标准流中按顺序从左到右进行排列，超过父盒子宽度后会自动换行；</li>
+</ul>
+<h2 id="第二章-浮动布局"><a href="#第二章-浮动布局" class="headerlink" title="第二章 浮动布局"></a>第二章 浮动布局</h2><h3 id="2-1-浮动概述"><a href="#2-1-浮动概述" class="headerlink" title="2.1 浮动概述"></a>2.1 浮动概述</h3><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>在标准流中如果要元素水平排列，虽然可以将元素转换为行内块元素，但是无法控制行内块元素之间的距离，并且水平布局的功能不足以满足网页水平布局的要求；</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>浮动流：浮动是给盒子添加float属性，给盒子创建了一个浮动框，具有浮动框的元素会从原标准流的位置脱离出来，浮动框根据浮动属性的值，浮动框的左边缘或右边缘会贴靠到所包含的块边缘或另一个浮动框的左右边缘；</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>浮动的注意点：①浮动和标准流的父元素搭配使用（先用标准流排列水平结构，再在水平布局的父元素中定义元素设置浮动属性）②一个元素浮动了理论上该元素的兄弟元素都需要浮动，因为浮动元素会影响后面的标准流；</p>
+<h3 id="2-2-浮动特性"><a href="#2-2-浮动特性" class="headerlink" title="2.2 浮动特性"></a>2.2 浮动特性</h3><ol>
+<li><strong>浮动元素会脱离标准流</strong><ul>
+<li>元素浮动后会基于父元素的位置进行左右排版：父级的盒子如果装不下浮动的元素，后面浮动的元素会另起一行；</li>
+<li>浮动流是一种“半脱离标准流”的排版方式，浮动后会移动到父元素中指定的位置；</li>
+<li>元素浮动后，原来的位置会被释，浮动区域会覆盖掉标准元素，但是浮动的区域不会覆盖对应位置标准流元素中的文本内容</li>
+<li>元素浮动不会超越父元素的padding区域和margin区域；</li>
+</ul>
+</li>
+<li><strong>浮动元素会在一行内显示并且元素顶部对齐</strong><ul>
+<li>相同方向的浮动元素：先浮动的元素会显示在前面，后浮动的元素会显示在后面；</li>
+<li>不同方向的浮动元素：左浮动会找左浮动，右浮动会找右浮动；</li>
+<li>浮动元素浮动后的位置：右浮动元素在浮动之前在标准流中的位置确定，只在原来所在行浮动；</li>
+</ul>
+</li>
+<li><strong>浮动元素具有行内块的特性</strong><ul>
+<li>浮动流是不区分行内元素、块级元素或行内块元素：浮动所有元素都可以设置宽和高；</li>
+<li>浮动元素是不能撑起父元素的高度；</li>
+<li>浮动元素是不可以设置<code>margin 0 auto</code>的；</li>
+</ul>
+</li>
+<li><strong>浮动元素贴靠现象</strong><ul>
+<li>当父元素的宽度足够放置浮动元素时，浮动元素会按顺序贴靠；</li>
+<li>当父元素宽度不够时，浮动元素会找现在贴靠元素的上一个浮动元素，直到贴靠在父元素；</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-3-消除浮动概述"><a href="#2-3-消除浮动概述" class="headerlink" title="2.3 消除浮动概述"></a>2.3 消除浮动概述</h3><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>在实际开发中，浮动元素的标准流的父盒子是不会设置高度的，父盒子的高度应该是被子盒子的内容撑开的，但是父盒子中的所有元素浮动后，浮动元素是撑不开父盒子的高度的，所以会导致父盒子的高度为0，下一个标准流元素会被浮动造的影响：浮动不占有原文档流中的位置，所以会对后面的元素排版产生影响，为了解决这些问题，所以要为该元素清除浮动后造成的影响：元素浮动后不会撑开父元素的高度，父元素的高度为0的问题；清除浮动后父盒子会根据子盒子自动检测高度，就不会影响下面的标准流了；清除浮动属性：clear=both，清除浮动的策略是闭合浮动</p>
+<ol>
+<li>额外标签法：也称隔墙法，是w3c推荐；在最后浮动元素的元素后新增一个空盒子（<strong>必须是块级元素，不能是行内元素</strong>），并且给盒子设置clear属性，缺点是添加无语义的标签，不优雅；</li>
+<li>给父元素添加overflow属性：给父元素添加overflow属性，本义是处理溢出样式的；缺点是无法显示溢出的部分，</li>
+<li>给父元素添加after伪元素：本质是也是隔墙法，只是墙是通过样式添加的；原理是after伪元素必须要用content属性，需要将content转为块级元素（display=block），转为块级元素后可以为元素设置clear属性，并且这个内容不再浏览器显示（visibility=hidden），缺点是IE不兼容，需要给添加额外样式（*zoom=1）</li>
+<li>给父元素添加双伪元素：after是给父盒子后面添加一个虚拟的墙，再加个before属性给父盒子前面添加一个墙，表示浮动元素完全在父盒子中浮动了</li>
+</ol>
+<h3 id="2-4-清除浮动"><a href="#2-4-清除浮动" class="headerlink" title="2.4 清除浮动"></a>2.4 清除浮动</h3><ol>
+<li><p><strong><del>清除浮动方式一</del></strong>：给父元素设置高度：企业开发中一般盒子的高度是由内容决定，所以不推荐使用盒子高度；</p>
+</li>
+<li><p><strong>清除浮动方式二</strong>：为浮动元素添加clear属性：添加了clear属性的元素margin属性会失效；解决浮动的本质是把浮动的盒子圈到里面，让父盒子闭合出口和入口不让他们出来影响其他元素；</p>
+</li>
+<li><p><strong>清除浮动方式三</strong>：隔墙法清除浮动</p>
+<ul>
+<li><p>外墙法：在浮动的元素之间添加一个块级元素，并且为该元素设置属性<code>clear: both</code>属性，外墙法的第一个浮动元素不要使用<code>margin-buttom</code>属性，外墙法的第二个浮动元素不要使用<code>margin-top</code>属性，直接为外墙设置高度属性即可；</p>
+</li>
+<li><p>内墙法：在第一个浮动元素的所有子元素之后添加一个块级元素，并且为该元素设置属性<code>clear: both</code>属性，内墙法可以让浮动元素使用margin属性；</p>
+</li>
+<li><p>使用伪元素选择器为元素前后添加块级元素：<code>::before</code> 或<code>::after</code>伪元素的content属性，并且设置<code>height</code>属性设置为0，<code>visibility</code>属性设置为hidden，<code>clear</code>属性设置为both；</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.clear-fix</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">"不建议填空"</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">0px</span>;</span><br><span class="line">    <span class="attribute">visibality</span>:hidden;</span><br><span class="line">    <span class="attribute">display</span>:block;</span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 伪元素有兼容问题:添加兼容处理方式 */</span></span><br><span class="line"><span class="selector-class">.clear-fix</span>&#123;</span><br><span class="line">    *zoom:1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>双伪元素清除浮动：触发bfc，防止外边距合并</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.clear-fix:after,.clear-fix:before&#123;</span><br><span class="line">    content:&quot;&quot;;</span><br><span class="line">    display:block;</span><br><span class="line">&#125;</span><br><span class="line">.clear-fix&#123;</span><br><span class="line">    clear:both;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;** 伪元素有兼容问题:添加兼容处理方式 *&#x2F;</span><br><span class="line">.clear-fix&#123;</span><br><span class="line">    *zoom:1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>清除浮动方式四</strong>：使用<code>overflow: hidden</code>属性：在IE6中无效，需要添加兼容属性<code>*zoom:1</code>值；缺点子元素中过多的内容被隐藏；</p>
+</li>
+</ol>
+<h2 id="第三章-定位布局"><a href="#第三章-定位布局" class="headerlink" title="第三章 定位布局"></a>第三章 定位布局</h2><h3 id="3-1-定位概述"><a href="#3-1-定位概述" class="headerlink" title="3.1 定位概述"></a>3.1 定位概述</h3><h2 id="第四章-栅格布局"><a href="#第四章-栅格布局" class="headerlink" title="第四章 栅格布局"></a>第四章 栅格布局</h2><h2 id="第五章-flex布局"><a href="#第五章-flex布局" class="headerlink" title="第五章 flex布局"></a>第五章 flex布局</h2><h3 id="5-1-Flex布局特点"><a href="#5-1-Flex布局特点" class="headerlink" title="5.1 Flex布局特点"></a>5.1 Flex布局特点</h3><ul>
 <li><strong>传统布局特点</strong>：①兼容性好（PC和移动端都适应）、②布局繁琐（布局属性多且乱）、③局限性，在移动端效果不好</li>
 <li><strong>Flex布局特点</strong>：①操作方便，布局极为简单、②是CSS新特性，对PC端浏览器支持较差</li>
 </ul>
@@ -2909,9 +3660,19 @@
 
 </li>
 </ol>
-<h1 id="第四章-SpringBoot-Logback"><a href="#第四章-SpringBoot-Logback" class="headerlink" title="第四章 SpringBoot Logback"></a>第四章 SpringBoot Logback</h1><h2 id="4-1-默认配置"><a href="#4-1-默认配置" class="headerlink" title="4.1 默认配置"></a>4.1 默认配置</h2><h2 id="4-2-读取配置文件"><a href="#4-2-读取配置文件" class="headerlink" title="4.2 读取配置文件"></a>4.2 读取配置文件</h2><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>logback默认加载的日志文件名称是logback.xml，并且logback.xml加载早于application.properties，所以如果你在logback.xml使用了变量时，而恰好这个变量是写在application.properties时，那么就会获取不到；SpringBoot对Logback做了扩展，如果logback的配置文件改成logback-spring.xml则SpringBoot会首先会加载配置文件并处理配置文件，然后将处理好的配置文件交给Logback框架，使得logback-spring.xml具有是SpringBoot的Profile特性；</p>
-<h3 id="4-3-Profile"><a href="#4-3-Profile" class="headerlink" title="4.3 Profile"></a>4.3 Profile</h3><ul>
-<li>springProfile的name属性指定SpringBoot项目运行的Profile环境，不同的环境可以指定不同的日志记录器；</li>
+<h1 id="第四章-SpringBoot-Logback"><a href="#第四章-SpringBoot-Logback" class="headerlink" title="第四章 SpringBoot Logback"></a>第四章 SpringBoot Logback</h1><h2 id="4-1-属性配置"><a href="#4-1-属性配置" class="headerlink" title="4.1 属性配置"></a>4.1 属性配置</h2><ul>
+<li><p>读取Spring属性：<code>&lt;springProperty&gt;</code>标签允许读取Spring中配置的属性，Environment 以便在Logback中使用；标签的工作方式与Logback的标准 <code>&lt;property&gt;</code>标签类似，但不是直接value 指定source属性（从Environment）指定。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">springProperty</span> <span class="attr">scope</span>=<span class="string">"context"</span> <span class="attr">name</span>=<span class="string">"APP_NAME"</span> <span class="attr">source</span>=<span class="string">"spring.application.name"</span> <span class="attr">defaultValue</span>=<span class="string">"springBoot"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>scope：如果需要将属性存储在local范围之外的其他位置，则可以使用该属性；</li>
+<li>defaultValue：如果需要一个后备值，以防该属性未设置；</li>
+</ul>
+</li>
+<li><pre><code class="xml"><span class="tag">&lt;<span class="name">springProperty</span> <span class="attr">scope</span>=<span class="string">"context"</span> <span class="attr">name</span>=<span class="string">"EXCEPTION_LOCATION"</span> <span class="attr">source</span>=<span class="string">"exception-location"</span>/&gt;</span>
+<span class="comment"><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">## 4.2 读取配置文件</span><br><span class="line"></span><br><span class="line">&lt;span&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;&#x2F;span&gt;logback默认加载的日志文件名称是logback.xml，并且logback.xml加载早于application.properties，所以如果你在logback.xml使用了变量时，而恰好这个变量是写在application.properties时，那么就会获取不到；SpringBoot对Logback做了扩展，如果logback的配置文件改成logback-spring.xml则SpringBoot会首先会加载配置文件并处理配置文件，然后将处理好的配置文件交给Logback框架，使得logback-spring.xml具有是SpringBoot的Profile特性；</span><br><span class="line"></span><br><span class="line">### 4.3 Profile</span><br><span class="line"></span><br><span class="line">- springProfile的name属性指定SpringBoot项目运行的Profile环境，不同的环境可以指定不同的日志记录器；</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;xml</span><br><span class="line">  在logback-spring.xml中</span><br><span class="line">  &lt;springProfile name&#x3D;&quot;dev&quot;&gt;</span><br><span class="line">      &lt;!-- 开发环境时激活 --&gt;</span><br><span class="line">  &lt;&#x2F;springProfile&gt;</span><br><span class="line">   </span><br><span class="line">  &lt;springProfile name&#x3D;&quot;dev,test&quot;&gt;</span><br><span class="line">      &lt;!-- 开发，测试的时候激活--&gt;</span><br><span class="line">  &lt;&#x2F;springProfile&gt;</span><br><span class="line">   </span><br><span class="line">  &lt;springProfile name&#x3D;&quot;!prod&quot;&gt;</span><br><span class="line">      &lt;!-- 当 &quot;生产&quot; 环境时，该配置不激活--&gt;</span><br><span class="line">  &lt;&#x2F;springProfile&gt;</span><br></pre></td></tr></table></figure></span>
+</code></pre>
+</li>
 </ul>
 <h1 id="第五章-Logback-MDC"><a href="#第五章-Logback-MDC" class="headerlink" title="第五章 Logback MDC"></a>第五章 Logback MDC</h1><h2 id="5-1-MDC概述"><a href="#5-1-MDC概述" class="headerlink" title="5.1 MDC概述"></a>5.1 MDC概述</h2><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Logback是在logback-classic模块中实现了SLF4J的MDC功能。</p>
 <p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>MDC中管理的数据（简称MDC数据）是以单个线程为单位进行访问的，即对MDC数据的操作（如put, get）只对当前线程有效，所以也永远是线程安全的。在服务端，为每个请求分配一个线程进行处理，所以每个服务端线程处理的请求，都具有唯一的MDC上下文数据。</p>
@@ -2942,7 +3703,114 @@
         <category>JAVA全栈</category>
       </categories>
       <tags>
-        <tag>Java工具集</tag>
+        <tag>Java工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>0506-Gateway</title>
+    <url>/2005/06/01/0506-Gateway/</url>
+    <content><![CDATA[<h1 id="第一章-SpringCloudGateway概述"><a href="#第一章-SpringCloudGateway概述" class="headerlink" title="第一章 SpringCloudGateway概述"></a>第一章 SpringCloudGateway概述</h1><h2 id="1-1-Gateway介绍"><a href="#1-1-Gateway介绍" class="headerlink" title="1.1 Gateway介绍"></a>1.1 Gateway介绍</h2><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>SpringCloud Gateway 是 Spring Cloud 的一个全新项目，该项目是基于 Spring 5.0，Spring Boot 2.0 和 Project Reactor 等技术开发的网关，它旨在为微服务架构提供一种简单有效的统一的 API 路由管理方式。</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>SpringCloud Gateway 作为 Spring Cloud 生态系统中的网关，目标是替代 Zuul，在Spring Cloud 2.0以上版本中，没有对新版本的Zuul 2.0以上最新高性能版本进行集成，仍然还是使用的Zuul 2.0之前的非Reactor模式的老版本。而为了提升网关的性能，SpringCloud Gateway是基于WebFlux框架实现的，而WebFlux框架底层则使用了高性能的Reactor模式通信框架Netty。</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Spring Cloud Gateway 的目标，不仅提供统一的路由方式，并且基于 Filter 链的方式提供了网关基本的功能，例如：安全，监控/指标，和限流。</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Spring Cloud Gateway 底层使用了高性能的通信框架Netty。</p>
+<h2 id="1-2-Gateway特征"><a href="#1-2-Gateway特征" class="headerlink" title="1.2 Gateway特征"></a>1.2 Gateway特征</h2><ol>
+<li>基于 Spring Framework 5，Project Reactor 和 Spring Boot 2.0</li>
+<li>集成 Hystrix 断路器</li>
+<li>集成 Spring Cloud DiscoveryClient</li>
+<li>Predicates 和 Filters 作用于特定路由，易于编写的 Predicates 和 Filters</li>
+<li>具备一些网关的高级功能：动态路由、限流、路径重写</li>
+</ol>
+<h2 id="1-3-Gateway相关术语解释"><a href="#1-3-Gateway相关术语解释" class="headerlink" title="1.3 Gateway相关术语解释"></a>1.3 Gateway相关术语解释</h2><ol>
+<li><strong>Filter（过滤器）</strong>：和Zuul的过滤器在概念上类似，可以使用它拦截和修改请求，并且对上游的响应，进行二次处理。过滤器为org.springframework.cloud.gateway.filter.GatewayFilter类的实例。</li>
+<li><strong>Route（路由）</strong>：网关配置的基本组成模块，和Zuul的路由配置模块类似。一个<strong>Route模块</strong>由一个 ID，一个目标 URI，一组断言和一组过滤器定义。如果断言为真，则路由匹配，目标URI会被访问。</li>
+<li><strong>Predicate（断言）：</strong>这是一个 Java 8 的 Predicate，可以使用它来匹配来自 HTTP 请求的任何内容，例如 headers 或参数。断言的输入类型是一个 ServerWebExchange。</li>
+</ol>
+<h1 id="第二章-SpringCloudGateway架构"><a href="#第二章-SpringCloudGateway架构" class="headerlink" title="第二章 SpringCloudGateway架构"></a>第二章 SpringCloudGateway架构</h1><h2 id="2-1-SpringCloud-Zuul的IO模型"><a href="#2-1-SpringCloud-Zuul的IO模型" class="headerlink" title="2.1 SpringCloud Zuul的IO模型"></a>2.1 SpringCloud Zuul的IO模型</h2><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Springcloud中所集成的Zuul版本，采用的是Tomcat容器，使用的是传统的Servlet IO处理模型；</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>servlet由servlet container进行生命周期管理：container启动时构造servlet对象并调用servlet init()进行初始化；container关闭时调用servlet destory()销毁servlet；container运行时接受请求，并为每个请求分配一个线程（一般从线程池中获取空闲线程）然后调用service()。</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>弊端：servlet是一个简单的网络IO模型，当请求进入servlet container时，servlet container就会为其绑定一个线程，在并发不高的场景下这种模型是适用的，但是一旦并发上升，线程数量就会上涨，而线程资源代价是昂贵的（上线文切换，内存消耗大）严重影响请求的处理时间。在一些简单的业务场景下，不希望为每个request分配一个线程，只需要1个或几个线程就能应对极大并发的请求，这种业务场景下servlet模型没有优势。</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>所以Springcloud Zuul 是基于servlet之上的一个阻塞式处理模型，即spring实现了处理所有request请求的一个servlet（DispatcherServlet），并由该servlet阻塞式处理处理。所以Springcloud Zuul无法摆脱servlet模型的弊端。虽然Zuul 2.0开始，使用了Netty，并且已经有了大规模Zuul 2.0集群部署的成熟案例，但是，Springcloud官方已经没有集成改版本的计划了。</p>
+<h2 id="2-2-Webflux-服务器"><a href="#2-2-Webflux-服务器" class="headerlink" title="2.2 Webflux 服务器"></a>2.2 Webflux 服务器</h2><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Spring在2017年下半年迎来了Webflux，Webflux的出现填补了Spring在响应式编程上的空白，Webflux的响应式编程不仅仅是编程风格的改变，而且对于一系列的著名框架，都提供了响应式访问的开发包，比如Netty、Redis等等。</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Webflux模式替换了旧的Servlet线程模型。用少量的线程处理request和response io操作，这些线程称为Loop线程，而业务交给响应式编程框架处理，响应式编程是非常灵活的，用户可以将业务中阻塞的操作提交到响应式框架的work线程中执行，而不阻塞的操作依然可以在Loop线程中进行处理，大大提高了Loop线程的利用率。Webflux虽然可以兼容多个底层的通信框架，但是一般情况下，底层使用的还是Netty；</p>
+<h2 id="2-3-Spring-Cloud-Gateway的处理流程"><a href="#2-3-Spring-Cloud-Gateway的处理流程" class="headerlink" title="2.3 Spring Cloud Gateway的处理流程"></a>2.3 Spring Cloud Gateway的处理流程</h2><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>客户端向 Spring Cloud Gateway 发出请求。然后在 Gateway Handler Mapping 中找到与请求相匹配的路由，将其发送到 Gateway Web Handler。Handler 再通过指定的过滤器链来将请求发送到我们实际的服务执行业务逻辑，然后返回。过滤器之间用虚线分开是因为过滤器可能会在发送代理请求之前（“pre”）或之后（“post”）执行业务逻辑。</p>
+<img src="https://z3.ax1x.com/2021/05/30/2V8bX4.jpg" alt="2V8bX4.jpg" border="0" />
+
+<h2 id="2-4-SpringCloudGateway配置方式"><a href="#2-4-SpringCloudGateway配置方式" class="headerlink" title="2.4 SpringCloudGateway配置方式"></a>2.4 SpringCloudGateway配置方式</h2><ol>
+<li><p>基于配置文件网关路由</p>
+<ul>
+<li><p>配置相关属性是数据结构如下</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"spring.cloud.routes"</span>:[</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"id"</span>:<span class="string">"自定义的路由 ID，保持唯一"</span>,</span><br><span class="line">            <span class="attr">"uri"</span>:<span class="string">"目标服务地址"</span>,</span><br><span class="line">            <span class="attr">"predicates"</span>:[</span><br><span class="line">                <span class="string">"路由条件，Predicate 接受输入参数，返回一个布尔值结果"</span></span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置文件基本案例（yaml个数）：如下配置说明意思是：配置了一个 id 为 url-proxy-1的URI代理规则，路由的规则为：</p>
+<p>当访问地址<code>http://localhost:8080/csdn/1.jsp</code>时，会路由到上游地址<code>https://blog.csdn.net/1.jsp</code>。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="string">-id:</span> <span class="string">url-proxy-1</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">https://blog.csdn.net</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="string">-Path=/csdn</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>基于代码的网关路由</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RouteConfigure</span></span>&#123;</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RouteLocator <span class="title">customRouteLocator</span><span class="params">(RouteLocatorBuilder builder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> builder.routes()</span><br><span class="line">                .route(<span class="string">"path_route"</span>, r -&gt; r.path(<span class="string">"/csdn"</span>)</span><br><span class="line">                        .uri(<span class="string">"https://blog.csdn.net"</span>))</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="第三章-SpringCloudGateway路由配置"><a href="#第三章-SpringCloudGateway路由配置" class="headerlink" title="第三章 SpringCloudGateway路由配置"></a>第三章 SpringCloudGateway路由配置</h1><img src="https://z3.ax1x.com/2021/05/30/2VJBz8.png" alt="2VJBz8.png" border="0" />
+
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Predicate 来源于 Java 8，是 Java 8 中引入的一个函数，Predicate 接受一个输入参数，返回一个布尔值结果。该接口包含多种默认方法来将 Predicate 组合成其他复杂的逻辑（比如：与，或，非）。可以用于接口请求参数校验、判断新老数据是否有变化需要进行更新操作。</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>在 Spring Cloud Gateway 中 Spring 利用 Predicate 的特性实现了各种路由匹配规则，有通过 Header、请求参数等不同的条件来进行作为条件匹配到对应的路由。上图总结了 Spring Cloud 内置的几种 Predicate 的实现。</p>
+<table>
+<thead>
+<tr>
+<th align="left">规则</th>
+<th align="left">实例</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Path</td>
+<td align="left">- Path=/gate/<strong>,/rule/</strong></td>
+<td align="left">## 当请求的路径为gate、rule开头的时，转发到<a href="http://localhost:9023服务器上">http://localhost:9023服务器上</a></td>
+</tr>
+<tr>
+<td align="left">Before</td>
+<td align="left">- Before=2017-01-20T17:42:47.789-07:00[America/Denver]</td>
+<td align="left">在某个时间之前的请求才会被转发到 <a href="http://localhost:9023服务器上">http://localhost:9023服务器上</a></td>
+</tr>
+<tr>
+<td align="left">After</td>
+<td align="left">- After=2017-01-20T17:42:47.789-07:00[America/Denver]</td>
+<td align="left">在某个时间之后的请求才会被转发</td>
+</tr>
+<tr>
+<td align="left">Between</td>
+<td align="left">- Between=2017-01-20T17:42:47.789-07:00[America/Denver],2017-01-21T17:42:47.789-07:00[America/Denver]</td>
+<td align="left">在某个时间段之间的才会被转发</td>
+</tr>
+<tr>
+<td align="left">Cookie</td>
+<td align="left">- Cookie=chocolate, ch.p</td>
+<td align="left">名为chocolate的表单或者满足正则ch.p的表单才会被匹配到进行请求转发</td>
+</tr>
+<tr>
+<td align="left">Header</td>
+<td align="left">- Header=X-Request-Id, \d+</td>
+<td align="left">携带参数X-Request-Id或者满足\d+的请求头才会匹配</td>
+</tr>
+<tr>
+<td align="left">Host</td>
+<td align="left">- Host=<a href="http://www.hd123.com" target="_blank" rel="noopener">www.hd123.com</a></td>
+<td align="left">当主机名为<a href="http://www.hd123.com的时候直接转发到http://localhost:9023服务器上" target="_blank" rel="noopener">www.hd123.com的时候直接转发到http://localhost:9023服务器上</a></td>
+</tr>
+<tr>
+<td align="left">Method</td>
+<td align="left">- Method=GET</td>
+<td align="left">只有GET方法才会匹配转发请求，还可以限定POST、PUT等请求方式</td>
+</tr>
+</tbody></table>
+<h2 id="3-1-通过请求参数匹配"><a href="#3-1-通过请求参数匹配" class="headerlink" title="3.1  通过请求参数匹配"></a>3.1  通过请求参数匹配</h2><p><a href="https://www.cnblogs.com/crazymakercircle/p/11704077.html" target="_blank" rel="noopener">https://www.cnblogs.com/crazymakercircle/p/11704077.html</a></p>
+<h2 id="3-2-通过-Header-属性匹配"><a href="#3-2-通过-Header-属性匹配" class="headerlink" title="3.2 通过 Header 属性匹配"></a>3.2 通过 Header 属性匹配</h2><h2 id="3-3-通过-Cookie-匹配"><a href="#3-3-通过-Cookie-匹配" class="headerlink" title="3.3 通过 Cookie 匹配"></a>3.3 通过 Cookie 匹配</h2><h2 id="3-4-通过-Host-匹配"><a href="#3-4-通过-Host-匹配" class="headerlink" title="3.4 通过 Host 匹配"></a>3.4 通过 Host 匹配</h2><h2 id="3-5-通过请求方式匹配"><a href="#3-5-通过请求方式匹配" class="headerlink" title="3.5 通过请求方式匹配"></a>3.5 通过请求方式匹配</h2><h2 id="3-6-通过请求路径匹配"><a href="#3-6-通过请求路径匹配" class="headerlink" title="3.6 通过请求路径匹配"></a>3.6 通过请求路径匹配</h2><h2 id="3-7-通过请求-ip-地址进行匹配"><a href="#3-7-通过请求-ip-地址进行匹配" class="headerlink" title="3.7 通过请求 ip 地址进行匹配"></a>3.7 通过请求 ip 地址进行匹配</h2><h2 id="3-8-组合使用"><a href="#3-8-组合使用" class="headerlink" title="3.8 组合使用"></a>3.8 组合使用</h2><h1 id="第四章-过滤器"><a href="#第四章-过滤器" class="headerlink" title="第四章 过滤器"></a>第四章 过滤器</h1>]]></content>
+      <categories>
+        <category>JAVA全栈</category>
+      </categories>
+      <tags>
+        <tag>Java框架</tag>
       </tags>
   </entry>
   <entry>
