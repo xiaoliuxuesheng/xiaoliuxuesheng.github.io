@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="JAVA 全栈 前端 运维 架构师" />
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    0601-CSS |  乘风破浪 披荆斩棘
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="乘风破浪 披荆斩棘" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-0601-CSS" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  0601-CSS
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2006/01/01/0601-CSS/" class="article-date">
+  <time datetime="2005-12-31T16:02:00.000Z" itemprop="datePublished">2006-01-01</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%85%A8%E6%A0%88/">前端全栈</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">5.7k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">21分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="第一部分-HTML"><a href="#第一部分-HTML" class="headerlink" title="第一部分 HTML"></a>第一部分 HTML</h1><h2 id="第一章-网站基础"><a href="#第一章-网站基础" class="headerlink" title="第一章 网站基础"></a>第一章 网站基础</h2><h3 id="1-1-服务器"><a href="#1-1-服务器" class="headerlink" title="1.1 服务器"></a>1.1 服务器</h3><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>服务器可以泛指存储网络资源的电子计算机；</p>
+<h3 id="1-2-浏览器"><a href="#1-2-浏览器" class="headerlink" title="1.2 浏览器"></a>1.2 浏览器</h3><ol>
+<li>五大浏览器<ul>
+<li>IE浏览器：微软公司旗下浏览器，IE诞生于1994年，当时微软为了对抗市场份额占据将近百分之九十的网景Netscape Navigator，于是在Windows中开发了自己的浏览器Internet Explorer，自此也引发了第一次浏览器大战。</li>
+<li>Opera浏览器：挪威Opera Software ASA公司旗下的浏览器。1995年，opera公司发布第一版Opera浏览器，使用自己研发的Presto内核。当时opera公司的开发团队不断完善Presto内核，使Opera浏览器一度成为顶级浏览器。直到2016年奇虎360和昆仑万维收购了Oprea浏览器，从此也丢弃了强大的Presto内核，改用当时Google开源的webkit内核。后来Opera浏览器跟随Google将浏览器内核改为Blink内核。自此Presto内核也淡出了互联网市场。</li>
+<li>Safari浏览器：第二次浏览器大战是从苹果公司发布Safari浏览器开始的。2003年，苹果公司在苹果手机上开发Safari浏览器；</li>
+<li>Firefox浏览器：Mozilla公司旗下浏览器，也是刚才提到的网景公司后来的浏览器。网景被收购后，网景人员创办了Mozilla基金会，这是一个非盈利组织，他们在2004年推出自己的浏览器Firefox。Firefox采用Gecko作为内核。Gecko是一个开源的项目，代码完全公开，因此受到很多人的青睐。Firefox的问世加快了第二次浏览器大战的开始。第二次浏览器大战与第一次二元鼎力的局面不同，这一次的特点就是百家争鸣，也自此打破了IE浏览器从98年网景被收购后独步浏览器市场的局面。</li>
+<li>Chrome浏览器：google旗下的浏览器。Chrome浏览器至发布以来一直讲究简洁、快速、安全，所以Chrome浏览器到现在一直受人追捧。最开始Chrome采用webkit作为浏览器内核，直到2013年，google宣布不再使用苹果的webkit内核，开始使用webkit的分支内核Blink。</li>
+</ul>
+</li>
+<li>四大内核<ul>
+<li>Trident（也称IE内核）</li>
+<li>webkit：chrome 将 Webkit内核 深入人心，殊不知，Webkit 的鼻祖其实是 Safari。现在很多人错误地把 webkit 叫做 chrome内核</li>
+<li>Blink：Blink 其实是 WebKit 的分支</li>
+<li>Gecko：特点是代码完全公开，因此，其可开发程度很高，全世界的程序员都可以为其编写代码，增加功能。</li>
+</ul>
+</li>
+</ol>
+<h3 id="1-3-网站与html"><a href="#1-3-网站与html" class="headerlink" title="1.3 网站与html"></a>1.3 网站与html</h3><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>网站上由众多的网页构成的，每个网页都是html文件，浏览器将html文件中字符串渲染成为网站可见的文本、图片、链接、视频等等；</p>
+<h3 id="1-4-url与http协议"><a href="#1-4-url与http协议" class="headerlink" title="1.4 url与http协议"></a>1.4 url与http协议</h3><ol>
+<li><p>URL（Uniform Resource Locator）：统一资源定位器；在WWW上，每一信息资源都有统一的且在网上唯一的地址，该地址就叫URL；</p>
+</li>
+<li><p>url格式说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protocol :// hostname[:port] / path / [;parameters][?query]#fragment</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><strong>protocol（协议）</strong>：指定使用的传输协议；</li>
+<li><strong>hostname（主机名）</strong>：指存放资源的服务器的域名系统(DNS) 主机名或 IP 地址；</li>
+<li><strong>port（端口号）</strong>：整数，可选，省略时使用方案的默认端口，各种传输协议都有默认的端口号；</li>
+<li><strong>path（路径）</strong>：由零或多个“/”符号隔开的字符串，一般用来表示主机上的一个目录或文件地址；</li>
+<li><strong>parameters（参数）</strong>：这是用于指定特殊参数的可选项；</li>
+<li><strong>query(查询)</strong>：可选，用于给动态网页（如使用CGI、ISAPI、PHP/JSP/ASP/ASP.NET等技术制作的网页）传递参数，可有多个参数，用“&amp;”符号隔开，每个参数的名和值用“=”符号隔开；</li>
+<li><strong>fragment（信息片断）</strong>：字符串，用于指定网络资源中的片段。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>http协议概述：HTTP是一个客户端终端（用户）和服务器端（网站）请求和应答的标准（TCP）。通过使用网页浏览器、网络爬虫或者其它的工具，客户端发起一个HTTP请求到服务器上指定端口（默认端口为80）。我们称这个客户端为用户代理程序（user agent）。应答的服务器上存储着一些资源，比如HTML文件和图像。我们称这个应答服务器为源服务器（origin server）。在用户代理和源服务器中间可能存在多个“中间层”，比如代理服务器、网关或者隧道（tunnel）。</p>
+</li>
+</ol>
+<h2 id="第二章-html发展史"><a href="#第二章-html发展史" class="headerlink" title="第二章 html发展史"></a>第二章 html发展史</h2><ol>
+<li>HTML1.0：在1993年由互联网工程工作小组(IETF)工作草案发布(并非标准，众多不同版本HTML陆续在全球使用，但是始终未能形成一个广泛的有相同标准的版本。</li>
+<li>HTML2.0：HTML2.0相比初版而言，标记得到了极大的丰富。</li>
+<li>HTML3.2：HTML3.2是在1996年提出的规范，注重兼容性的提高，并对之前的版本进行了改进</li>
+<li>HTML4.0：1997年12月推出的HTML4.0，将HTML推向了一个新高度。该版本倡导将文档结构和样式分离，并实现了表格更灵活的控制。</li>
+<li>HTM.401：由1999年提出的4.01版本是在HTML4.0基础上的微小改进</li>
+<li>20世纪90年代是HTML发展速度最快的时期，但是自1999年发布的HTML4.01后，业界普遍认为HTM已经步入瓶颈期，W3C组织开始对Web标准的焦点转向 XHTMI上。</li>
+<li>XHTMI1.0：在2000年由W3C组织提出， XHTMI是一个过渡技术，结合了部分XML的强大功能及大多数HTML的简单特性。</li>
+<li>XHTML1.1：XHTML1.1是模块化的 XHTMI，是货真价实的XML。</li>
+<li>XHTML2.0：XHTML2.0是完全模块化可定制的XHTMI，随着HTML5的兴起，XHTML2.0工作小组被要求停止工作。</li>
+<li>2004年，一些浏览器厂商联合成立了 WHATWG工作组，致力于Web表单和应用程序。此时的W3C组织专注于 XHTML2.0。在2006年，W3C组织组建了新的HTML工作组采纳了 WHATWG的意见，并于2008年发布了HTML5。</li>
+<li>由于HTML5能解决实际的问题，所以在规范还未定稿的情况下，各大浏览器厂家已经开始对旗下产品进行升级以支持HTML5的新功能。因此，HTML5得益于浏览器的实验性反馈并且也得到持续的完善，并以这种方式迅速融入对Web平台的实质性改进中。2014年10月，W3C组织宣布历经8年努力，HTML5标准规范终于定稿。</li>
+</ol>
+<h2 id="第三章-html基础"><a href="#第三章-html基础" class="headerlink" title="第三章 html基础"></a>第三章 html基础</h2><h3 id="3-1-html基本结构"><a href="#3-1-html基本结构" class="headerlink" title="3.1 html基本结构"></a>3.1 html基本结构</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-html基础知识"><a href="#3-2-html基础知识" class="headerlink" title="3.2 html基础知识"></a>3.2 html基础知识</h3><ol>
+<li>文档声明<code>&lt;!DOCTYPE html&gt;</code>：作用是高速浏览器当前html文本的版本，浏览器通过html版本把文本渲染为网页，html表示是HTML5版本，也称为文档类型声明；必须定义在html文档的第一行；</li>
+<li>文档显示语言<code>&lt;html lang=&quot;en&quot;&gt;</code>：用于定义文档默认的显示语言：①en表示是英语②zh-CN表示是中文</li>
+<li>文档字符集<code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code>：用于定义文档字符集，浏览器渲染html文档时候根据字进行渲染文档中的文本；</li>
+<li>标签分类</li>
+</ol>
+<h2 id="第四章-html标签"><a href="#第四章-html标签" class="headerlink" title="第四章 html标签"></a>第四章 html标签</h2><h3 id="4-1-元信息"><a href="#4-1-元信息" class="headerlink" title="4.1 元信息"></a>4.1 元信息</h3><table>
+<thead>
+<tr>
+<th><strong>元信息</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;head&gt;</code></td>
+<td>定义关于文档的信息</td>
+</tr>
+<tr>
+<td><code>&lt;head&gt;</code></td>
+<td>定义关于 HTML 文档的元信息。</td>
+</tr>
+<tr>
+<td><span title="<base href='http://www.runoob.com/images/' target='_blank'>"><code>&lt;base&gt;</code></span></td>
+<td>定义页面中所有链接的默认地址或默认目标。</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-程序脚本"><a href="#4-2-程序脚本" class="headerlink" title="4.2 程序脚本"></a>4.2 程序脚本</h3><table>
+<thead>
+<tr>
+<th><strong>程序</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;script&gt;</code></td>
+<td>定义客户端JS脚本。</td>
+</tr>
+<tr>
+<td><code>&lt;style&gt;</code></td>
+<td>定义CSS样式脚本</td>
+</tr>
+<tr>
+<td><code>&lt;noscript&gt;</code></td>
+<td>定义针对不支持客户端脚本的用户的替代内容。</td>
+</tr>
+<tr>
+<td><code>&lt;embed&gt;</code></td>
+<td>定义了一个容器，用来嵌入外部应用或者互动程序（插件）。</td>
+</tr>
+<tr>
+<td><code>&lt;object&gt;</code></td>
+<td>定义嵌入的对象。</td>
+</tr>
+<tr>
+<td><code>&lt;param&gt;</code></td>
+<td>定义对象的参数。</td>
+</tr>
+</tbody></table>
+<h3 id="4-3-容器标签"><a href="#4-3-容器标签" class="headerlink" title="4.3 容器标签"></a>4.3 容器标签</h3><table>
+<thead>
+<tr>
+<th><strong>样式/节</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;div&gt;</code></td>
+<td>定义独占一行的盒子</td>
+</tr>
+<tr>
+<td><code>&lt;span&gt;</code></td>
+<td>定义文档中的节。</td>
+</tr>
+<tr>
+<td><code>&lt;header&gt;</code></td>
+<td>定义一个文档头部部分</td>
+</tr>
+<tr>
+<td><code>&lt;footer&gt;</code></td>
+<td>定义一个文档底部</td>
+</tr>
+<tr>
+<td><code>&lt;section&gt;</code></td>
+<td>定义了文档的某个区域</td>
+</tr>
+<tr>
+<td><code>&lt;article&gt;</code></td>
+<td>定义一个文章内容</td>
+</tr>
+<tr>
+<td><code>&lt;aside&gt;</code></td>
+<td>定义其所处内容之外的内容。</td>
+</tr>
+<tr>
+<td><code>&lt;details&gt;</code></td>
+<td>定义了用户可见的或者隐藏的需求的补充细节。</td>
+</tr>
+<tr>
+<td><code>&lt;dialog&gt;</code></td>
+<td>定义一个对话框或者窗口</td>
+</tr>
+<tr>
+<td><code>&lt;summary&gt;</code></td>
+<td>定义一个可见的标题。 当用户点击标题时会显示出详细信息。<img src="https://www.runoob.com/images/incompatible_ie.gif" alt="Internet Explorer"> <img src="https://www.runoob.com/images/incompatible_firefox.gif" alt="Firefox"> <img src="https://www.runoob.com/images/incompatible_opera.gif" alt="Opera"> <img src="https://www.runoob.com/images/compatible_chrome.gif" alt="Google Chrome"> <img src="https://www.runoob.com/images/compatible_safari.gif" alt="Safari"></td>
+</tr>
+</tbody></table>
+<h3 id="4-4-表格标签"><a href="#4-4-表格标签" class="headerlink" title="4.4 表格标签"></a>4.4 表格标签</h3><h3 id="4-5-表单标签"><a href="#4-5-表单标签" class="headerlink" title="4.5 表单标签"></a>4.5 表单标签</h3><h3 id="4-6-多媒体标签"><a href="#4-6-多媒体标签" class="headerlink" title="4.6 多媒体标签"></a>4.6 多媒体标签</h3><h1 id="第二部分-CSS基础"><a href="#第二部分-CSS基础" class="headerlink" title="第二部分 CSS基础"></a>第二部分 CSS基础</h1><h2 id="第一章-CSS基础法语啊"><a href="#第一章-CSS基础法语啊" class="headerlink" title="第一章 CSS基础法语啊"></a>第一章 CSS基础法语啊</h2><h2 id="第二章-CSS模型"><a href="#第二章-CSS模型" class="headerlink" title="第二章 CSS模型"></a>第二章 CSS模型</h2><h1 id="第三部分-CSS选择器"><a href="#第三部分-CSS选择器" class="headerlink" title="第三部分 CSS选择器"></a>第三部分 CSS选择器</h1><h2 id="第一章-基本选择器"><a href="#第一章-基本选择器" class="headerlink" title="第一章 基本选择器"></a>第一章 基本选择器</h2><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>示例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>通用选择器</td>
+<td>*</td>
+<td>匹配所有选择器</td>
+</tr>
+<tr>
+<td>标签选择器</td>
+<td>标签名称</td>
+<td>根据HTML标签名称匹配元素</td>
+</tr>
+<tr>
+<td>类选择器</td>
+<td>.类名</td>
+<td>匹配标签class属性值的所有元素， 一个元素可以定义多个类，用空格分隔</td>
+</tr>
+<tr>
+<td>ID选择器</td>
+<td>#id属性值</td>
+<td>匹配标签id属性值的一个元素</td>
+</tr>
+</tbody></table>
+<h2 id="第二章-结构选择器"><a href="#第二章-结构选择器" class="headerlink" title="第二章 结构选择器"></a>第二章 结构选择器</h2><h2 id="第三章-属性选择器"><a href="#第三章-属性选择器" class="headerlink" title="第三章 属性选择器"></a>第三章 属性选择器</h2><h2 id="第四章-伪类选择器"><a href="#第四章-伪类选择器" class="headerlink" title="第四章 伪类选择器"></a>第四章 伪类选择器</h2><h2 id="第五章-表达选择器"><a href="#第五章-表达选择器" class="headerlink" title="第五章 表达选择器"></a>第五章 表达选择器</h2><h1 id="第四部分-CSS属性"><a href="#第四部分-CSS属性" class="headerlink" title="第四部分 CSS属性"></a>第四部分 CSS属性</h1><h1 id="第五部分-CSS布局"><a href="#第五部分-CSS布局" class="headerlink" title="第五部分 CSS布局"></a>第五部分 CSS布局</h1><h2 id="第一章-流式布局"><a href="#第一章-流式布局" class="headerlink" title="第一章 流式布局"></a>第一章 流式布局</h2><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>标准流</strong>也称为普通流或文档流，就是指标签按照HTML标签默认方式进行排列；在标准流中的元素分为行内元素、块级元素、行内块元素；其在标准流中排列特点是：</p>
+<ul>
+<li>块级元素：在标准流中独占一行，按顺序从上到下进行排列；</li>
+<li>行内块元素：在标准流中具有width和height属性，按顺序从左到右进行排列，超过父盒子宽度后自动换行；</li>
+<li>行内元素：在标准流中按顺序从左到右进行排列，超过父盒子宽度后会自动换行；</li>
+</ul>
+<h2 id="第二章-浮动布局"><a href="#第二章-浮动布局" class="headerlink" title="第二章 浮动布局"></a>第二章 浮动布局</h2><h3 id="2-1-浮动概述"><a href="#2-1-浮动概述" class="headerlink" title="2.1 浮动概述"></a>2.1 浮动概述</h3><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>在标准流中如果要元素水平排列，虽然可以将元素转换为行内块元素，但是无法控制行内块元素之间的距离，并且水平布局的功能不足以满足网页水平布局的要求；</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>浮动流：浮动是给盒子添加float属性，给盒子创建了一个浮动框，具有浮动框的元素会从原标准流的位置脱离出来，浮动框根据浮动属性的值，浮动框的左边缘或右边缘会贴靠到所包含的块边缘或另一个浮动框的左右边缘；</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>浮动的注意点：①浮动和标准流的父元素搭配使用（先用标准流排列水平结构，再在水平布局的父元素中定义元素设置浮动属性）②一个元素浮动了理论上该元素的兄弟元素都需要浮动，因为浮动元素会影响后面的标准流；</p>
+<h3 id="2-2-浮动特性"><a href="#2-2-浮动特性" class="headerlink" title="2.2 浮动特性"></a>2.2 浮动特性</h3><ol>
+<li><strong>浮动元素会脱离标准流</strong><ul>
+<li>元素浮动后会基于父元素的位置进行左右排版：父级的盒子如果装不下浮动的元素，后面浮动的元素会另起一行；</li>
+<li>浮动流是一种“半脱离标准流”的排版方式，浮动后会移动到父元素中指定的位置；</li>
+<li>元素浮动后，原来的位置会被释，浮动区域会覆盖掉标准元素，但是浮动的区域不会覆盖对应位置标准流元素中的文本内容</li>
+<li>元素浮动不会超越父元素的padding区域和margin区域；</li>
+</ul>
+</li>
+<li><strong>浮动元素会在一行内显示并且元素顶部对齐</strong><ul>
+<li>相同方向的浮动元素：先浮动的元素会显示在前面，后浮动的元素会显示在后面；</li>
+<li>不同方向的浮动元素：左浮动会找左浮动，右浮动会找右浮动；</li>
+<li>浮动元素浮动后的位置：右浮动元素在浮动之前在标准流中的位置确定，只在原来所在行浮动；</li>
+</ul>
+</li>
+<li><strong>浮动元素具有行内块的特性</strong><ul>
+<li>浮动流是不区分行内元素、块级元素或行内块元素：浮动所有元素都可以设置宽和高；</li>
+<li>浮动元素是不能撑起父元素的高度；</li>
+<li>浮动元素是不可以设置<code>margin 0 auto</code>的；</li>
+</ul>
+</li>
+<li><strong>浮动元素贴靠现象</strong><ul>
+<li>当父元素的宽度足够放置浮动元素时，浮动元素会按顺序贴靠；</li>
+<li>当父元素宽度不够时，浮动元素会找现在贴靠元素的上一个浮动元素，直到贴靠在父元素；</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-3-消除浮动概述"><a href="#2-3-消除浮动概述" class="headerlink" title="2.3 消除浮动概述"></a>2.3 消除浮动概述</h3><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>在实际开发中，浮动元素的标准流的父盒子是不会设置高度的，父盒子的高度应该是被子盒子的内容撑开的，但是父盒子中的所有元素浮动后，浮动元素是撑不开父盒子的高度的，所以会导致父盒子的高度为0，下一个标准流元素会被浮动造的影响：浮动不占有原文档流中的位置，所以会对后面的元素排版产生影响，为了解决这些问题，所以要为该元素清除浮动后造成的影响：元素浮动后不会撑开父元素的高度，父元素的高度为0的问题；清除浮动后父盒子会根据子盒子自动检测高度，就不会影响下面的标准流了；清除浮动属性：clear=both，清除浮动的策略是闭合浮动</p>
+<ol>
+<li>额外标签法：也称隔墙法，是w3c推荐；在最后浮动元素的元素后新增一个空盒子（<strong>必须是块级元素，不能是行内元素</strong>），并且给盒子设置clear属性，缺点是添加无语义的标签，不优雅；</li>
+<li>给父元素添加overflow属性：给父元素添加overflow属性，本义是处理溢出样式的；缺点是无法显示溢出的部分，</li>
+<li>给父元素添加after伪元素：本质是也是隔墙法，只是墙是通过样式添加的；原理是after伪元素必须要用content属性，需要将content转为块级元素（display=block），转为块级元素后可以为元素设置clear属性，并且这个内容不再浏览器显示（visibility=hidden），缺点是IE不兼容，需要给添加额外样式（*zoom=1）</li>
+<li>给父元素添加双伪元素：after是给父盒子后面添加一个虚拟的墙，再加个before属性给父盒子前面添加一个墙，表示浮动元素完全在父盒子中浮动了</li>
+</ol>
+<h3 id="2-4-清除浮动"><a href="#2-4-清除浮动" class="headerlink" title="2.4 清除浮动"></a>2.4 清除浮动</h3><ol>
+<li><p><strong><del>清除浮动方式一</del></strong>：给父元素设置高度：企业开发中一般盒子的高度是由内容决定，所以不推荐使用盒子高度；</p>
+</li>
+<li><p><strong>清除浮动方式二</strong>：为浮动元素添加clear属性：添加了clear属性的元素margin属性会失效；解决浮动的本质是把浮动的盒子圈到里面，让父盒子闭合出口和入口不让他们出来影响其他元素；</p>
+</li>
+<li><p><strong>清除浮动方式三</strong>：隔墙法清除浮动</p>
+<ul>
+<li><p>外墙法：在浮动的元素之间添加一个块级元素，并且为该元素设置属性<code>clear: both</code>属性，外墙法的第一个浮动元素不要使用<code>margin-buttom</code>属性，外墙法的第二个浮动元素不要使用<code>margin-top</code>属性，直接为外墙设置高度属性即可；</p>
+</li>
+<li><p>内墙法：在第一个浮动元素的所有子元素之后添加一个块级元素，并且为该元素设置属性<code>clear: both</code>属性，内墙法可以让浮动元素使用margin属性；</p>
+</li>
+<li><p>使用伪元素选择器为元素前后添加块级元素：<code>::before</code> 或<code>::after</code>伪元素的content属性，并且设置<code>height</code>属性设置为0，<code>visibility</code>属性设置为hidden，<code>clear</code>属性设置为both；</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clear-fix</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">&quot;不建议填空&quot;</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">0px</span>;</span><br><span class="line">    visibality:hidden;</span><br><span class="line">    <span class="attribute">display</span>:block;</span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 伪元素有兼容问题:添加兼容处理方式 */</span></span><br><span class="line"><span class="selector-class">.clear-fix</span>&#123;</span><br><span class="line">    *zoom:<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>双伪元素清除浮动：触发bfc，防止外边距合并</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clear-fix</span><span class="selector-pseudo">:after</span>,<span class="selector-class">.clear-fix</span><span class="selector-pseudo">:before</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">display</span>:block;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.clear-fix</span>&#123;</span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** 伪元素有兼容问题:添加兼容处理方式 */</span></span><br><span class="line"><span class="selector-class">.clear-fix</span>&#123;</span><br><span class="line">    *zoom:<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>清除浮动方式四</strong>：使用<code>overflow: hidden</code>属性：在IE6中无效，需要添加兼容属性<code>*zoom:1</code>值；缺点子元素中过多的内容被隐藏；</p>
+</li>
+</ol>
+<h2 id="第三章-定位布局"><a href="#第三章-定位布局" class="headerlink" title="第三章 定位布局"></a>第三章 定位布局</h2><h3 id="3-1-定位概述"><a href="#3-1-定位概述" class="headerlink" title="3.1 定位概述"></a>3.1 定位概述</h3><h2 id="第四章-栅格布局"><a href="#第四章-栅格布局" class="headerlink" title="第四章 栅格布局"></a>第四章 栅格布局</h2><h2 id="第五章-flex布局"><a href="#第五章-flex布局" class="headerlink" title="第五章 flex布局"></a>第五章 flex布局</h2><h3 id="5-1-Flex布局特点"><a href="#5-1-Flex布局特点" class="headerlink" title="5.1 Flex布局特点"></a>5.1 Flex布局特点</h3><ul>
+<li><strong>传统布局特点</strong>：①兼容性好（PC和移动端都适应）、②布局繁琐（布局属性多且乱）、③局限性，在移动端效果不好</li>
+<li><strong>Flex布局特点</strong>：①操作方便，布局极为简单、②是CSS新特性，对PC端浏览器支持较差</li>
+</ul>
+<h3 id="5-2-Flex布局原理"><a href="#5-2-Flex布局原理" class="headerlink" title="5.2 Flex布局原理"></a>5.2 Flex布局原理</h3><ol>
+<li><p>Flex是Flexible Box的（弹性盒子）缩写，用来为盒装模型提供最大的灵活性，任何一个容器都可以指定为flex布局。</p>
+</li>
+<li><p>采用了flex的元素称为Flex Container，容器中所有的元素自动称为容器中的Flex Item；</p>
+<ul>
+<li>Flex Container（FLex容器）：默认有两条轴：默认主轴是水平方向向右，默认测轴是垂直方向向下</li>
+<li>Flex Item（项）：元素的float、clear、vertical-align 的属性将会失效</li>
+</ul>
+</li>
+<li><p><strong>布局原理</strong>：Flex布局就是通过flex container中属性的item的属性设置子元素在主轴方向和测轴方向的摆放方式；一句话总结就是：通过给父盒子添加flex属性，表示父盒子中所有子元素被flex布局方式排列；</p>
+</li>
+<li><p><strong>display：flex</strong>：①flex：父盒子是块级元素，使用flex属性值后父盒子仍然保留块级元素特点，独占一行②inline-flex：父盒子是块级元素，使用inline-flex属性值后父盒子会有行内块元素特点（如果设置父盒子的宽度和高度，flex容器的的宽度将有子元素宽度决定）</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex | inline-flex;       //可以有两种取值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>例：<img src="https://s3.ax1x.com/2021/01/23/sTMZ60.png" alt="sTMZ60.png" border="0" /></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Container<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box1</span> &#123;<span class="attribute">background</span>: red;<span class="attribute">display</span>: flex;&#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box1</span> <span class="selector-tag">div</span> &#123; <span class="attribute">width</span>: <span class="number">100px</span>;<span class="attribute">height</span>: <span class="number">50px</span>;<span class="attribute">background</span>: green;&#125;</span></span><br><span class="line"><span class="language-css">        </span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box2</span> &#123;<span class="attribute">background</span>: red; <span class="attribute">display</span>: inline-flex;&#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.box2</span> <span class="selector-tag">div</span> &#123;<span class="attribute">width</span>: <span class="number">100px</span>;<span class="attribute">height</span>: background: green;&#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>4<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box2&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>4<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<h3 id="5-3-Flex-Container"><a href="#5-3-Flex-Container" class="headerlink" title="5.3 Flex Container"></a>5.3 Flex Container</h3><table>
+<thead>
+<tr>
+<th>容器属性</th>
+<th>属性值及说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>flex-direction</strong></td>
+<td><strong><span title='作用：容器内的item从主轴的起点根据主轴的方向依次排列'>设置主轴的方向</span></strong><br />row：默认值，主轴为水平方向，从左向右<br />row-reverse：主轴为水平方向，从右向左<br />column：主轴为垂直方向，从上向下<br />column-reverse：主轴为垂直方向，从下向上</td>
+</tr>
+<tr>
+<td><strong>justify-content</strong></td>
+<td><strong>定义了容器内的item在主轴的对齐方式。</strong><br />flex-start：默认值，左对齐<br />flex-end：右对齐<br />center：居中<br />space-between：两端对齐，item之间的间隔相等，即剩余空间等分成间隙。<br />space-around：每个item两侧的间隔相等</td>
+</tr>
+<tr>
+<td><strong>flex-wrap</strong></td>
+<td><strong>设置容器内item是否可换行：如果支持换行，侧轴可以有多条</strong><br />nowrap：不换行，当主轴尺寸固定但当空间不足时，item尺寸会调整而并不会挤到下一行。<br/>wrap：item主轴总尺寸超出容器时换行，第一行在上方<br />wrap-reverse：item主轴总尺寸超出容器时换行，，第一行在下方</td>
+</tr>
+<tr>
+<td><strong>align-items</strong></td>
+<td><strong>定义了item在侧轴上的对齐方式</strong><br />默认值为 stretch 即如果item未设置高度或者设为 auto，将占满整个容器的高度。<br />flex-start：交叉轴的起点对齐<br />flex-end：交叉轴的终点对齐<br />center：交叉轴的中点对齐<br />baseline: item的第一行文字的基线对齐</td>
+</tr>
+<tr>
+<td><strong>align-content</strong></td>
+<td><strong>定义了多根轴线的对齐方式，如果item只有一根轴线，那么该属性将不起作用</strong><br />默认值为 stretch多条轴线平分容器的垂直方向上的空间。<br />flex-start：轴线全部在交叉轴上的起点对齐<br />flex-end：轴线全部在交叉轴上的终点对齐<br />center：轴线全部在交叉轴上的中间对齐<br />space-between：轴线两端对齐，之间的间隔相等，即剩余空间等分成间隙。<br />space-around：每个轴线两侧的间隔相等</td>
+</tr>
+<tr>
+<td>flex-flow</td>
+<td><strong>flex-direction 和 flex-wrap 的简写形式</strong></td>
+</tr>
+</tbody></table>
+<h3 id="5-3-Flex-Item属性"><a href="#5-3-Flex-Item属性" class="headerlink" title="5.3 Flex Item属性"></a>5.3 Flex Item属性</h3><table>
+<thead>
+<tr>
+<th>item属性</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>flex</strong></td>
+<td><strong>flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</strong><br />该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。</td>
+</tr>
+<tr>
+<td><strong>flex-grow</strong></td>
+<td><strong>定义item的放大比例，默认为0</strong><br />如果所有的item 的flex-grow的值都是一样的话那就是以item 的width为最小值平均分配主轴上的宽度<br />如果item没有设置width则所有的item平分主轴上的剩余宽度<br />如果item的flex-grow的值不一样，那就是根据对应的比例来分配主轴上的剩余宽度</td>
+</tr>
+<tr>
+<td><strong>flex-shrink</strong></td>
+<td><strong>定义了item的缩小比例，默认为1，即如果空间不足，该item将缩小</strong><br />如果所有item的flex-shrink属性都为1，当空间不足时，都将等比例缩小<br />如果一个item的flex-shrink属性为0，其他item都为1，则空间不足时，前者不缩小。</td>
+</tr>
+<tr>
+<td><strong>flex-basis</strong></td>
+<td><strong>定义了在分配多余空间之前，item占据的主轴空间（main size）</strong><br />浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即item的本来大小。</td>
+</tr>
+<tr>
+<td><strong>align-self</strong></td>
+<td><strong>item设置自己在测轴的排列方式</strong><br /></td>
+</tr>
+<tr>
+<td><strong>order</strong></td>
+<td><strong>定义item在容器中的排列顺序</strong><br />数值越小，排列越靠前，默认值为 0</td>
+</tr>
+</tbody></table>
+<h1 id="第六部分-CSS动画"><a href="#第六部分-CSS动画" class="headerlink" title="第六部分 CSS动画"></a>第六部分 CSS动画</h1><h1 id="第七部分-移动端开发"><a href="#第七部分-移动端开发" class="headerlink" title="第七部分 移动端开发"></a>第七部分 移动端开发</h1>
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2006/01/01/0601-CSS/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2006/01/01/0601-JavaScript/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            0601-JavaScript
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2005/07/01/0507-logback/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">0507-logback</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'x4LtuVoSSI8Fyi6hvbBmupL5-gzGzoHsz',
+        app_key: '47DsbAAlOYTY98njMBmsyEIm',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'true',
+        avatar: 'robohash',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020-2022
+        xiaoliuxuesheng
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279413779&amp;web_id=1279413779'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="乘风破浪 披荆斩棘"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>老板,来一杯Java</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['在钢铁水泥的森林里 路在何方', '在鱼龙混杂的江湖里 何去何从', ''],
+      startDelay: 0,
+      typeSpeed: 400,
+      loop: false,
+      backSpeed: 40,
+      showCursor: false
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/js/ayer.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1384718065&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>

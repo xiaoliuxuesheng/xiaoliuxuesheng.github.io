@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="JAVA 全栈 前端 运维 架构师" />
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    0601-JavaScript |  乘风破浪 披荆斩棘
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="乘风破浪 披荆斩棘" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-0601-JavaScript" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  0601-JavaScript
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2006/01/01/0601-JavaScript/" class="article-date">
+  <time datetime="2005-12-31T16:03:00.000Z" itemprop="datePublished">2006-01-01</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%85%A8%E6%A0%88/">前端全栈</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">5.4k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">21分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="第一章-JavaScript概述"><a href="#第一章-JavaScript概述" class="headerlink" title="第一章 JavaScript概述"></a>第一章 JavaScript概述</h1><h2 id="1-1-JavaScript介绍"><a href="#1-1-JavaScript介绍" class="headerlink" title="1.1 JavaScript介绍"></a>1.1 JavaScript介绍</h2><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1995 年 2 月，Netscape 公司发布 Netscape Navigator 2 浏览器，并在这个浏览器中免费提供了一个开发工具：<strong>LiveScript</strong>。这是最初的 JavaScript 1.0 版本。</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>由于 JavaScript 1.0 很受欢迎，微软在 Internet Explorer 3 中也加入了脚本编程功能。将其命名为 JScript。1997 年，欧洲计算机制造商协会（ECMA）以 JavaScript 1.1 为基础制订了脚本语言标准——ECMA-262，并命名为 ECMAScript，至此ECMAScript成为JavaScript语法标准；</p>
+<h2 id="1-2-JavaScript发展史"><a href="#1-2-JavaScript发展史" class="headerlink" title="1.2 JavaScript发展史"></a>1.2 JavaScript发展史</h2><table>
+<thead>
+<tr>
+<th>发展年份</th>
+<th>版本说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1997 年</td>
+<td>ECMA 发布 262 号标准文件（ECMA-262）的第一版也就是 ECMAScript 1.0 版</td>
+</tr>
+<tr>
+<td>1998 年 6 月</td>
+<td>ECMAScript 2.0 版发布</td>
+</tr>
+<tr>
+<td>1999 年 12 月</td>
+<td>ECMAScript 3.0 版发布，并成为 JavaScript 的通用标准，获得广泛支持</td>
+</tr>
+<tr>
+<td>2007 年 10 月</td>
+<td>ECMAScript 4.0 版草案发布，由于 4.0 版的目标过于激进，各方产生严重分歧</td>
+</tr>
+<tr>
+<td>2008 年 7月</td>
+<td>中止 ECMAScript 4.0 的开发，发布为 ECMAScript 3.1后来改名改名为 ECMAScript 5</td>
+</tr>
+<tr>
+<td>2009 年 12 月</td>
+<td>ECMAScript 5.0 版正式发布</td>
+</tr>
+<tr>
+<td>2011 年 6 月</td>
+<td>ECMAScript 5.1 版发布，并且成为 ISO 国际标准</td>
+</tr>
+<tr>
+<td>2013 年 12 月</td>
+<td>ECMAScript 6 版草案发布</td>
+</tr>
+<tr>
+<td>2015 年 6 月</td>
+<td>ECMAScript 6 发布正式版本，并更名为 ECMAScript 2015</td>
+</tr>
+<tr>
+<td>从此以后</td>
+<td>JavaScript 开始以年份命名，新版本将按照 “ECMAScript+年份” 的形式发布</td>
+</tr>
+</tbody></table>
+<h2 id="1-3-JavaScript组成"><a href="#1-3-JavaScript组成" class="headerlink" title="1.3 JavaScript组成"></a>1.3 JavaScript组成</h2><ul>
+<li><strong>核心（ECMAScript）</strong>：语言核心部分。</li>
+<li><strong>文档对象模型（Document Object Model，DOM）</strong>：网页文档操作标准。</li>
+<li><strong>浏览器对象模型（BOM）</strong>：客户端和浏览器窗口操作基础。</li>
+</ul>
+<h2 id="1-4-JavaScript特点"><a href="#1-4-JavaScript特点" class="headerlink" title="1.4 JavaScript特点"></a>1.4 JavaScript特点</h2><ol>
+<li><strong>脚本语言</strong>：JavaScript是一种解释型的脚本语言</li>
+<li><strong>基于对象</strong>：JavaScript是一种基于对象的脚本语言,它不仅可以创建对象,也能使用现有的对象。</li>
+<li><strong>简单</strong>：JavaScript语言中采用的是弱类型的变量类型，对使用的数据类型未做出严格的要求，是基于Java基本语句和控制的脚本语言，其设计简单紧凑。</li>
+<li><strong>动态性</strong>：JavaScript是一种采用事件驱动的脚本语言,它不需要经过Web服务器就可以对用户的输入做出响应。</li>
+<li><strong>跨平台性</strong>：JavaScript脚本语言不依赖于操作系统,仅需要浏览器的支持。因此一个JavaScript脚本在编写后可以带到任意机器上使用,前提上机器上的浏览器支 持JavaScript脚本语言,JavaScript已被大多数的浏览器所支持。</li>
+<li>不需要服务器的支持。所以在早期程序员比较青睐于JavaScript以减少对服务器的负担，而与此同时也带来另一个问题：安全性。</li>
+<li>而随着服务器的强壮，虽然程序员更喜欢运行于服务端的脚本以保证安全，但JavaScript仍然以其跨平台、容易上手等优势大行其道。同时，有些特殊功能（如AJAX）必须依赖Javascript在客户端进行支持。</li>
+</ol>
+<h2 id="1-5-JavaScript书写格式"><a href="#1-5-JavaScript书写格式" class="headerlink" title="1.5 JavaScript书写格式"></a>1.5 JavaScript书写格式</h2><ol>
+<li><p><strong>行内式</strong>：在html标签中定义JavaScript代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 在事件中使用JavaScript代码</span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;alter(1);&quot;</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">2. 在超链接中定义JavaScript代码</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:alter(1);&quot;</span>&gt;</span>超链接<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>内嵌式</strong>：在HTML页面中嵌入JavaScript脚本：在 HTML 页面中嵌入 JavaScript 脚本需要使用 <code>&lt;script&gt;</code>标签，用户可以在<code>&lt;script&gt;</code>标签中直接编写 JavaScript 代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>第一个JavaScript程序<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;&lt;h1&gt;Hi,JavaScript!&lt;/h1&gt;&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>引用式</strong>：在HTML页面中引入外部的JavaScript脚本文件</p>
+<ul>
+<li><p>定义JavaScript脚本文件：xxx.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;&lt;h1&gt;Hi,JavaScript!&lt;/h1&gt;&quot;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在HTML页面中引入外部的xxx.js文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>第一个JavaScript程序<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;xxx.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="第二章-JavaScript基础"><a href="#第二章-JavaScript基础" class="headerlink" title="第二章 JavaScript基础"></a>第二章 JavaScript基础</h1><h2 id="2-1-标识符-关键字-保留字"><a href="#2-1-标识符-关键字-保留字" class="headerlink" title="2.1 标识符/关键字/保留字"></a>2.1 标识符/关键字/保留字</h2><ol>
+<li><p><strong>标识符</strong>：就是名称的专业术语。JavaScript 标识符包括变量名、函数名、参数名和属性名</p>
+<ul>
+<li>第一个字符必须是字母、下划线（_）或美元符号（$）。</li>
+<li>除了第一个字符外，其他位置可以使用 Unicode 字符。一般建议仅使用 ASCII 编码的字母，不建议使用双字节的字符。</li>
+<li>不能与 JavaScript 关键字、保留字重名。</li>
+<li>可以使用 Unicode 转义序列。例如，字符 a 可以使用“\u0061”表示。</li>
+</ul>
+</li>
+<li><p><strong>关键字</strong>：是 ECMA-262 规定的 JavaScript 语言内部使用的一组名称（或称为命令）。这些名称具有特定的用途，用户不能自定义同名的标识符</p>
+<table>
+<thead>
+<tr>
+<th>break</th>
+<th>delete</th>
+<th>if</th>
+<th>this</th>
+<th>while</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>case</strong></td>
+<td><strong>do</strong></td>
+<td><strong>in</strong></td>
+<td><strong>throw</strong></td>
+<td><strong>with</strong></td>
+</tr>
+<tr>
+<td><strong>catch</strong></td>
+<td><strong>else</strong></td>
+<td><strong>instanceof</strong></td>
+<td><strong>try</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>continue</strong></td>
+<td><strong>finally</strong></td>
+<td><strong>new</strong></td>
+<td><strong>typeof</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>debugger（ECMAScript 5 新增）</strong></td>
+<td><strong>for</strong></td>
+<td><strong>return</strong></td>
+<td><strong>var</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>default</strong></td>
+<td><strong>function</strong></td>
+<td><strong>switch</strong></td>
+<td><strong>void</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>保留字</strong>：是 ECMA-262 规定的 JavaScript 语言内部预备使用的一组名称（或称为命令）。这些名称目前还没有具体的用途，是为 JavaScript 升级版本预留备用的，建议用户不要使用</p>
+<ul>
+<li><p>ECMAScript 保留字</p>
+<table>
+<thead>
+<tr>
+<th>abstract</th>
+<th>double</th>
+<th>goto</th>
+<th>native</th>
+<th>static</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>boolean</strong></td>
+<td><strong>enum</strong></td>
+<td><strong>implements</strong></td>
+<td><strong>package</strong></td>
+<td><strong>super</strong></td>
+</tr>
+<tr>
+<td><strong>byte</strong></td>
+<td><strong>export</strong></td>
+<td><strong>import</strong></td>
+<td><strong>private</strong></td>
+<td><strong>synchronized</strong></td>
+</tr>
+<tr>
+<td><strong>char</strong></td>
+<td><strong>extends</strong></td>
+<td><strong>int</strong></td>
+<td><strong>protected</strong></td>
+<td><strong>throws</strong></td>
+</tr>
+<tr>
+<td><strong>class</strong></td>
+<td><strong>final</strong></td>
+<td><strong>interface</strong></td>
+<td><strong>public</strong></td>
+<td><strong>transient</strong></td>
+</tr>
+<tr>
+<td><strong>const</strong></td>
+<td><strong>float</strong></td>
+<td><strong>long</strong></td>
+<td><strong>short</strong></td>
+<td><strong>volatile</strong></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>ECMAScript 3 将 Java 所有关键字都列为保留字，JavaScript 预定义全局变量和函数</p>
+<table>
+<thead>
+<tr>
+<th>arguments</th>
+<th>encodeURL</th>
+<th>Infinity</th>
+<th>Number</th>
+<th>RegExp</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Array</strong></td>
+<td><strong>encodeURLComponent</strong></td>
+<td><strong>isFinite</strong></td>
+<td><strong>Object</strong></td>
+<td><strong>String</strong></td>
+</tr>
+<tr>
+<td><strong>Boolean</strong></td>
+<td><strong>Error</strong></td>
+<td><strong>isNaN</strong></td>
+<td><strong>parseFloat</strong></td>
+<td><strong>SyntaxError</strong></td>
+</tr>
+<tr>
+<td><strong>Date</strong></td>
+<td><strong>eval</strong></td>
+<td><strong>JSON</strong></td>
+<td><strong>parseInt</strong></td>
+<td><strong>TypeError</strong></td>
+</tr>
+<tr>
+<td><strong>decodeURL</strong></td>
+<td><strong>EvalError</strong></td>
+<td><strong>Math</strong></td>
+<td><strong>RangeError</strong></td>
+<td><strong>undefined</strong></td>
+</tr>
+<tr>
+<td><strong>decodeURLComponent</strong></td>
+<td><strong>Function</strong></td>
+<td><strong>NaN</strong></td>
+<td><strong>ReferenceError</strong></td>
+<td><strong>URLError</strong></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-2-数据类型"><a href="#2-2-数据类型" class="headerlink" title="2.2 数据类型"></a>2.2 数据类型</h2><table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">null</td>
+<td align="center">空值，表示非对象</td>
+</tr>
+<tr>
+<td align="center">undefined</td>
+<td align="center">未定义的值，表示未赋值的初始化值</td>
+</tr>
+<tr>
+<td align="center">number</td>
+<td align="center">数字，数学运算的值</td>
+</tr>
+<tr>
+<td align="center">string</td>
+<td align="center">字符串，表示信息流</td>
+</tr>
+<tr>
+<td align="center">boolean</td>
+<td align="center">布尔值，逻辑运算的值</td>
+</tr>
+<tr>
+<td align="center">object</td>
+<td align="center">对象，表示复合结构的数据集</td>
+</tr>
+</tbody></table>
+<ol>
+<li><strong>基本数据类型</strong>：被定义在栈中，栈属于key：value结构的，基本数据的类型的在栈中key是变量名，value是变量的值<ul>
+<li>null</li>
+<li>undefined</li>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+</ul>
+</li>
+<li><strong>引用数据类型</strong>：引用数据类型中是被定义在堆空间中，引用数据类型的变量名是定义在栈中的，栈中的key存储引用数据类型的名称，栈中value保存的引用数据类型的内存地址，所有被称为应用数据类型；<ul>
+<li>object</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-3-运算符"><a href="#2-3-运算符" class="headerlink" title="2.3 运算符"></a>2.3 运算符</h2><h3 id="1-算术运算符"><a href="#1-算术运算符" class="headerlink" title="1. 算术运算符"></a>1. 算术运算符</h3><table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">+</td>
+<td align="left">加法</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">减法</td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td align="left">乘法</td>
+</tr>
+<tr>
+<td align="left">**</td>
+<td align="left">幂（<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/js/js_es6.asp">ES2016</a>）</td>
+</tr>
+<tr>
+<td align="left">/</td>
+<td align="left">除法</td>
+</tr>
+<tr>
+<td align="left">%</td>
+<td align="left">系数</td>
+</tr>
+<tr>
+<td align="left">++</td>
+<td align="left">递增</td>
+</tr>
+<tr>
+<td align="left">–</td>
+<td align="left">递减</td>
+</tr>
+</tbody></table>
+<h3 id="2-赋值运算符"><a href="#2-赋值运算符" class="headerlink" title="2. 赋值运算符"></a>2. 赋值运算符</h3><table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">例子</th>
+<th align="left">等同于</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">=</td>
+<td align="left">x = y</td>
+<td align="left">x = y</td>
+</tr>
+<tr>
+<td align="left">+=</td>
+<td align="left">x += y</td>
+<td align="left">x = x + y</td>
+</tr>
+<tr>
+<td align="left">-=</td>
+<td align="left">x -= y</td>
+<td align="left">x = x - y</td>
+</tr>
+<tr>
+<td align="left">*=</td>
+<td align="left">x *= y</td>
+<td align="left">x = x * y</td>
+</tr>
+<tr>
+<td align="left">/=</td>
+<td align="left">x /= y</td>
+<td align="left">x = x / y</td>
+</tr>
+<tr>
+<td align="left">%=</td>
+<td align="left">x %= y</td>
+<td align="left">x = x % y</td>
+</tr>
+<tr>
+<td align="left">&lt;&lt;=</td>
+<td align="left">x &lt;&lt;= y</td>
+<td align="left">x = x &lt;&lt; y</td>
+</tr>
+<tr>
+<td align="left">&gt;&gt;=</td>
+<td align="left">x &gt;&gt;= y</td>
+<td align="left">x = x &gt;&gt; y</td>
+</tr>
+<tr>
+<td align="left">&gt;&gt;&gt;=</td>
+<td align="left">x &gt;&gt;&gt;= y</td>
+<td align="left">x = x &gt;&gt;&gt; y</td>
+</tr>
+<tr>
+<td align="left">&amp;=</td>
+<td align="left">x &amp;= y</td>
+<td align="left">x = x &amp; y</td>
+</tr>
+<tr>
+<td align="left">^=</td>
+<td align="left">x ^= y</td>
+<td align="left">x = x ^ y</td>
+</tr>
+<tr>
+<td align="left">|=</td>
+<td align="left">x |= y</td>
+<td align="left">x = x | y</td>
+</tr>
+<tr>
+<td align="left">**=</td>
+<td align="left">x **= y</td>
+<td align="left">x = x ** y</td>
+</tr>
+</tbody></table>
+<h3 id="3-比较运算符"><a href="#3-比较运算符" class="headerlink" title="3. 比较运算符"></a>3. 比较运算符</h3><table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">==</td>
+<td align="left">等于</td>
+</tr>
+<tr>
+<td align="left">===</td>
+<td align="left">等值等型</td>
+</tr>
+<tr>
+<td align="left">!=</td>
+<td align="left">不相等</td>
+</tr>
+<tr>
+<td align="left">!==</td>
+<td align="left">不等值或不等型</td>
+</tr>
+<tr>
+<td align="left">&gt;</td>
+<td align="left">大于</td>
+</tr>
+<tr>
+<td align="left">&lt;</td>
+<td align="left">小于</td>
+</tr>
+<tr>
+<td align="left">&gt;=</td>
+<td align="left">大于或等于</td>
+</tr>
+<tr>
+<td align="left">&lt;=</td>
+<td align="left">小于或等于</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">三元运算符</td>
+</tr>
+</tbody></table>
+<h3 id="4-逻辑运算符"><a href="#4-逻辑运算符" class="headerlink" title="4. 逻辑运算符"></a>4. 逻辑运算符</h3><table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&amp;&amp;</td>
+<td align="left">逻辑与</td>
+</tr>
+<tr>
+<td align="left">||</td>
+<td align="left">逻辑或</td>
+</tr>
+<tr>
+<td align="left">!</td>
+<td align="left">逻辑非</td>
+</tr>
+</tbody></table>
+<h3 id="5-类型运算符"><a href="#5-类型运算符" class="headerlink" title="5. 类型运算符"></a>5. 类型运算符</h3><table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">typeof</td>
+<td align="left">返回变量的类型。</td>
+</tr>
+<tr>
+<td align="left">instanceof</td>
+<td align="left">返回 true，如果对象是对象类型的实例</td>
+</tr>
+</tbody></table>
+<h3 id="6-位运算符"><a href="#6-位运算符" class="headerlink" title="6. 位运算符"></a>6. 位运算符</h3><table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">描述</th>
+<th align="left">例子</th>
+<th align="left">等同于</th>
+<th align="left">结果</th>
+<th align="left">十进制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&amp;</td>
+<td align="left">与</td>
+<td align="left">5 &amp; 1</td>
+<td align="left">0101 &amp; 0001</td>
+<td align="left">0001</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">|</td>
+<td align="left">或</td>
+<td align="left">5 | 1</td>
+<td align="left">0101 | 0001</td>
+<td align="left">0101</td>
+<td align="left">5</td>
+</tr>
+<tr>
+<td align="left">~</td>
+<td align="left">非</td>
+<td align="left">~ 5</td>
+<td align="left">~0101</td>
+<td align="left">1010</td>
+<td align="left">10</td>
+</tr>
+<tr>
+<td align="left">^</td>
+<td align="left">异或</td>
+<td align="left">5 ^ 1</td>
+<td align="left">0101 ^ 0001</td>
+<td align="left">0100</td>
+<td align="left">4</td>
+</tr>
+<tr>
+<td align="left">&lt;&lt;</td>
+<td align="left">零填充左位移</td>
+<td align="left">5 &lt;&lt; 1</td>
+<td align="left">0101 &lt;&lt; 1</td>
+<td align="left">1010</td>
+<td align="left">10</td>
+</tr>
+<tr>
+<td align="left">&gt;&gt;</td>
+<td align="left">有符号右位移</td>
+<td align="left">5 &gt;&gt; 1</td>
+<td align="left">0101 &gt;&gt; 1</td>
+<td align="left">0010</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">&gt;&gt;&gt;</td>
+<td align="left">零填充右位移</td>
+<td align="left">5 &gt;&gt;&gt; 1</td>
+<td align="left">0101 &gt;&gt;&gt; 1</td>
+<td align="left">0010</td>
+<td align="left">2</td>
+</tr>
+</tbody></table>
+<h3 id="7-运算符优先级"><a href="#7-运算符优先级" class="headerlink" title="7. 运算符优先级"></a>7. 运算符优先级</h3><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>. [] ()</td>
+<td>字段访问、数组下标、函数调用以及表达式分组</td>
+</tr>
+<tr>
+<td>++ – - ~ ! delete new typeof void</td>
+<td>一元运算符、返回数据类型、对象创建、未定义值</td>
+</tr>
+<tr>
+<td>* / %</td>
+<td>乘法、除法、取模</td>
+</tr>
+<tr>
+<td>+ - +</td>
+<td>加法、减法、字符串连接</td>
+</tr>
+<tr>
+<td>&lt;&lt; &gt;&gt; &gt;&gt;&gt;</td>
+<td>移位</td>
+</tr>
+<tr>
+<td>&lt; &lt;= &gt; &gt;= instanceof</td>
+<td>小于、小于等于、大于、大于等于、instanceof</td>
+</tr>
+<tr>
+<td>==  !=  ===    !==</td>
+<td>等于、不等于、严格相等、非严格相等</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>按位与</td>
+</tr>
+<tr>
+<td>^</td>
+<td>按位异或</td>
+</tr>
+<tr>
+<td>|</td>
+<td>按位或</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>逻辑与</td>
+</tr>
+<tr>
+<td>||</td>
+<td>逻辑或</td>
+</tr>
+<tr>
+<td>?:</td>
+<td>条件</td>
+</tr>
+<tr>
+<td>= oP=</td>
+<td>赋值、运算赋值</td>
+</tr>
+<tr>
+<td>,</td>
+<td>多重求值</td>
+</tr>
+</tbody></table>
+<h2 id="2-4-常量-变量-字面量"><a href="#2-4-常量-变量-字面量" class="headerlink" title="2.4 常量/变量/字面量"></a>2.4 常量/变量/字面量</h2><ul>
+<li>字面量：在计算机科学中，字面量（literal）是用于表达源代码中一个固定值的表示法（notation</li>
+<li>变量：计算机中数据是存储在内存中，程序员为这块内存定义的名称称为变量；变量是存储数据的盒子，盒子内的元素可以改变，但是盒子会变；</li>
+<li>常量：有些数据可以在程序使用之前预先设定并在整个运行过程中没有变化，这称为常量</li>
+</ul>
+<h2 id="2-5-程序控制语句"><a href="#2-5-程序控制语句" class="headerlink" title="2.5 程序控制语句"></a>2.5 程序控制语句</h2><h3 id="1-顺序结构"><a href="#1-顺序结构" class="headerlink" title="1. 顺序结构"></a>1. 顺序结构</h3><h3 id="2-分支结构"><a href="#2-分支结构" class="headerlink" title="2. 分支结构"></a>2. 分支结构</h3><ul>
+<li><p>if</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (laber&lt; <span class="number">50</span>) &#123;</span><br><span class="line">	<span class="comment">// 语句块</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>if-else</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (laber &gt; <span class="number">50</span>) &#123;</span><br><span class="line">    <span class="comment">//条件为true，执行这个代码块</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//条件为false，执行这个代码块</span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>if-else if-else</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> laber = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">if</span> (laber &gt;= <span class="number">100</span>) &#123;                        <span class="comment">//如果满足条件，不会执行下面任何分支</span></span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;甲&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (laber&gt;= <span class="number">90</span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;乙&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (laber &gt;= <span class="number">80</span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;丙&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (laber &gt;= <span class="number">70</span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;丁&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (laber &gt;= <span class="number">60</span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;及格&#x27;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;                                <span class="comment">//如果以上都不满足，则输出不及格</span></span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&#x27;不及格&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>switch-case</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> laber = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">switch</span> ( laber) &#123;                            <span class="comment">//用于判断box相等的多个值</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span> :</span><br><span class="line">        <span class="title function_">alert</span>(<span class="string">&#x27;one&#x27;</span>);</span><br><span class="line">        <span class="keyword">break</span>;                        		<span class="comment">//break;用于防止语句的穿透</span></span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span> : </span><br><span class="line">        <span class="title function_">alert</span>(<span class="string">&#x27;two&#x27;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span> : </span><br><span class="line">        <span class="title function_">alert</span>(<span class="string">&#x27;three&#x27;</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span> :                            	<span class="comment">//相当于if语句里的else，否则的意思</span></span><br><span class="line">        <span class="title function_">alert</span>(<span class="string">&#x27;error&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="3-循环结构"><a href="#3-循环结构" class="headerlink" title="3. 循环结构"></a>3. 循环结构</h3><ul>
+<li><p><strong>for</strong>：是一种先判断，后运行的循环语句。但它具有在执行循环之前初始变量和定义循环后要执行代码的能力。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一步，声明变量var laber = 1;</span></span><br><span class="line"><span class="comment">// 第二步，判断laber &lt;= 5</span></span><br><span class="line"><span class="comment">// 第三步，alert(laber )</span></span><br><span class="line"><span class="comment">// 第四步，laber ++</span></span><br><span class="line"><span class="comment">// 第五步，从第二步再来，直到判断为false</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> laber = <span class="number">1</span>; laber &lt;= <span class="number">5</span> ; laber ++) &#123;        </span><br><span class="line">    <span class="title function_">alert</span>(laber );                                  </span><br><span class="line">&#125;                                         </span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>for…in</strong>：是一种精准的迭代语句，可以用来枚举对象的属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> laber = &#123;                            	<span class="comment">//创建一个对象</span></span><br><span class="line">    <span class="string">&#x27;name&#x27;</span> : <span class="string">&#x27;moxiaobo&#x27;</span>,                    <span class="comment">//键值对，左边是属性名，右边是值</span></span><br><span class="line">    <span class="string">&#x27;age&#x27;</span> : <span class="number">28</span>,</span><br><span class="line">    <span class="string">&#x27;height&#x27;</span> : <span class="number">178</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> p <span class="keyword">in</span> laber) &#123;                     	<span class="comment">//列举出对象的所有属性</span></span><br><span class="line">    <span class="title function_">alert</span>(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>while</strong>：是一种先判断，后运行的循环语句。也就是说，必须满足条件了之后，方可运行循环体。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> laber = <span class="number">1</span>;        </span><br><span class="line"><span class="comment">// 先判断，再执行</span></span><br><span class="line"><span class="keyword">while</span> (laber &lt;= <span class="number">5</span>) &#123;                        </span><br><span class="line">    <span class="title function_">alert</span>(laber);</span><br><span class="line">    laber++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>do…while</strong>：是一种先运行，后判断的循环语句。也就是说，不管条件是否满足，至少先运行一次循环体。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> laber = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 先运行一次，再判断</span></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    <span class="title function_">alert</span>(laber);</span><br><span class="line">    laber++;</span><br><span class="line">&#125; <span class="keyword">while</span> (laber&lt;= <span class="number">5</span>);                        </span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="4-流程控制"><a href="#4-流程控制" class="headerlink" title="4. 流程控制"></a>4. 流程控制</h3><ul>
+<li><p><strong>return</strong>：终止当前流程的执行，无论是分支结构还是循环结构或顺序结构；</p>
+</li>
+<li><p><strong>break</strong>：用于在循环中精确地控制代码的执行。break语句会立即退出循环，强制继续执行循环体后面的语句</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> laber = <span class="number">1</span>; laber &lt;= <span class="number">10</span>; laber++) &#123;</span><br><span class="line">    <span class="comment">//如果laber 是5，就退出循环</span></span><br><span class="line">    <span class="keyword">if</span> (laber == <span class="number">5</span>) <span class="keyword">break</span>;                        </span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">write</span>(laber );</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&#x27;&lt;br /&gt;&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>continue</strong>：用于在循环中精确地控制代码的执行。continue语句退出当前循环，继续后面的循环。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> laber = <span class="number">1</span>; laber &lt;= <span class="number">10</span>; laber++) &#123;</span><br><span class="line">    <span class="comment">// 如果laber 是5，就退出当前循环</span></span><br><span class="line">    <span class="keyword">if</span> (laber == <span class="number">5</span>) <span class="keyword">continue</span>;                    </span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">write</span>(laber );</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&#x27;&lt;br /&gt;&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>throw</strong>：</p>
+<ul>
+<li><p><strong>ECMA-262 规范了 7 种错误类型，具体说明如下。其中 Error 是基类，其他 6 种错误类型是子类，都继承 Error 基类</strong>。</p>
+<ul>
+<li>Error：普通异常。主要用途是自定义错误对象。属性 name 可以读写异常类型，message 属性可以读写详细错误信息。</li>
+<li>EvalError：不正确的使用 eval() 方法时抛出。</li>
+<li>SyntaxError：出现语法错误时抛出。</li>
+<li>RangeError：数字超出合法范围时抛出、</li>
+<li>ReferenceError：读取不存在的变量时抛出。</li>
+<li>TypeError：值得类型发生错误时抛出。</li>
+<li>URIError：URI 编码和解码错误时抛出。</li>
+</ul>
+</li>
+<li><p><strong>throw</strong>：能够主动抛出异常</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> 异常类();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-异常"><a href="#5-异常" class="headerlink" title="5. 异常"></a>5. 异常</h3><ul>
+<li><p><strong>try {} catch () {}</strong> </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> age=<span class="number">5</span>;</span><br><span class="line">&#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;年龄太小啦&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>try {} catch () {} finally {}</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> age=<span class="number">5</span>;</span><br><span class="line">&#125;<span class="keyword">catch</span>(e)&#123;<span class="comment">//e是异常的封装对象</span></span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;出错：&quot;</span>+e.<span class="property">message</span>);</span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">	<span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;总会执行的finally块&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="第三章-对象"><a href="#第三章-对象" class="headerlink" title="第三章 对象"></a>第三章 对象</h1><h2 id="4-1-对象概述"><a href="#4-1-对象概述" class="headerlink" title="4.1 对象概述"></a>4.1 对象概述</h2><ol>
+<li><strong>对象介绍</strong><ul>
+<li>JavaScript的数据类型中除了基本数据类型（number，boolean，string，undefined，null），其他都是属于引用数据类型（object）；基本数据类型特点：基本数据类型的值存在栈,值与值之间独立存在，修改一个值不会影响其他变量；引用数据类型：对象保存在堆内存中，每创建一个新的对象就会在堆内存开辟一个新的空间，变量保存的是内存地址；</li>
+<li>对象的数据类型Object：是JavaScript中所有对象的基类</li>
+<li>JavaScript对象也是一种符合数据类型：可以聚合很多值，通过名字可以访问这些值。JavaScript对象也可以看做属性的无序集合：每个属性都是一个键值对，属性名是字符串；JavaScript对象还可以从一个称为原型的对象继承属性：对象的方法通常是继承的属性；</li>
+</ul>
+</li>
+<li><strong>对象的分类</strong><ul>
+<li>内置对象：是EcmaScript内置的JavaScript对象</li>
+<li>宿主对象：是由JavaScript代码运行环境提供的对象</li>
+<li>自定义对象：通过自定义构造函数创建的对象</li>
+</ul>
+</li>
+<li><strong>对象的相关概念</strong><ul>
+<li>类型</li>
+<li>实例</li>
+<li>属性</li>
+<li>方法</li>
+<li>原型</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-2-对象的基本操作"><a href="#4-2-对象的基本操作" class="headerlink" title="4.2 对象的基本操作"></a>4.2 对象的基本操作</h2><ol>
+<li><p>创建对象</p>
+<ul>
+<li><p>方式一：使用Object的构造方法创建对象，通过对创建的对象的属性扩展完成对象的自定义</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span>()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方式二：使用对象字面量创建对象，<code>&#123;&#125;</code> - 一对花括号称为对象字面量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用对象字面量创建空对象</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line"><span class="comment">// 使用对象字面量创建对象并设置属性</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;属性名:属性值&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方式三：使用构造函数创建对象，通过构造函数创建的对象是同一类型的对象，在面向对象对象的概念中，创建同一种类型的对象的构造函数称为类，由类new出来的对象称为改类的实例对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><p>对象属性：对象是属性名没有强制约束标识符规范，属性名如果是包含特殊字符需要使用方括号将属性名字符串包裹，并且读取该属性时候也需要使用方括号；对象的属性值可以是任意数据类；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line"><span class="comment">// 为特殊属性赋值</span></span><br><span class="line">obj[<span class="string">&quot;123&quot;</span>] = 属性值</span><br><span class="line"><span class="comment">// 获取对象中特殊属性的属性值</span></span><br><span class="line"><span class="keyword">var</span> value = obj[<span class="string">&quot;123&quot;</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对象属性的赋值和修改</p>
+</li>
+<li><p>删除对象属性：关键字delete</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line">obj.<span class="property">name</span> = 属性值</span><br><span class="line"><span class="comment">// 删除对象中的属性</span></span><br><span class="line"><span class="keyword">delete</span> obj.<span class="property">name</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断属性是否存在：in运算符</p>
+</li>
+<li><p>遍历属性：for-in语句</p>
+</li>
+</ol>
+<h2 id="4-2-this"><a href="#4-2-this" class="headerlink" title="4.2 this"></a>4.2 this</h2><ul>
+<li>this指向的是一个对象：这个对象被称为函数执行的上下文对象，根据调用者的不同，this会指向当前调用对象的应用；</li>
+</ul>
+<h2 id="4-3-对象原型"><a href="#4-3-对象原型" class="headerlink" title="4.3 对象原型"></a>4.3 对象原型</h2><ol>
+<li><p><strong>构造函数的执行流程</strong></p>
+<ul>
+<li>调用函数构造器在堆空间创建出一个对象</li>
+<li>将新建的对象的引用赋值给this关键字</li>
+<li>顺序执行函数体中的代码，初始化对象相关属性（每次构造函数都会在函数内部完成全部的构建）</li>
+<li>将new出的对象作为返回值返回</li>
+</ul>
+</li>
+<li><p><strong>原型的详解：prototype</strong></p>
+<ul>
+<li>每创建一个函数对象，解析器都会为这个函数添加一个prototype对象被称为原型对象</li>
+<li>如果函数是普通函数，prototype也是函数本身；</li>
+<li>如果使用函数构造器，创建的实例对象也有prototype属性并指向和构造器同一个prototype</li>
+<li>给prototype对象扩展属性，则该类创建的实例对象都会包含这些属性</li>
+<li>访问对象属性，如果实例对象没有则会在原型对象中查找，原型对象没有则会去父类的原型对象中查找，知道Object的对象中</li>
+</ul>
+</li>
+<li><p><strong>属性判断（只判断当前对象不包括原型对象中的属性）</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实例对象.<span class="title function_">hasOwnProperty</span>();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="第四章-函数"><a href="#第四章-函数" class="headerlink" title="第四章 函数"></a>第四章 函数</h1><h2 id="4-1-函数概念"><a href="#4-1-函数概念" class="headerlink" title="4.1 函数概念"></a>4.1 函数概念</h2><ul>
+<li>函数是由事件驱动的或者当它被调用时执行的可重复使用的具有特定功能的代码块；JavaScript函数是属于Function类型的一种对象；</li>
+<li>函数是分类：①普通函数②构造函数③匿名函数</li>
+</ul>
+<h2 id="4-2-函数定义"><a href="#4-2-函数定义" class="headerlink" title="4.2 函数定义"></a>4.2 函数定义</h2><ol>
+<li><p><strong>普通函数</strong>：定义函数关键字<code>function</code></p>
+<ul>
+<li><p><strong>Function对象</strong>，函数体是一段字符串格式的JavaScript脚本</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> 函数名 = <span class="keyword">new</span> <span class="title class_">Function</span>(<span class="string">&quot;函数体&quot;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>声明式函数</strong>：使用var关键字定义的函数，函是声明会提前，函数的定义根据函数为的位置顺序执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> 函数名 = <span class="keyword">function</span>(<span class="params">[形参列表]</span>)&#123;</span><br><span class="line">    <span class="comment">// 函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>函数表达式</strong>：函数的定义在索引的代码之前被创建</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> 函数名([形参列表])&#123;</span><br><span class="line">    <span class="comment">// 函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>构造函数：使用new关键字调用的函数称为构造函数；构造函数是一种特殊的函数，约定构造函数的函数名使用首字母大写</p>
+<ul>
+<li><p>定义构造函数：构造函数和普通函数相同，如果不用new关键字，其本身就是一个函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> 首字母大写()&#123;</span><br><span class="line">	<span class="comment">// 函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构造函数的使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> 构造实例 = <span class="keyword">new</span> 构造函数名();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>匿名函数：没有名称的函数称为匿名函数，匿名函数没有名称所有无法手动调用，必须在编译器加载JavaScript脚本时候执行一次，加载完成便不会再执行</p>
+<ul>
+<li><p>匿名函数的定义：定义普通函数一样，匿名函数不给指定函数名称</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>由于匿名函数不符合JavaScript语法规范，JavaScript执行器会不识别这段代码，需要使用括号标注这段代码是一个整体</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">// 函数体</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>匿名函数只是声明如果不调用是不会执行的，所以匿名函数在声明后必须调用，否则这段代码会是无效代码，匿名函数的调用也称为自调用函数；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span>(<span class="params">[形参列表]</span>)&#123;</span><br><span class="line">    <span class="comment">// 函数体</span></span><br><span class="line">&#125;)([实参列表])</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-3-函数调用"><a href="#4-3-函数调用" class="headerlink" title="4.3 函数调用"></a>4.3 函数调用</h2><ul>
+<li><p>函数调用：使用函数名并传递实际参数，参数要用圆括号之内，不能省略，如果省略则属于函数对象引用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">函数名([实际参数]);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="4-4-函数参数"><a href="#4-4-函数参数" class="headerlink" title="4.4 函数参数"></a>4.4 函数参数</h2><ol>
+<li><p><strong>形式参数</strong>：是在定义函数时候设置的参数，形式参数作为函数体的一部分，但是参数值的实际值由函数调用的实际参数决定；</p>
+</li>
+<li><p><strong>实际参数</strong>：调用函数时候传递的参数称为实际参数，</p>
+<ul>
+<li>实际参数可以是任意数据类型；</li>
+<li>实际参数根据参数位置对应着形式参数，多余的实际参数不会被处理，多余的形式参数值是undefined；</li>
+<li>实际参数是基本数据类型：是将数据的值传递给形式参数；</li>
+<li>实际参数是引用数据类型：是将数据的地址引用传递给实际参数；</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-5-函数返回值"><a href="#4-5-函数返回值" class="headerlink" title="4.5 函数返回值"></a>4.5 函数返回值</h2><ul>
+<li><strong>关键字return</strong>：return语句将终止当前函数并返回当前函数的值；return后面可以跟一个value，可以是javascript中的任何数据类型，数字，字符串，对象等，也可是再返回一个函数</li>
+</ul>
+<h2 id="4-6-全局作用域和局部作用域"><a href="#4-6-全局作用域和局部作用域" class="headerlink" title="4.6 全局作用域和局部作用域"></a>4.6 全局作用域和局部作用域</h2><ul>
+<li><strong>全局作用域</strong>：定义在<code>&lt;script&gt;</code>标签内的变量并且在function的函数体以外的变量都属于全局作用域，全局作用域的变量属于window对象的属性</li>
+<li><strong>局部作用域</strong>：定义在function的函数体内部的变量作用范围再函数内有效，属于局部作用域；</li>
+</ul>
+<h2 id="4-7-闭包"><a href="#4-7-闭包" class="headerlink" title="4.7 闭包"></a>4.7 闭包</h2><h1 id="第五章-内置对象"><a href="#第五章-内置对象" class="headerlink" title="第五章 内置对象"></a>第五章 内置对象</h1><h2 id="5-1-全局属性"><a href="#5-1-全局属性" class="headerlink" title="5.1 全局属性"></a>5.1 全局属性</h2><table>
+<thead>
+<tr>
+<th>属性名称</th>
+<th>属性说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Infinity</td>
+<td></td>
+</tr>
+<tr>
+<td>NaN</td>
+<td></td>
+</tr>
+<tr>
+<td>undefined</td>
+<td></td>
+</tr>
+<tr>
+<td>globalThis</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="5-2-全局函数"><a href="#5-2-全局函数" class="headerlink" title="5.2 全局函数"></a>5.2 全局函数</h2><table>
+<thead>
+<tr>
+<th>函数名称</th>
+<th>使用说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>eval()</td>
+<td></td>
+</tr>
+<tr>
+<td>uneval()</td>
+<td></td>
+</tr>
+<tr>
+<td>isFinite()</td>
+<td></td>
+</tr>
+<tr>
+<td>isNaN()</td>
+<td></td>
+</tr>
+<tr>
+<td>decodeURI()</td>
+<td></td>
+</tr>
+<tr>
+<td>decodeURIComponent()</td>
+<td></td>
+</tr>
+<tr>
+<td>encodeURI()</td>
+<td></td>
+</tr>
+<tr>
+<td>encodeURIComponent()</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="5-3-数字对象"><a href="#5-3-数字对象" class="headerlink" title="5.3 数字对象"></a>5.3 数字对象</h2><table>
+<thead>
+<tr>
+<th>数字对象</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Number</td>
+<td></td>
+</tr>
+<tr>
+<td>BigInt</td>
+<td></td>
+</tr>
+<tr>
+<td>Math</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="5-4-日期对象"><a href="#5-4-日期对象" class="headerlink" title="5.4 日期对象"></a>5.4 日期对象</h2><ul>
+<li>Date</li>
+</ul>
+<h2 id="5-5-字符串"><a href="#5-5-字符串" class="headerlink" title="5.5 字符串"></a>5.5 字符串</h2><table>
+<thead>
+<tr>
+<th>字符串对象</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>RegExp</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="5-6-可索引的集合对象"><a href="#5-6-可索引的集合对象" class="headerlink" title="5.6 可索引的集合对象"></a>5.6 可索引的集合对象</h2><table>
+<thead>
+<tr>
+<th>集合对象</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Array</td>
+<td></td>
+</tr>
+<tr>
+<td>Int8Array</td>
+<td></td>
+</tr>
+<tr>
+<td>Uint8Array</td>
+<td></td>
+</tr>
+<tr>
+<td>Uint8ClampedArray</td>
+<td></td>
+</tr>
+<tr>
+<td>Int16Array</td>
+<td></td>
+</tr>
+<tr>
+<td>Uint16Array</td>
+<td></td>
+</tr>
+<tr>
+<td>Int32Array</td>
+<td></td>
+</tr>
+<tr>
+<td>Uint32Array</td>
+<td></td>
+</tr>
+<tr>
+<td>Float32Array</td>
+<td></td>
+</tr>
+<tr>
+<td>Float64Array</td>
+<td></td>
+</tr>
+<tr>
+<td>BigInt64Array</td>
+<td></td>
+</tr>
+<tr>
+<td>BigUint64Array</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="5-7-使用键的集合对象"><a href="#5-7-使用键的集合对象" class="headerlink" title="5.7 使用键的集合对象"></a>5.7 使用键的集合对象</h2><table>
+<thead>
+<tr>
+<th>键集合对象</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Map</td>
+<td></td>
+</tr>
+<tr>
+<td>Set</td>
+<td></td>
+</tr>
+<tr>
+<td>WeakMap</td>
+<td></td>
+</tr>
+<tr>
+<td>WeakSet</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="5-8-结构化对象"><a href="#5-8-结构化对象" class="headerlink" title="5.8 结构化对象"></a>5.8 结构化对象</h2><table>
+<thead>
+<tr>
+<th>结构化对象</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ArrayBuffer</td>
+<td></td>
+</tr>
+<tr>
+<td>SharedArrayBuffer</td>
+<td></td>
+</tr>
+<tr>
+<td>Atomics</td>
+<td></td>
+</tr>
+<tr>
+<td>DataView</td>
+<td></td>
+</tr>
+<tr>
+<td>JSON</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="5-9-控制抽象对象"><a href="#5-9-控制抽象对象" class="headerlink" title="5.9 控制抽象对象"></a>5.9 控制抽象对象</h2><table>
+<thead>
+<tr>
+<th>控制对象</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Promise</td>
+<td></td>
+</tr>
+<tr>
+<td>Generator</td>
+<td></td>
+</tr>
+<tr>
+<td>GeneratorFunction</td>
+<td></td>
+</tr>
+<tr>
+<td>AsyncFunction</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="5-10-反射"><a href="#5-10-反射" class="headerlink" title="5.10 反射"></a>5.10 反射</h2><table>
+<thead>
+<tr>
+<th>反射</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Reflect</td>
+<td></td>
+</tr>
+<tr>
+<td>Proxy</td>
+<td></td>
+</tr>
+</tbody></table>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2006/01/01/0601-JavaScript/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/" rel="tag">JS</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2006/02/01/0602-%E6%A8%A1%E5%9D%97%E5%8C%96/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            0602-模块化
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2006/01/01/0601-CSS/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">0601-CSS</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'x4LtuVoSSI8Fyi6hvbBmupL5-gzGzoHsz',
+        app_key: '47DsbAAlOYTY98njMBmsyEIm',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'true',
+        avatar: 'robohash',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020-2022
+        xiaoliuxuesheng
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279413779&amp;web_id=1279413779'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="乘风破浪 披荆斩棘"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>老板,来一杯Java</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['在钢铁水泥的森林里 路在何方', '在鱼龙混杂的江湖里 何去何从', ''],
+      startDelay: 0,
+      typeSpeed: 400,
+      loop: false,
+      backSpeed: 40,
+      showCursor: false
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/js/ayer.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1384718065&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>

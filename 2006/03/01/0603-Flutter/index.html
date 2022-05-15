@@ -1,0 +1,3045 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="JAVA 全栈 前端 运维 架构师" />
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    0603-Flutter |  乘风破浪 披荆斩棘
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="乘风破浪 披荆斩棘" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-0603-Flutter" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  0603-Flutter
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2006/03/01/0603-Flutter/" class="article-date">
+  <time datetime="2006-02-28T16:05:00.000Z" itemprop="datePublished">2006-03-01</time>
+</a>
+      
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">9.6k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">39分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="第一章-Flutter概述"><a href="#第一章-Flutter概述" class="headerlink" title="第一章 Flutter概述"></a>第一章 Flutter概述</h1><h1 id="第二章-Flutter基础"><a href="#第二章-Flutter基础" class="headerlink" title="第二章 Flutter基础"></a>第二章 Flutter基础</h1><h2 id="2-1-Flutter项目结构"><a href="#2-1-Flutter项目结构" class="headerlink" title="2.1 Flutter项目结构"></a>2.1 Flutter项目结构</h2><ul>
+<li><p>使用AndroidStudio或者VSCode开发工具创建Flutter项目：目录结构说明</p>
+<table>
+<thead>
+<tr>
+<th>文件或目录</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.dart_tool</td>
+<td>记录了一些dart工具库所在的位置和信息</td>
+</tr>
+<tr>
+<td>.idea</td>
+<td>android studio 是基于idea开发的，.idea 记录了项目的一些文件的变更记录</td>
+</tr>
+<tr>
+<td>android</td>
+<td>Android项目文件夹</td>
+</tr>
+<tr>
+<td>ios</td>
+<td>iOS项目文件夹</td>
+</tr>
+<tr>
+<td>lib</td>
+<td>lib文件夹内存放我们的dart语音代码</td>
+</tr>
+<tr>
+<td>test</td>
+<td>用于存放我们的测试代码</td>
+</tr>
+<tr>
+<td>.gitignore</td>
+<td>git忽略配置文件</td>
+</tr>
+<tr>
+<td>.metadata</td>
+<td>IDE 用来记录某个 Flutter 项目属性的的隐藏文件</td>
+</tr>
+<tr>
+<td>.packages</td>
+<td>pub 工具需要使用的，包含 package 依赖的 yaml 格式的文件</td>
+</tr>
+<tr>
+<td>flutter_app.iml</td>
+<td>工程文件的本地路径配置</td>
+</tr>
+<tr>
+<td>pubspec.lock</td>
+<td>当前项目依赖所生成的文件</td>
+</tr>
+<tr>
+<td>pubspec.yaml</td>
+<td>当前项目的一些配置文件，包括依赖的第三方库、图片资源文件等</td>
+</tr>
+<tr>
+<td>README.md</td>
+<td>READEME文件</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="2-2-Flutter-UI风格"><a href="#2-2-Flutter-UI风格" class="headerlink" title="2.2 Flutter UI风格"></a>2.2 Flutter UI风格</h2><ol>
+<li><p><strong>Material</strong>：Material Design是由谷歌推出的全新设计语言，这种设计语言旨在为手机、平板电脑、台式机和其他平台提供更一致、更广泛的外观和感觉。Material Design风格是一直非常有质感的设计风格，并会提供一些默认的交互动画，对于搞Android开发的来说应该耳熟能详了。MaterialApp代表使用Material Design风格的应用，里面包含了其他所需的基本控件。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Cupertino</strong>：Cupertino风格组件即IOS风格组件。主要有CupertinoTabBar、CupertinoPageScaffold、CupertinoTabScaffold、CupertinoTabView等。目前组件库还没有Material Design风格组件丰富。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/cupertino.dart&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="2-3-Widget概述"><a href="#2-3-Widget概述" class="headerlink" title="2.3 Widget概述"></a>2.3 Widget概述</h2><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Flutter Widget采用现代响应式框架构建，这是从React中获得的灵感，中心思想是用widget构建你的UI。 Widget描述了他们的视图在给定其当前配置和状态时应该看起来像什么。当widget的状态发生变化时，widget会重新构建UI，Flutter会对比前后变化的不同， 以确定底层渲染树从一个状态转换到下一个状态所需的最小更改。</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>在Flutter中几乎所有的对象都是一个 widget，它不仅可以表示UI元素，也可以表示一些功能性的组件。在 Flutter中widget 的功能是“描述一个UI元素的配置信息（是 Widget 接收的参数）”，它就是说， Widget 其实并不是表示最终绘制在设备屏幕上的显示元素，而是根据配置信息最终生成Layer树然后显示。Flutter中根据Widget的布局绘制流程如下：</p>
+<ol>
+<li>根据 Widget 树生成一个 Element 树，Element 树中的节点都继承自 <code>Element</code> 类。</li>
+<li>根据 Element 树生成 Render 树（渲染树），渲染树中的节点都继承自<code>RenderObject</code> 类。</li>
+<li>根据渲染树生成 Layer 树，然后上屏显示，Layer 树中的节点都继承自 <code>Layer</code> 类。</li>
+</ol>
+<p><strong>这里需要注意：</strong></p>
+<ol>
+<li>三棵树中，Widget 和 Element 是一一对应的，但并不和 RenderObject 一一对应。比如 <code>StatelessWidget</code> 和 <code>StatefulWidget</code> 都没有对应的 RenderObject。</li>
+<li>渲染树在上屏前会生成一棵 Layer 树</li>
+</ol>
+<h2 id="2-4-MaterialApp结构"><a href="#2-4-MaterialApp结构" class="headerlink" title="2.4 MaterialApp结构"></a>2.4 MaterialApp结构</h2><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>一个最简单的Flutter应用程序，只需一个widget即可！如下面示例：将一个widget传给<code>runApp</code>函数即可。使用Material的UI风格，可以继承主题数，widget需要位于MaterialApp内才能正常显示， 因此我们使用MaterialApp来运行该应用。Material也是widget组件树组成一套UI风格，就好像html也是由不同html标签组成的DOM树，<strong>所以学习Flutter主要是学习Material中的组件使用方式</strong>；MaterialApp中的组件基本结构如下图：</p>
+<img src='https://s4.ax1x.com/2022/01/08/7PHXo8.png' width='80%'/>
+
+<ul>
+<li>Scallold是Material中提供的基础的页面脚手架，包含Flutter应用主要展示的页面；</li>
+</ul>
+<h2 id="2-5-组件状态"><a href="#2-5-组件状态" class="headerlink" title="2.5 组件状态"></a>2.5 组件状态</h2><ol>
+<li><p>状态概述：项目开发中，通常根据是否需要进行数据交互分为有状态组件（StatefulWidget）和无状态组件（StatelessWidget）。widget的主要工作是实现一个build函数，用以构建自身。</p>
+</li>
+<li><p>无状态组件：StatelessWidget</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 组件类名 <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> 组件类名(&#123;Key? key&#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Container();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>有状态组件：StatefulWidget：可以在_State对象中定义需要交互的数据信息</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 组件类名 <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> 组件类名(&#123;Key? key&#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  _State createState() =&gt; _State();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_State</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;&gt; </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Container();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="2-6-包管理"><a href="#2-6-包管理" class="headerlink" title="2.6 包管理"></a>2.6 包管理</h2><ol>
+<li><p>pubspec.yaml：在软件开发中，将代码单独抽到一个独立模块，项目需要使用时再直接集成这个模块，便可大大提高开发效率。一个 App 在实际开发中往往会依赖很多包，手动来管理应用中的依赖包将会非常麻烦。 Flutter 使用配置文件<code>pubspec.yaml</code>（位于项目根目录）来管理第三方依赖包。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">flutter_in_action</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">First</span> <span class="string">Flutter</span> <span class="string">Application.</span></span><br><span class="line"></span><br><span class="line"><span class="attr">version:</span> <span class="number">1.0</span><span class="number">.0</span><span class="string">+1</span></span><br><span class="line"></span><br><span class="line"><span class="attr">dependencies:</span></span><br><span class="line">  <span class="attr">flutter:</span></span><br><span class="line">    <span class="attr">sdk:</span> <span class="string">flutter</span></span><br><span class="line">  <span class="attr">cupertino_icons:</span> <span class="string">^0.1.2</span></span><br><span class="line"></span><br><span class="line"><span class="attr">dev_dependencies:</span></span><br><span class="line">  <span class="attr">flutter_test:</span></span><br><span class="line">    <span class="attr">sdk:</span> <span class="string">flutter</span></span><br><span class="line">    </span><br><span class="line"><span class="attr">flutter:</span></span><br><span class="line">  <span class="attr">uses-material-design:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><code>name</code>：应用或包名称。</li>
+<li><code>description</code>: 应用或包的描述、简介。</li>
+<li><code>version</code>：应用或包的版本号。</li>
+<li><code>dependencies</code>：应用或包依赖的其它包或插件。</li>
+<li><code>dev_dependencies</code>：开发环境依赖的工具包（而不是flutter应用本身依赖的包）。</li>
+<li><code>flutter</code>：flutter相关的配置选项。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>Pub仓库：Pub（<a target="_blank" rel="noopener" href="https://pub.dev/">https://pub.dev/</a> ）是 Google 官方的 Dart Packages 仓库，类似于 node 中的 npm仓库。我们可以在 Pub 上面查找我们需要的包和插件，也可以向 Pub 发布我们的包和插件。使用方式</p>
+<ul>
+<li><p>搜索支持Flutter的包以及对应的版本</p>
+</li>
+<li><p>将包添加到Flutter项目的配置文件中</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  flutter:</span><br><span class="line">    sdk: flutter</span><br><span class="line">  # 新添加的依赖</span><br><span class="line">  english_words: ^<span class="number">4.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行pub get命令将第三方包拉取到当前项目中</p>
+</li>
+<li><p>在dart项目中import对应的包（dart基础：每个dart文件就属于一个包，引入后可以使用非私有对象）</p>
+</li>
+</ul>
+</li>
+<li><p>其它依赖方式</p>
+<ul>
+<li><p>依赖本地包</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">	pkg1:</span><br><span class="line">        path: ../../code/pkg1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>依赖Git -&gt; 软件包位于仓库的根目录中</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  pkg1:</span><br><span class="line">    git:</span><br><span class="line">      url: git:<span class="comment">//github.com/xxx/pkg1.git</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>依赖Git -&gt; 软件包不在仓库的根目录中可以使用path参数指定相对位置</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  package1:</span><br><span class="line">    git:</span><br><span class="line">      url: git:<span class="comment">//github.com/flutter/packages.git</span></span><br><span class="line">      path: packages/package1</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-7-状态管理"><a href="#2-7-状态管理" class="headerlink" title="2.7 状态管理"></a>2.7 状态管理</h2><h2 id="2-8-路由管理"><a href="#2-8-路由管理" class="headerlink" title="2.8 路由管理"></a>2.8 路由管理</h2><h2 id="2-9-Flutter-API"><a href="#2-9-Flutter-API" class="headerlink" title="2.9 Flutter API"></a>2.9 Flutter API</h2><ol>
+<li><p>Json与Map</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;dart:convert&#x27;</span>;</span><br><span class="line"><span class="comment">// Map 转 JSON字符串</span></span><br><span class="line">json.encode(mapObj);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Json 解码，结果为Map</span></span><br><span class="line">json.decode(jsonString);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>网络请求第三方库：http</p>
+<ul>
+<li><p>Flutter下载http库</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  ```</span><br><span class="line"></span><br><span class="line">- 引入http组件</span><br><span class="line"></span><br><span class="line">  ```dart</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发送请求案例</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">     ```</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 网络请求第三方库：dio</span><br><span class="line"></span><br><span class="line">   - Flutter下载dio库</span><br><span class="line"></span><br><span class="line">     ```sh</span><br><span class="line">     </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入dio库</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">     </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发送请求</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">     ```</span><br><span class="line"></span><br><span class="line">     </span><br><span class="line"></span><br><span class="line"># 第三章 Material基础</span><br><span class="line"></span><br><span class="line">## <span class="number">3.1</span> Scaffold</span><br><span class="line"></span><br><span class="line">- Scaffold属性</span><br><span class="line"></span><br><span class="line">  | Scaffold属性                   | 类型                         | 介绍                                                         |</span><br><span class="line">  | ------------------------------ | ---------------------------- | ------------------------------------------------------------ |</span><br><span class="line">  | appBar                         | PreferredSizeWidget          | 页面上方导航条                                               |</span><br><span class="line">  | body                           | Widget                       | 页面容器                                                     |</span><br><span class="line">  | floatingActionButton           | Widget                       | 悬浮按钮                                                     |</span><br><span class="line">  | floatingActionButtonLocation   | FloatingActionButtonLocation | 悬浮按钮位置                                                 |</span><br><span class="line">  | floatingActionButtonAnimator   | FloatingActionButtonAnimator | 悬浮按钮动画                                                 |</span><br><span class="line">  | persistentFooterButtons        | `<span class="built_in">List</span>&lt;Widget&gt;`               | 显示在底部导航条上方的一组按钮                               |</span><br><span class="line">  | drawer                         | Widget                       | 左侧菜单                                                     |</span><br><span class="line">  | onDrawerChanged                | DrawerCallback               |                                                              |</span><br><span class="line">  | endDrawer                      | Widget                       | 右侧菜单                                                     |</span><br><span class="line">  | onEndDrawerChanged             | DrawerCallback               |                                                              |</span><br><span class="line">  | bottomNavigationBar            | Widget                       | 底部导航条                                                   |</span><br><span class="line">  | bottomSheet                    | Widget                       | 一个持久停留在body下方，底部控件上方的控件                   |</span><br><span class="line">  | backgroundColor                | Color                        | 背景色                                                       |</span><br><span class="line">  | resizeToAvoidBottomPadding     | <span class="built_in">bool</span>                         | 已废弃，resizeToAvoidBottomInset作为替代                     |</span><br><span class="line">  | resizeToAvoidBottomInset       | <span class="built_in">bool</span>                         | 默认为 <span class="keyword">true</span>，防止一些小组件重复                              |</span><br><span class="line">  | primary                        | <span class="built_in">bool</span>                         | 是否在屏幕顶部显示Appbar, 默认为 <span class="keyword">true</span>，Appbar 是否向上延伸到状态栏，如电池电量，时间那一栏 |</span><br><span class="line">  | drawerDragStartBehavior        | DragStartBehavior            | 控制 drawer 的一些特性                                       |</span><br><span class="line">  | extendBody                     | <span class="built_in">bool</span>                         | body 是否延伸到底部控件                                      |</span><br><span class="line">  | extendBodyBehindAppBar         | <span class="built_in">bool</span>                         | 默认 <span class="keyword">false</span>，为 <span class="keyword">true</span> 时，body 会置顶到 appbar 后，如appbar 为半透明色，可以有毛玻璃效果 |</span><br><span class="line">  | drawerScrimColor               | Color                        | 侧滑栏拉出来时，用来遮盖主页面的颜色                         |</span><br><span class="line">  | drawerEdgeDragWidth            | <span class="built_in">double</span>                       | 侧滑栏拉出来的宽度                                           |</span><br><span class="line">  | drawerEnableOpenDragGesture    | <span class="built_in">bool</span>                         | 左侧侧滑栏是否可以滑动                                       |</span><br><span class="line">  | endDrawerEnableOpenDragGesture | <span class="built_in">bool</span>                         | 右侧侧滑栏是否可以滑动                                       |</span><br><span class="line"></span><br><span class="line">## <span class="number">3.2</span> AppBar</span><br><span class="line"></span><br><span class="line">- AppBar属性</span><br><span class="line"></span><br><span class="line">  | AppBar属性                | 介绍                                                         |</span><br><span class="line">  | ------------------------- | ------------------------------------------------------------ |</span><br><span class="line">  | leading                   | 可以定制左上角按钮                                           |</span><br><span class="line">  | automaticallyImplyLeading | 是否自动导入左上角按钮，默认为 <span class="keyword">true</span>，例如默认导入返回按钮    |</span><br><span class="line">  | title                     | AppBar 标题                                                  |</span><br><span class="line">  | actions                   | 右上角功能按钮，可自定义                                     |</span><br><span class="line">  | flexibleSpace             | 可折叠的应用栏，在改变 appBar 的 size 时有效果               |</span><br><span class="line">  | bottom                    | AppBar下方悬浮栏                                             |</span><br><span class="line">  | elevation                 | 阴影高度，默认为<span class="number">4.0</span>                                          |</span><br><span class="line">  | shadowColor               | 阴影颜色                                                     |</span><br><span class="line">  | shape                     | 阴影 ShapeBorder                                             |</span><br><span class="line">  | backgroundColor           | AppBar 背景色                                                |</span><br><span class="line">  | brightness                | Brightness.dark 和 Brightness.light，改变上方电池，时间等状态栏颜色 |</span><br><span class="line">  | iconTheme                 | 所有 icon 的主题                                             |</span><br><span class="line">  | actionsIconTheme          | actions 里的所有 icon 主题                                   |</span><br><span class="line">  | textTheme                 | text 主题                                                    |</span><br><span class="line">  | primary                   | AppBar 是否在整个屏幕最上方，为 <span class="keyword">true</span> 时，距离 AppBar 贴合状态栏下方，<span class="keyword">false</span> 时，贴合整个屏幕最上方 |</span><br><span class="line">  | centerTitle               | title 是否居中                                               |</span><br><span class="line">  | excludeHeaderSemantics    | 标题是否应该用头 [Semantics]. 默认为<span class="keyword">false</span>，没太大用          |</span><br><span class="line">  | titleSpacing              | title 距离左侧偏移量                                         |</span><br><span class="line">  | toolbarOpacity            | AppBar 透明度                                                |</span><br><span class="line">  | bottomOpacity             | bottom 透明度                                                |</span><br><span class="line">  | toolbarHeight             | AppBar 高度                                                  |</span><br><span class="line"></span><br><span class="line">## <span class="number">3.3</span> Drawer&amp;EndDrawer</span><br><span class="line"></span><br><span class="line">- Drawer（抽屉组件）：可以实现类似抽屉拉出和推入的效果，可以从侧边栏拉出导航面板。通常Drawer是和ListView组件组合使用的。Drawer是个抽屉组件，组件内容由其他Widget实现，可以添加头部效果，用DrawerHeader和UserAccountsDrawerHeader这两个组件可以实现。添加Drawer组件，Scaffold会自动给我们生成一个Drawer的按钮，如果我们在appBar中手动设置leading，确实是会更改这个按钮的图标，但是点击这个图标就不会弹出Drawer了，所以如果我们有需要自定义Drawer的图标的话</span><br><span class="line"></span><br><span class="line">  ```dart</span><br><span class="line">  leading: Builder(</span><br><span class="line">    builder: (BuildContext context)&#123;</span><br><span class="line">      <span class="keyword">return</span> IconButton(</span><br><span class="line">        icon: Icon(Icons.wifi_tethering),</span><br><span class="line">        onPressed: ()&#123;</span><br><span class="line">          Scaffold.of(context).openDrawer();</span><br><span class="line">        &#125;</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  ),</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>DrawerHeader：展示基本信息</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>decoration</td>
+<td>Decoration</td>
+<td>header区域的decoration，通常用来设置背景颜色或者背景图片</td>
+</tr>
+<tr>
+<td>curve</td>
+<td>Curve</td>
+<td>如果decoration发生了变化，则会使用curve设置的变化曲线和duration设置的动画时间来做一个切换动画</td>
+</tr>
+<tr>
+<td>child</td>
+<td>Widget</td>
+<td>header里面所显示的内容控件</td>
+</tr>
+<tr>
+<td>padding</td>
+<td>EdgeInsetsGeometry</td>
+<td>header里面内容控件的padding指。如果child为null的话，则这个值无效</td>
+</tr>
+<tr>
+<td>margin</td>
+<td>EdgeInsetsGeometry</td>
+<td>header四周的间隙</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>UserAccountsDraweHeader：展示用户头像、用户名、Email等信息</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>margin</td>
+<td>EdgeInsetsGeometry</td>
+<td>Header四周的间隙</td>
+</tr>
+<tr>
+<td>decoration</td>
+<td>Decoration</td>
+<td>header区域的decoration，通常用来设置背景颜色或者背景图片</td>
+</tr>
+<tr>
+<td>currentAccountPicture</td>
+<td>Widget</td>
+<td>用来设置当前用户的头像</td>
+</tr>
+<tr>
+<td>otherAccountsPictures</td>
+<td>List<Widget></td>
+<td>用来设置当前用户其他账号的头像</td>
+</tr>
+<tr>
+<td>accountName</td>
+<td>Widget</td>
+<td>当前用户名</td>
+</tr>
+<tr>
+<td>accountEmail</td>
+<td>Widget</td>
+<td>当前用户Email</td>
+</tr>
+<tr>
+<td>onDetailsPressed</td>
+<td>VoidCallBack</td>
+<td>当accountName或accountEmail被点击的时候所触发的回调函数，可以用来显示其他额外的信息</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="3-4-FloatingActionButton"><a href="#3-4-FloatingActionButton" class="headerlink" title="3.4 FloatingActionButton"></a>3.4 FloatingActionButton</h2><ul>
+<li><p>FloatingActionButton 是一个悬浮在内容上的圆形图标按钮，每个屏幕中最多使用一个浮动按钮。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> FloatingActionButton(&#123;</span><br><span class="line">  Key key,</span><br><span class="line">  <span class="keyword">this</span>.child,<span class="comment">// 子组件 一般为Icon</span></span><br><span class="line">  <span class="keyword">this</span>.tooltip,<span class="comment">// 文字解释，长按时显示</span></span><br><span class="line">  <span class="keyword">this</span>.foregroundColor,<span class="comment">// 前景色</span></span><br><span class="line">  <span class="keyword">this</span>.backgroundColor, <span class="comment">// 背景色</span></span><br><span class="line">  <span class="keyword">this</span>.heroTag = <span class="keyword">const</span> _DefaultHeroTag(), <span class="comment">// hero效果使用的tag,系统默认会给所有FAB使用同一个tag,方便做动画效果</span></span><br><span class="line">  <span class="keyword">this</span>.elevation = <span class="number">6.0</span>, <span class="comment">// 未点击时的阴影值</span></span><br><span class="line">  <span class="keyword">this</span>.highlightElevation = <span class="number">12.0</span>, <span class="comment">// 点击时的阴影值</span></span><br><span class="line">  <span class="meta">@required</span> <span class="keyword">this</span>.onPressed, <span class="comment">// 点击事件回调</span></span><br><span class="line">  <span class="keyword">this</span>.mini = <span class="keyword">false</span>, <span class="comment">// 是否是 mini类型</span></span><br><span class="line">  <span class="keyword">this</span>.shape = <span class="keyword">const</span> CircleBorder(), <span class="comment">// 设置shape时，默认的elevation将会失效,默认为CircleBorder</span></span><br><span class="line">  <span class="keyword">this</span>.clipBehavior = Clip.none, <span class="comment">// </span></span><br><span class="line">  <span class="keyword">this</span>.materialTapTargetSize,</span><br><span class="line">  <span class="keyword">this</span>.isExtended = <span class="keyword">false</span>, <span class="comment">// 是否为”extended”类型</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="3-5-BottomNavigationBar"><a href="#3-5-BottomNavigationBar" class="headerlink" title="3.5 BottomNavigationBar"></a>3.5 BottomNavigationBar</h2><ul>
+<li><p><strong>bottomNavigationBar</strong> 是属于 Scaffold 中的一个位于底部的控件。通常和 BottomNavigationBarItem 配合使用</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>items</td>
+<td>List<BottomNavigationBarItem></td>
+<td>底部导航栏的显示项</td>
+</tr>
+<tr>
+<td>onTap</td>
+<td></td>
+<td>点击导航栏子项时的回调</td>
+</tr>
+<tr>
+<td>currentIndex</td>
+<td>int</td>
+<td>当前显示项的下标</td>
+</tr>
+<tr>
+<td>type</td>
+<td>BottomNavigationBarType</td>
+<td>底部导航栏的类型，有fixed和shifting两个类型</td>
+</tr>
+<tr>
+<td>fixedColor</td>
+<td>Color</td>
+<td>底部导航栏type为fixed时导航栏的颜色</td>
+</tr>
+<tr>
+<td>iconSize</td>
+<td>double</td>
+<td>BottomNavigationBarItem icon的大小</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>BottomNavigationBarItem</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>icon</td>
+<td>Widget</td>
+<td>要显示的图标控件，一般都是Iocn</td>
+</tr>
+<tr>
+<td>title</td>
+<td>Widget</td>
+<td>要显示的标题控件，一般都是Text</td>
+</tr>
+<tr>
+<td>activeIcon</td>
+<td>Widget</td>
+<td>选中时要显示的icon，一般也是Icon</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>Color</td>
+<td>BottomNavigationBarType为shifting时的背景颜色</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h1 id="第四章-基础组件"><a href="#第四章-基础组件" class="headerlink" title="第四章 基础组件"></a>第四章 基础组件</h1><h2 id="4-1-基础组件"><a href="#4-1-基础组件" class="headerlink" title="4.1 基础组件"></a>4.1 基础组件</h2><h3 id="1-颜色：Color"><a href="#1-颜色：Color" class="headerlink" title="1. 颜色：Color"></a>1. 颜色：Color</h3><ul>
+<li><p>颜色常用格式</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Color c1 = Color(<span class="number">0xFF3CAAFA</span>);</span><br><span class="line">Color c2 = Color.fromRGBO(<span class="number">60</span>, <span class="number">170</span>, <span class="number">250</span>, <span class="number">1</span>);</span><br><span class="line">Color c3 = Color.fromARGB(<span class="number">255</span>, <span class="number">60</span>, <span class="number">170</span>, <span class="number">250</span>);</span><br><span class="line">Color c5 = Colors.blue;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol>
+<li>Color(int value)：value接收的是一个十六进制（0x开头),前两位表示的是十六进制透明度(00-FF),后六位是十六进制色值。</li>
+<li>Color.fromRGBO(int r, int g, int b, double opacity)：r、g、b分别表示red、green、blue，常规的红绿蓝三色，取值范围为0-255，opacity表示透明度，取值0.0-1.0。</li>
+<li>Color.fromARGB(int a, int r, int g, int b)：a表示透明度，取值0-255，rgb同上一样。</li>
+<li>Colors._()：Colors类定义了很多颜色，可以直接使用</li>
+</ol>
+</blockquote>
+</li>
+<li><p>自定义颜色：举例如下，根据业务需求定义静态颜色对象</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:color_dart/RgbaColor.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThemeColors</span> </span>&#123;</span><br><span class="line">  <span class="comment">///<span class="language-markdown">主色调，按钮，特殊需要强调和突出的文字 -- 支付宝蓝色</span></span></span><br><span class="line">  <span class="keyword">static</span> Color colorTheme = Color.fromRGBO(<span class="number">56</span>, <span class="number">117</span>, <span class="number">246</span>, <span class="number">1</span>);</span><br><span class="line"> 	<span class="comment">///<span class="language-markdown">static Color colorTheme = rgba(56, 117, 246, 1);</span></span></span><br><span class="line">  <span class="comment">///<span class="language-markdown">主色调渐变用色，个别按钮和状态，从colorBtnLeft变化到colorBtnRight</span></span></span><br><span class="line">  <span class="keyword">static</span> Color colorBtnLeft = Color.fromRGBO(<span class="number">255</span>, <span class="number">251</span>, <span class="number">156</span>, <span class="number">51</span>);</span><br><span class="line">  <span class="keyword">static</span> Color colorBtnRight = Color.fromRGBO(<span class="number">255</span>, <span class="number">252</span>, <span class="number">191</span>, <span class="number">50</span>);</span><br><span class="line">  <span class="comment">///<span class="language-markdown">提示性文字，状态信息，按钮等</span></span></span><br><span class="line">  <span class="keyword">static</span> Color colorRed = Color.fromRGBO(<span class="number">255</span>, <span class="number">226</span>, <span class="number">36</span>, <span class="number">39</span>);</span><br><span class="line">  <span class="comment">///<span class="language-markdown">功能性较强的文字，内页标题等</span></span></span><br><span class="line">  <span class="keyword">static</span> Color color333333 = Color.fromRGBO(<span class="number">255</span>, <span class="number">51</span>, <span class="number">51</span>, <span class="number">51</span>);</span><br><span class="line">  <span class="comment">///<span class="language-markdown">正文，副标题以及可点击区域的主要文字和图标</span></span></span><br><span class="line">  <span class="keyword">static</span> Color color666666 = Color.fromRGBO(<span class="number">255</span>, <span class="number">102</span>, <span class="number">102</span>, <span class="number">102</span>);</span><br><span class="line">  <span class="comment">///<span class="language-markdown">弱化信息，提示性文字信息，不可点击状态</span></span></span><br><span class="line">  <span class="keyword">static</span> Color color999999 = Color.fromRGBO(<span class="number">255</span>, <span class="number">153</span>, <span class="number">153</span>, <span class="number">153</span>);</span><br><span class="line">  <span class="comment">///<span class="language-markdown">弱化信息，提示性文字信息</span></span></span><br><span class="line">  <span class="keyword">static</span> Color colorDDDDDD = Color.fromARGB(<span class="number">255</span>, <span class="number">221</span>, <span class="number">221</span>, <span class="number">221</span>);</span><br><span class="line">  <span class="comment">///<span class="language-markdown">背景区域划分，分割线</span></span></span><br><span class="line">  <span class="keyword">static</span> Color colorF6F6F8 = Color.fromARGB(<span class="number">255</span>, <span class="number">246</span>, <span class="number">246</span>, <span class="number">248</span>);</span><br><span class="line">  <span class="comment">///<span class="language-markdown">纯白色</span></span></span><br><span class="line">  <span class="keyword">static</span> Color colorWhite = Color.fromARGB(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>);</span><br><span class="line">  <span class="comment">///<span class="language-markdown">纯黑色</span></span></span><br><span class="line">  <span class="keyword">static</span> Color colorBlack = Color.fromARGB(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>封装十六进制颜色工具类：使用十六进制颜色的时候透明度使用的比较少，封装十六进制方法默认透明为1；</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ColorsUtil</span> </span>&#123;</span><br><span class="line">   <span class="comment">/// <span class="language-markdown">十六进制颜色，</span></span></span><br><span class="line">   <span class="comment">/// <span class="language-markdown">hex, 十六进制值，例如：0xffffff,</span></span></span><br><span class="line">   <span class="comment">/// <span class="language-markdown">alpha, 透明度 [0.0,1.0]</span></span></span><br><span class="line">   <span class="keyword">static</span> Color hexColor(<span class="built_in">int</span> hex,&#123;<span class="built_in">double</span> alpha = <span class="number">1</span>&#125;)&#123;</span><br><span class="line">    <span class="keyword">if</span> (alpha &lt; <span class="number">0</span>)&#123;</span><br><span class="line">      alpha = <span class="number">0</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (alpha &gt; <span class="number">1</span>)&#123;</span><br><span class="line">      alpha = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Color.fromRGBO((hex &amp; <span class="number">0xFF0000</span>) &gt;&gt; <span class="number">16</span> ,</span><br><span class="line">         (hex &amp; <span class="number">0x00FF00</span>) &gt;&gt; <span class="number">8</span>,</span><br><span class="line">         (hex &amp; <span class="number">0x0000FF</span>) &gt;&gt; <span class="number">0</span>,</span><br><span class="line">         alpha);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2-图标：Icon"><a href="#2-图标：Icon" class="headerlink" title="2. 图标：Icon"></a>2. 图标：Icon</h3><ul>
+<li><p>Material内置图标：<a target="_blank" rel="noopener" href="https://fonts.google.com/icons?selected=Material+Icons:account_balance">Google图标库</a></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Icon(Icons.图标名称),</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用自定义图标</p>
+<ol>
+<li><p>阿里巴巴图标库下载字体图标：<code>https://www.iconfont.cn/</code>，并解压添加ttf文件到Flutter项目中</p>
+</li>
+<li><p>在pubspec.yaml文件中配置字体</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">fonts:</span></span><br><span class="line">	<span class="bullet">-</span> <span class="attr">family:</span> <span class="string">myIcons</span></span><br><span class="line">		<span class="attr">fonts:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="attr">asset:</span> <span class="string">assets/fonts/iconfont.ttf</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义自定义图标的名称：自定义一个Icon工具类，添加的图标定义名称.</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"><span class="comment">// 下面代码中的 blog home book 是自己定义的图标名称，</span></span><br><span class="line"><span class="comment">//不做规范适情况而改。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyIcons</span></span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">const</span> IconData blog= <span class="keyword">const</span> IconData(</span><br><span class="line">    <span class="number">0xe722</span>,</span><br><span class="line">    fontFamily: <span class="string">&quot;myIcons&quot;</span>,</span><br><span class="line">    matchTextDirection: <span class="keyword">true</span></span><br><span class="line">  );</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> IconData home= <span class="keyword">const</span> IconData(</span><br><span class="line">    <span class="number">0xe619</span>,</span><br><span class="line">    fontFamily: <span class="string">&quot;myIcons&quot;</span>,</span><br><span class="line">    matchTextDirection: <span class="keyword">true</span></span><br><span class="line">  );</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> IconData book= <span class="keyword">const</span> IconData(</span><br><span class="line">    <span class="number">0xe623</span>,</span><br><span class="line">    fontFamily: <span class="string">&quot;myIcons&quot;</span>,</span><br><span class="line">    matchTextDirection: <span class="keyword">true</span></span><br><span class="line">  );</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> IconData video= <span class="keyword">const</span> IconData(</span><br><span class="line">    <span class="number">0xe614</span>,</span><br><span class="line">    fontFamily: <span class="string">&quot;myIcons&quot;</span>,</span><br><span class="line">    matchTextDirection: <span class="keyword">true</span></span><br><span class="line">  );</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> IconData mine= <span class="keyword">const</span> IconData(</span><br><span class="line">    <span class="number">0xe600</span>,</span><br><span class="line">    fontFamily: <span class="string">&quot;myIcons&quot;</span>,</span><br><span class="line">    matchTextDirection: <span class="keyword">true</span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第一个参数是codePoint值，在图标压缩包中的demo_index.html文件中可以查看，<strong>把&amp;#改成0就好</strong></p>
+</blockquote>
+</li>
+<li><p>使用自定义图标</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">icon: Icon(MyIcons.home)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="3-文字：Text"><a href="#3-文字：Text" class="headerlink" title="3. 文字：Text"></a>3. 文字：Text</h3><ul>
+<li><p><strong>Text参数说明</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>data</strong></td>
+<td>String</td>
+<td><strong>必传</strong>：要显示的字符串</td>
+</tr>
+<tr>
+<td><strong>style</strong></td>
+<td>TextStyle</td>
+<td>文本样式</td>
+</tr>
+<tr>
+<td>strutStyle</td>
+<td>StrutStyle</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>textAlign</strong></td>
+<td>TextAlign</td>
+<td>水平对齐方式<br/> - TextAlign.center：将文本对齐容器的中心。<br/> - TextAlign.end：对齐容器后缘上的文本。<br/> - TextAlign.justify：拉伸以结束的文本行以填充容器的宽度<br/> - TextAlign.left：对齐容器左边缘的文本。<br/> - TextAlign.right：对齐容器右边缘的文本。<br/> - TextAlign.start：对齐容器前缘上的文本。</td>
+</tr>
+<tr>
+<td>textDirection</td>
+<td>TextDirection</td>
+<td>文本方向 <br /> - TextDirection.ltr：文本从左向右流动<br /> - TextDirection.rtl：文本从右向左流动</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>Locale</td>
+<td>用于选择区域特定字形的语言环境</td>
+</tr>
+<tr>
+<td>softWrap</td>
+<td>bool</td>
+<td>文本过长，是否需要换行</td>
+</tr>
+<tr>
+<td>overflow</td>
+<td>TextOverflow</td>
+<td>处理视觉溢出<br /> - TextOverflow.clip：剪切溢出的文本<br /> - TextOverflow.ellipsis：使用省略号表示<br /> - TextOverflow.fade：将溢出的文本淡化为透明</td>
+</tr>
+<tr>
+<td>textScaleFactor</td>
+<td>double</td>
+<td>每个逻辑像素的字体像素数</td>
+</tr>
+<tr>
+<td>maxLines</td>
+<td>int</td>
+<td>文本要跨越的可选最大行数,为1，则文本不会换行</td>
+</tr>
+<tr>
+<td>semanticsLabel</td>
+<td>String</td>
+<td>图像的语义描述，用于向Andoid上的<span title='talkback是一款由谷歌官方开发的系统软件,它的定位是帮助盲人或者视力有障碍的用户提供语言辅助'>TalkBack</span>和iOS上的<span title='Voiceover功能是APPLE公司在2009年4月新推出的一种语音辅助程序'>VoiceOver</span>提供图像描述</td>
+</tr>
+<tr>
+<td>textWidthBasis</td>
+<td>TextWidthBasis</td>
+<td></td>
+</tr>
+<tr>
+<td>textHeightBehavior</td>
+<td>TextHeightBehavior</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>TextStyle文本样式</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>color</td>
+<td>Color</td>
+<td>文本颜色。如果指定了foreground，则此值必须为null。</td>
+</tr>
+<tr>
+<td>decoration</td>
+<td>TextDecoration</td>
+<td>绘制文本装饰<br /> - 下划线（TextDecoration.underline）<br /> - 上划线（TextDecoration.overline）<br /> - 删除线（TextDecoration.lineThrough）<br /> - 无（TextDecoration.none）</td>
+</tr>
+<tr>
+<td>decorationColor</td>
+<td>Color</td>
+<td>绘制文本装饰的颜色。</td>
+</tr>
+<tr>
+<td>decorationStyle</td>
+<td>TextDecorationStyle</td>
+<td>绘制文本装饰的样式:<br/> - 画一条虚线 TextDecorationStyle.dashed<br/> - 画一条虚线 TextDecorationStyle.dotted<br/> - 画两条线 TextDecorationStyle.double<br/> - 画一条实线 TextDecorationStyle.solid<br/> - 画一条正弦线(波浪线) TextDecorationStyle.wavy</td>
+</tr>
+<tr>
+<td>fontWeight</td>
+<td>FontWeight</td>
+<td>绘制文本时使用的字体粗细<br /> - FontWeight.bold 常用的字体重量比正常重。即w700<br/> - FontWeight.normal 默认字体粗细。即w400<br/> - FontWeight.w100 薄，最薄<br/> - FontWeight.w200 特轻<br/> - FontWeight.w300 轻<br/> - FontWeight.w400 正常/普通/平原<br/> - FontWeight.w500 较粗<br/> - FontWeight.w600 半粗体<br/> - FontWeight.w700 加粗<br/> - FontWeight.w800 特粗<br/> - FontWeight.w900 最粗</td>
+</tr>
+<tr>
+<td>fontStyle</td>
+<td>FontStyle</td>
+<td>字体变体：<br /> - FontStyle.italic 使用斜体<br /> - FontStyle.normal 使用直立</td>
+</tr>
+<tr>
+<td>textBaseline</td>
+<td>TextBaseline</td>
+<td>对齐文本的水平线:<br /> - TextBaseline.alphabetic：文本基线是标准的字母基线<br /> - TextBaseline.ideographic：文字基线是表意字基线；如果字符本身超出了alphabetic 基线，那么ideograhpic基线位置在字符本身的底部。</td>
+</tr>
+<tr>
+<td>fontFamily</td>
+<td>String</td>
+<td>使用的字体名称</td>
+</tr>
+<tr>
+<td>fontSize</td>
+<td>double</td>
+<td>字体大小(pt、sp)，默认为14个逻辑像素(14pt、14sp)</td>
+</tr>
+<tr>
+<td>letterSpacing</td>
+<td>double</td>
+<td>水平字母之间的空间间隔</td>
+</tr>
+<tr>
+<td>wordSpacing</td>
+<td>double</td>
+<td>单词之间添加的空间间隔</td>
+</tr>
+<tr>
+<td>height</td>
+<td>double</td>
+<td>文本行与行的高度，作为字体大小的倍数（取值1~2，如1.2）</td>
+</tr>
+<tr>
+<td>background</td>
+<td>Paint</td>
+<td>文本背景色</td>
+</tr>
+<tr>
+<td>foreground</td>
+<td>Paint</td>
+<td>文本的前景色</td>
+</tr>
+<tr>
+<td>shadows</td>
+<td><code>List&lt;Shadow&gt;</code></td>
+<td>背景设定（边框、圆角、阴影、形状、渐变、背景图像等）<br /> - BoxDecoration:实现边框、圆角、阴影、形状、渐变、背景图像<br/> - ShapeDecoration:实现四个边分别指定颜色和宽度、底部线、矩形边色、圆形边色、体育场（竖向椭圆）、 角形（八边角）边色<br/> - FlutterLogoDecoration:实现Flutter图片<br/> - UnderlineTabindicator:下划线</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="4-富文本：RichText"><a href="#4-富文本：RichText" class="headerlink" title="4. 富文本：RichText"></a>4. 富文本：RichText</h3><ul>
+<li><p>富文本格式（Rich Text Format）即RTF格式，又称多文本格式，是由微软公司开发的跨平台文档格式。大多数的文字处理软件都能读取和保存RTF文档。</p>
+</li>
+<li><p>RichText参数</p>
+<table>
+<thead>
+<tr>
+<th>RichText参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>overflow</td>
+<td>TextOverflow</td>
+<td>对不可见文本操作<br />TextOverflow.ellipsis 以…显示不可见文本<br/>TextOverflow.visible 只显示能看到的<br/>TextOverflow.clip 减掉溢出文本(<strong>默认</strong>)<br/>TextOverflow.fade 将溢出的文本淡入透明。</td>
+</tr>
+<tr>
+<td>maxLines</td>
+<td>int</td>
+<td>用来设置最大行数</td>
+</tr>
+<tr>
+<td>textAlign</td>
+<td>TextAlign</td>
+<td>对齐属性</td>
+</tr>
+<tr>
+<td>textScaleFactor</td>
+<td>double</td>
+<td>文字放大缩小倍数</td>
+</tr>
+<tr>
+<td>textDirection</td>
+<td>TextDirection</td>
+<td>文本排列方式<br />TextDirection.rtl文本从右到左<br/>TextDirection.ltr文本从左到右</td>
+</tr>
+<tr>
+<td>text</td>
+<td>TextSpan</td>
+<td>必传参数,用来展示文本</td>
+</tr>
+<tr>
+<td>recognizer</td>
+<td>TapGestureRecognizer</td>
+<td>手势监听</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>使用案例</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//协议说明文案</span></span><br><span class="line"><span class="built_in">String</span> userPrivateProtocol =</span><br><span class="line">  <span class="string">&quot;我们一向尊重并会严格保护用户在使用本产品时的合法权益（包括用户隐私、用户数据等）不受到任何侵犯。本协议（包括本文最后部分的隐私政策）是用户（包括通过各种合法途径获取到本产品的自然人、法人或其他组织机构，以下简称“用户”或“您”）与我们之间针对本产品相关事项最终的、完整的且排他的协议，并取代、合并之前的当事人之间关于上述事项的讨论和协议。本协议将对用户使用本产品的行为产生法律约束力，您已承诺和保证有权利和能力订立本协议。用户开始使用本产品将视为已经接受本协议，请认真阅读并理解本协议中各种条款，包括免除和限制我们的免责条款和对用户的权利限制（未成年人审阅时应由法定监护人陪同），如果您不能接受本协议中的全部条款，请勿开始使用本产品&quot;</span>;</span><br><span class="line"></span><br><span class="line">Widget buildContent(BuildContext context) &#123;</span><br><span class="line">  <span class="keyword">return</span> Container(</span><br><span class="line">    <span class="comment">//ListView可滑动</span></span><br><span class="line">    child: RichText(</span><br><span class="line">      <span class="comment">//必传文本</span></span><br><span class="line">      text: <span class="keyword">new</span> TextSpan(</span><br><span class="line">        text: <span class="string">&quot;请认真阅读并理解&quot;</span>,</span><br><span class="line">        style: TextStyle(color: Colors.grey),</span><br><span class="line">        <span class="comment">//手势监听</span></span><br><span class="line">        <span class="comment">// recognizer: ,</span></span><br><span class="line">        children: [</span><br><span class="line">          TextSpan(text: <span class="string">&quot;&lt;用户协议&gt;&quot;</span>,style: TextStyle(color: Colors.blueAccent),),</span><br><span class="line">          TextSpan(text: <span class="string">&quot;与&quot;</span>,style: TextStyle(color: Colors.grey),),</span><br><span class="line">          TextSpan(text: <span class="string">&quot;&lt;隐私协议&gt;&quot;</span>,style: TextStyle(color: Colors.blueAccent),),</span><br><span class="line">          TextSpan(text: userPrivateProtocol,style: TextStyle(color: Colors.grey),)</span><br><span class="line">        ]),</span><br><span class="line">    ),</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="5-按钮"><a href="#5-按钮" class="headerlink" title="5. 按钮"></a>5. 按钮</h3><ul>
+<li><p><strong>Material 组件库中提供了多种按钮组件</strong>：不同的Button拥有不同的功能，<strong>它们都有如下共同属性</strong></p>
+<blockquote>
+<ol>
+<li><p>按下时都会有“水波动画”</p>
+</li>
+<li><p>有一个onPressed属性来设置点击回调，当按钮按下时会执行该回调，如果不提供该回调则按钮会处于禁用状态</p>
+</li>
+</ol>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">Button</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">MaterialButton</td>
+<td align="left">默认按钮，扁平，背景透明。按下后，会有背景色。</td>
+</tr>
+<tr>
+<td align="left">RaisedButton<br /><strong>ElevatedButton</strong> 1.22</td>
+<td align="left">“漂浮”按钮，带有阴影和背景。按下后，阴影会变大。<br /> 1.22 后对应主题ElevatedButtonTheme</td>
+</tr>
+<tr>
+<td align="left">FlatButton<br /><strong>TextButton</strong> 1.22</td>
+<td align="left">扁平按钮，默认背景透明。按下后，会有背景色，与MaterialButton一致。<br />1.22 后对应主题TextButtonTheme</td>
+</tr>
+<tr>
+<td align="left">IconButton</td>
+<td align="left">图标按钮，只能是纯图标，按钮不可展示文案。</td>
+</tr>
+<tr>
+<td align="left">FloatingActionButton</td>
+<td align="left">浮动按钮，可显示文字和图标，二者选其一。</td>
+</tr>
+<tr>
+<td align="left">OutlineButton<br /><strong>OutlinedButton</strong> 1.22</td>
+<td align="left">外边框按钮，可设置按钮外边框颜色。<br />1.22 后对应主题OutlinedButtonTheme</td>
+</tr>
+<tr>
+<td align="left">ButtonBar</td>
+<td align="left">水平布局的按钮容器，可放置多个Button或Text。</td>
+</tr>
+<tr>
+<td align="left">lButton.icon()</td>
+<td align="left">带图标文字混合按钮，RaisedButton、FlatButton、OutlineButton都有一个icon 构造函数，<br />它可以轻松创建带图标和文字的按钮。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>注：1.22后调整了3个按钮</strong>：想要将以前的按钮调整为统一的外观比较麻烦，因此以前经常使用自定义的按钮，而新增的按钮解决了此类问题，可以非常方便的设置整体外观。</p>
+</blockquote>
+</li>
+<li><p>按钮使用案例</p>
+<ol>
+<li><p>MaterialButton：默认按钮，扁平，背景透明。按下后，会有背景色。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> MaterialButton(</span><br><span class="line">  child: <span class="keyword">new</span> Text(<span class="string">&#x27;MaterialButton&#x27;</span>),</span><br><span class="line">  onPressed: () &#123;&#125;,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ElevatedButton：”漂浮”按钮，带有阴影和背景。按下后，阴影会变大。也是应用最常见的按钮。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> ElevatedButton(</span><br><span class="line">  child: <span class="keyword">new</span> Text(<span class="string">&#x27;RaisedButton&#x27;</span>),</span><br><span class="line">  onPressed: () &#123;&#125;,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TextButton：扁平按钮，默认背景透明。按下后，会有背景色，与MaterialButton一致。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> TextButton(</span><br><span class="line">  child: <span class="keyword">new</span> Text(<span class="string">&#x27;FlatButton&#x27;</span>),</span><br><span class="line">  onPressed: () &#123;&#125;,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>IconButton：图标按钮，只能是纯图标，按钮不可展示文案。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> IconButton(</span><br><span class="line">  icon: <span class="keyword">new</span> Icon(Icons.wifi),</span><br><span class="line">  tooltip: <span class="string">&#x27;click IconButton&#x27;</span>,</span><br><span class="line">  onPressed: () &#123;&#125;,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>FloatingActionButton：浮动按钮，可显示文字和图标，二者选其一。可在页面通过设置floatingActionButton来指定页面悬浮按钮，默认在右下角。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">appBar: AppBar(</span><br><span class="line">  title: <span class="keyword">new</span> Text(<span class="string">&quot;按钮控件&quot;</span>),</span><br><span class="line">),</span><br><span class="line">floatingActionButton: <span class="keyword">new</span> FloatingActionButton(</span><br><span class="line">  child: <span class="keyword">new</span> Icon(Icons.add_a_photo),</span><br><span class="line">  <span class="comment">// child: new Text(&#x27;FloatingActionButton&#x27;),</span></span><br><span class="line">  tooltip: <span class="string">&#x27;click FloatingActionButton&#x27;</span>,</span><br><span class="line">  onPressed: () &#123;&#125;,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>OutlinedButton：外边框按钮，可设置按钮外边框颜色。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">OutlinedButton(</span><br><span class="line">  child: Text(<span class="string">&quot;OutlineButton&quot;</span>),</span><br><span class="line">  borderSide: <span class="keyword">new</span> BorderSide(color: Colors.pink),</span><br><span class="line">  onPressed: () &#123;&#125;,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ButtonBar：水平布局的按钮容器，可放置多个Button或Text。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> ButtonBar(</span><br><span class="line">  children: &lt;Widget&gt;[</span><br><span class="line">    <span class="keyword">new</span> BackButton(),</span><br><span class="line">    <span class="keyword">new</span> CloseButton(),</span><br><span class="line">    <span class="keyword">new</span> Text(<span class="string">&#x27;ButtonBar组件&#x27;</span>),</span><br><span class="line">    <span class="keyword">new</span> RaisedButton(</span><br><span class="line">      child: <span class="keyword">new</span> Text(<span class="string">&#x27;Button&#x27;</span>),</span><br><span class="line">      onPressed: () &#123;&#125;,</span><br><span class="line">    ),</span><br><span class="line">  ],</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Button.icon：带图标文字混合按钮，RaisedButton、FlatButton、OutlineButton都有一个icon 构造函数，它可以轻松创建带图标和文字的按钮。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">RaisedButton.icon(</span><br><span class="line">  icon: Icon(Icons.send),</span><br><span class="line">  label: Text(<span class="string">&quot;发送&quot;</span>),</span><br><span class="line">  onPressed: () &#123;&#125;,</span><br><span class="line">),</span><br><span class="line">OutlineButton.icon(</span><br><span class="line">  icon: Icon(Icons.add),</span><br><span class="line">  label: Text(<span class="string">&quot;添加&quot;</span>),</span><br><span class="line">  onPressed: () &#123;&#125;,</span><br><span class="line">),</span><br><span class="line">FlatButton.icon(</span><br><span class="line">  icon: Icon(Icons.info),</span><br><span class="line">  label: Text(<span class="string">&quot;详情&quot;</span>),</span><br><span class="line">  onPressed: () &#123;&#125;,</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义Button样式</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">FlatButton(</span><br><span class="line">  color: Colors.blue,</span><br><span class="line">  highlightColor: Colors.blue[<span class="number">700</span>],</span><br><span class="line">  colorBrightness: Brightness.dark,</span><br><span class="line">  splashColor: Colors.grey,</span><br><span class="line">  child: Text(<span class="string">&quot;Submit&quot;</span>),</span><br><span class="line">  shape: RoundedRectangleBorder(</span><br><span class="line">    borderRadius: BorderRadius.circular(<span class="number">20.0</span>)),</span><br><span class="line">  onPressed: () &#123;&#125;,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="6-图片：Image"><a href="#6-图片：Image" class="headerlink" title="6. 图片：Image"></a>6. 图片：Image</h3><ul>
+<li><p><strong>Image组件构造函数</strong>：Image的数据源可以是asset、文件、内存以及网络。Image 组件有多种构造函数</p>
+<table>
+<thead>
+<tr>
+<th>构造函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>new Image</td>
+<td>从 ImageProvider 获取图像</td>
+</tr>
+<tr>
+<td>new Image.asset</td>
+<td>加载资源图片</td>
+</tr>
+<tr>
+<td>new Image.file</td>
+<td>加载本地图片文件</td>
+</tr>
+<tr>
+<td>new Image.network</td>
+<td>加 载网络图片</td>
+</tr>
+<tr>
+<td>new Image.memory</td>
+<td>加载 Uint8List 资源图片</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><strong>Image组件常见属性</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>image</td>
+<td>ImageProvider</td>
+<td>抽象类，需要自己实现获取图片数据的操作</td>
+</tr>
+<tr>
+<td>width/height</td>
+<td>double</td>
+<td>Image 显示区域的宽度和高度设置，这里需要把 Image 和图片两 个东西区分开，图片本身有大小， Image Widget 是图片的容器，本 身也有大小。 宽度和高度的配置经常和 fit 属性配合使用</td>
+</tr>
+<tr>
+<td>fit</td>
+<td>BoxFit</td>
+<td>图片填充模式 ， <br /> - Boxfit.fill=会拉伸填充满显示空间<br /> - Boxfit.contain=在保证图片本身长宽比不变的情况下缩放以适应当前显示空间<br /> - Boxfit.cover=按图片的长宽比放大后居中填满显示空间，超出显示空间部分会被剪裁。<br /> - BoxFit.fitWidth=图片的宽度会缩放到显示空间的宽度，高度会按比例缩放<br /> - BoxFit.fitHeight= 图片的高度会缩放到显示空间的高度，宽度会按比例缩放<br /> - Boxfit.none=图片没有适应策略，会在显示空间内显示图片<br /> - BoxFit.scaleDown=效果和 Boxfit.contain差不多但是此属性不允许显示超过源图片大小，即可小不可大</td>
+</tr>
+<tr>
+<td>color</td>
+<td>Color</td>
+<td>图片颜色</td>
+</tr>
+<tr>
+<td>colorBlendMode</td>
+<td>BlendMode</td>
+<td>在对图片进行手动处理的时候，可能用到图层混合，如改变图片的颜色。 此属性可以对颜色进行混合处理。 有多种模式</td>
+</tr>
+<tr>
+<td>alignment</td>
+<td>Alignment</td>
+<td>控制图片的摆放位置，比如l图片放置在右下角则为 Alignment. bottomRight</td>
+</tr>
+<tr>
+<td>repeat</td>
+<td>ImageRepeat</td>
+<td>此属性可以设置图片重复模式 。 noRepeat 为不重复， Repeat 为 x 和 y 方向重复， repeatX 为 x 方向重复， repeatY 为 y 方向重复</td>
+</tr>
+<tr>
+<td>centerSlice</td>
+<td>Rect</td>
+<td>当图片需要被拉伸显示时， centerSIice 定义的矩形区域会被拉仰 ， 可以理解成我们在图片内部定义 一个点 9 个点文件用作拉伸， 9个 点为“上” “下 ” “左”“右”“上中”“下 中 ”“左中”“右中 ” “正中”</td>
+</tr>
+<tr>
+<td>matchTextDirection</td>
+<td>bool</td>
+<td>matchTextDirection 与 Directionality 配合使用。 TextDirection 有两个值分别为: TextDirection.ltr 从左向右展示图片， TextDirection.rtl  从右向左展示图片</td>
+</tr>
+<tr>
+<td>gaplessPlayback</td>
+<td>bool</td>
+<td>当 lmageProvider 发生变化后 ， 重新加载图片的过程中 ， 原图片的展示是否保留 。 值为 true 则保留;值为 false 则不保留， 直接空 白等待下一张图片加载</td>
+</tr>
+</tbody></table>
+<blockquote>
+<ul>
+<li><p>ImageProvider：是一个抽象类，主要定义了图片数据获取的接口 load()，从不同的数据源获取图片需要实现不同的 ImageProvider ，如 AssetImage 是实现了从 Asset 中加载图片的 ImageProvider，而 NetworkImage 实现了从网络加载图片的 ImageProvider。</p>
+</li>
+<li><p>asset 图片资源配置</p>
+<ol>
+<li><p>在工程根目录下创建一个 images 目录，并将图片拷贝到该目录。</p>
+</li>
+<li><p>在 pubspec.yaml 中的 flutter 部分添加如下内容</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="attr">flutter:</span></span><br><span class="line">  <span class="attr">assets:</span></span><br><span class="line">     <span class="bullet">-</span> <span class="string">images/a_dot_burr.jpeg</span></span><br><span class="line">     <span class="bullet">-</span> <span class="string">images/a_dot_ham.jpeg</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加载图片</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Image.asset(</span><br><span class="line">  <span class="string">&quot;images/avatar.png&quot;</span>,</span><br><span class="line">  width: <span class="number">100.0</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>network网络图片加载</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Image.network(</span><br><span class="line">  <span class="string">&quot;https://avatars2.githubusercontent.com/u/20411648?s=460&amp;v=4&quot;</span>,</span><br><span class="line">  width: <span class="number">100.0</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h2 id="4-2-表单组件"><a href="#4-2-表单组件" class="headerlink" title="4.2 表单组件"></a>4.2 表单组件</h2><h3 id="1-文本框：TextField"><a href="#1-文本框：TextField" class="headerlink" title="1. 文本框：TextField"></a>1. 文本框：TextField</h3><ul>
+<li><p>TextField是一个<code>material design</code>风格的输入框，也是属性最多、功能点最多的Widget。</p>
+<table>
+<thead>
+<tr>
+<th>TextField属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>controller</td>
+<td>TextEditingController</td>
+<td>绑定输入框预设内容<br />获取输入框输入内容<br />监听输入框输入和焦点变化</td>
+</tr>
+<tr>
+<td>focusNode</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>decoration</td>
+<td>InputDecoration</td>
+<td>输入框样式设置</td>
+</tr>
+<tr>
+<td>keyboardType</td>
+<td></td>
+<td>TextField成为焦点时显示的键盘类型<br /> - TextInputType.text（普通完整键盘）<br/> - TextInputType.number（数字键盘）<br/> - TextInputType.emailAddress（带有“@”的普通键盘）<br/> - TextInputType.datetime（带有“/”和“：”的数字键盘）<br/> - TextInputType.multiline（带有选项以启用有符号和十进制模式的数字键盘）</td>
+</tr>
+<tr>
+<td>textInputAction</td>
+<td>TextInputAction</td>
+<td>更改键盘本身的操作按钮</td>
+</tr>
+<tr>
+<td>textCapitalization</td>
+<td>TextCapitalization</td>
+<td>何使输入字母大写的选项。<br /> - TextCapitalization.sentences-每个句子的首字母大写<br /> - TextCapitalization.characters:大写句子中的所有字符<br /> - TextCapitalization.words : 将每个单词的首字母大写</td>
+</tr>
+<tr>
+<td>style</td>
+<td>TextStyle</td>
+<td>输入的文本样式</td>
+</tr>
+<tr>
+<td>strutStyle</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>textAlign</td>
+<td>TextAlign</td>
+<td>本币对齐方式</td>
+</tr>
+<tr>
+<td>textAlignVertical</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>textDirection</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>readOnly</td>
+<td>bool</td>
+<td>是否只读，只读表示不可编辑</td>
+</tr>
+<tr>
+<td>toolbarOptions</td>
+<td>ToolbarOptions</td>
+<td></td>
+</tr>
+<tr>
+<td>showCursor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>autofocus</td>
+<td>bool</td>
+<td>是否自动获得焦点，如果有多个以第一个为准</td>
+</tr>
+<tr>
+<td>obscuringCharacter</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>obscureText</td>
+<td>bool</td>
+<td>是否是密码框</td>
+</tr>
+<tr>
+<td>autocorrect</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>smartDashesType</td>
+<td>SmartDashesType</td>
+<td></td>
+</tr>
+<tr>
+<td>smartQuotesType</td>
+<td>SmartQuotesType</td>
+<td></td>
+</tr>
+<tr>
+<td>enableSuggestions</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>maxLines</td>
+<td>int</td>
+<td>输入框的最大行数</td>
+</tr>
+<tr>
+<td>minLines</td>
+<td>int</td>
+<td>输入框的最小行数</td>
+</tr>
+<tr>
+<td>expands</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>maxLength</td>
+<td>int</td>
+<td>输入框可输入字符数</td>
+</tr>
+<tr>
+<td>maxLengthEnforcement</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>onChanged</td>
+<td></td>
+<td>输入框内容改变时候回调</td>
+</tr>
+<tr>
+<td>onEditingComplete</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>onSubmitted</td>
+<td></td>
+<td>内容提交(按回车)的回调</td>
+</tr>
+<tr>
+<td>onAppPrivateCommand</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>inputFormatters</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>enabled</td>
+<td></td>
+<td>是否启用，不启用会置灰</td>
+</tr>
+<tr>
+<td>cursorWidth</td>
+<td>int</td>
+<td>输入框光标快宽度</td>
+</tr>
+<tr>
+<td>cursorHeight</td>
+<td>int</td>
+<td>输入框光标快高度</td>
+</tr>
+<tr>
+<td>cursorRadius</td>
+<td>Radius</td>
+<td>输入框光标圆角半径</td>
+</tr>
+<tr>
+<td>cursorColor</td>
+<td>Colors</td>
+<td>输入框光标颜色</td>
+</tr>
+<tr>
+<td>selectionHeightStyle</td>
+<td>ui.BoxHeightStyle</td>
+<td></td>
+</tr>
+<tr>
+<td>selectionWidthStyle</td>
+<td>ui.BoxWidthStyle</td>
+<td></td>
+</tr>
+<tr>
+<td>keyboardAppearance</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>scrollPadding</td>
+<td>EdgeInsets</td>
+<td></td>
+</tr>
+<tr>
+<td>dragStartBehavior</td>
+<td>DragStartBehavior</td>
+<td></td>
+</tr>
+<tr>
+<td>enableInteractiveSelection</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>selectionControls</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>onTap</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mouseCursor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>buildCounter</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>scrollController</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>scrollPhysics</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>autofillHints</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>clipBehavior</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>restorationId</td>
+<td>Clip</td>
+<td></td>
+</tr>
+<tr>
+<td>enableIMEPersonalizedLearning</td>
+<td>bool</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<ul>
+<li><p>Controller</p>
+<ol>
+<li><p>初始化Controller</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化空的Controller</span></span><br><span class="line">TextEditingController _editingController = <span class="keyword">new</span> TextEditingController();</span><br><span class="line"><span class="comment">// 初始化Controller并设置text属性作为输入框默认值</span></span><br><span class="line">TextEditingController _controller2 = <span class="keyword">new</span> TextEditingController(text: <span class="string">&quot;初始化的&quot;</span>);</span><br><span class="line"><span class="comment">// 监听输入框</span></span><br><span class="line">controller.addListener(() &#123;</span><br><span class="line">  <span class="comment">// TODO _editingController.text获取内容</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据Controller获取输入框的内容</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_editingController.text</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改输入框中的内容</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_editingController.text = &lt;新内容&gt;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清除输入框中内容</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_editingController.text = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="comment">///<span class="language-markdown">或者使用clear方法</span></span></span><br><span class="line">_editingController.clear();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>InputDecoration是输入框装饰器</p>
+<table>
+<thead>
+<tr>
+<th>InputDecoration属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>icon</td>
+<td>Icon</td>
+<td>左侧外的图标</td>
+</tr>
+<tr>
+<td>iconColor</td>
+<td>Color</td>
+<td>图标颜色</td>
+</tr>
+<tr>
+<td>label</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>labelText</td>
+<td></td>
+<td>悬浮提示，可代替hintText</td>
+</tr>
+<tr>
+<td>labelStyle</td>
+<td></td>
+<td>悬浮提示文字的样式</td>
+</tr>
+<tr>
+<td>floatingLabelStyle</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>helperText</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>helperStyle</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>helperMaxLines</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>hintText</td>
+<td></td>
+<td>输入提示</td>
+</tr>
+<tr>
+<td>hintStyle</td>
+<td></td>
+<td>输入提示样式</td>
+</tr>
+<tr>
+<td>hintTextDirection</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>hintMaxLines</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>errorText</td>
+<td></td>
+<td>错误提示</td>
+</tr>
+<tr>
+<td>errorStyle</td>
+<td></td>
+<td>错误提示样式</td>
+</tr>
+<tr>
+<td>errorMaxLines</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>floatingLabelBehavior</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>isCollapsed</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>isDense</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>contentPadding</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>prefixIcon</td>
+<td>Icon</td>
+<td>左侧内的图标</td>
+</tr>
+<tr>
+<td>prefixIconColor</td>
+<td>Color</td>
+<td>左侧内的图标颜色</td>
+</tr>
+<tr>
+<td>prefixIconConstraints</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>prefix</td>
+<td></td>
+<td>左侧组件</td>
+</tr>
+<tr>
+<td>prefixText</td>
+<td></td>
+<td>左侧内的文字</td>
+</tr>
+<tr>
+<td>prefixStyle</td>
+<td></td>
+<td>左侧内的文字样式</td>
+</tr>
+<tr>
+<td>suffix</td>
+<td></td>
+<td>右侧组件：和suffixText不能同时存在</td>
+</tr>
+<tr>
+<td>suffixText</td>
+<td></td>
+<td>右侧提示：和suffix不能同时存在</td>
+</tr>
+<tr>
+<td>suffixStyle</td>
+<td></td>
+<td>右侧提示样式</td>
+</tr>
+<tr>
+<td>suffixIcon</td>
+<td></td>
+<td>右侧内图标</td>
+</tr>
+<tr>
+<td>suffixIconColor</td>
+<td></td>
+<td>右侧内图标颜色</td>
+</tr>
+<tr>
+<td>suffixIconConstraints</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>counter</td>
+<td></td>
+<td>自定义计数器</td>
+</tr>
+<tr>
+<td>counterText</td>
+<td></td>
+<td>计数文字</td>
+</tr>
+<tr>
+<td>counterStyle</td>
+<td></td>
+<td>计数文字</td>
+</tr>
+<tr>
+<td>filled</td>
+<td></td>
+<td>是否填充</td>
+</tr>
+<tr>
+<td>fillColor</td>
+<td></td>
+<td>填充颜色</td>
+</tr>
+<tr>
+<td>focusColor</td>
+<td></td>
+<td>输入框获取焦点时颜色</td>
+</tr>
+<tr>
+<td>hoverColor</td>
+<td></td>
+<td>鼠标覆盖时候输入框颜色</td>
+</tr>
+<tr>
+<td>errorBorder</td>
+<td></td>
+<td>发生错误时候边框颜色</td>
+</tr>
+<tr>
+<td>focusedBorder</td>
+<td></td>
+<td>获取焦点时候边框颜色</td>
+</tr>
+<tr>
+<td>focusedErrorBorder</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>disabledBorder</td>
+<td></td>
+<td>不可用时候边框</td>
+</tr>
+<tr>
+<td>enabledBorder</td>
+<td></td>
+<td>启用时编译</td>
+</tr>
+<tr>
+<td>border</td>
+<td></td>
+<td>边框</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td></td>
+<td>是否启用</td>
+</tr>
+<tr>
+<td>semanticCounterText</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>alignLabelWithHint</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>constraints</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="2-单选：Radio"><a href="#2-单选：Radio" class="headerlink" title="2. 单选：Radio"></a>2. 单选：Radio</h3><ul>
+<li><p>Radio属性</p>
+<table>
+<thead>
+<tr>
+<th>Radio属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>value</strong></td>
+<td>T</td>
+<td>单选的值</td>
+</tr>
+<tr>
+<td><strong>groupValue</strong></td>
+<td>String</td>
+<td>选择组的值，单选组使用同一个状态对象</td>
+</tr>
+<tr>
+<td><strong>onChanged</strong></td>
+<td></td>
+<td>改变时触发回调</td>
+</tr>
+<tr>
+<td>mouseCursor</td>
+<td></td>
+<td>鼠标光标</td>
+</tr>
+<tr>
+<td>toggleable</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>activeColor</td>
+<td>Color</td>
+<td>选中时填充颜色</td>
+</tr>
+<tr>
+<td>fillColor</td>
+<td>Color</td>
+<td></td>
+</tr>
+<tr>
+<td>focusColor</td>
+<td>Color</td>
+<td>聚焦颜色</td>
+</tr>
+<tr>
+<td>hoverColor</td>
+<td>Color</td>
+<td>悬停颜色</td>
+</tr>
+<tr>
+<td>overlayColor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>splashRadius</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>materialTapTargetSize</td>
+<td></td>
+<td>内边距，默认最小点击区域为 48 * 48</td>
+</tr>
+<tr>
+<td>visualDensity</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>focusNode</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>autofocus</td>
+<td>bool</td>
+<td>自动聚焦，默认为 false</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="3-单选列表：RadioListTile"><a href="#3-单选列表：RadioListTile" class="headerlink" title="3. 单选列表：RadioListTile"></a>3. 单选列表：RadioListTile</h3><ul>
+<li><p>RadioListTile属性</p>
+<table>
+<thead>
+<tr>
+<th>RadioListTile属性</th>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>value</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>groupValue</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>onChanged</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>toggleable</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>activeColor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>title</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>isThreeLine</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>dense</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>secondary</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>selected</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>controlAffinity</td>
+<td>ListTileControlAffinity</td>
+<td></td>
+</tr>
+<tr>
+<td>autofocus</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>contentPadding</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>shape</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tileColor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>selectedTileColor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>visualDensity</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>focusNode</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>enableFeedback</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="4-复选：Checkbox"><a href="#4-复选：Checkbox" class="headerlink" title="4. 复选：Checkbox"></a>4. 复选：Checkbox</h3><ul>
+<li><p>Checkbox属性</p>
+<table>
+<thead>
+<tr>
+<th>Checkbox属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>value</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>onChanged</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tristate</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mouseCursor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>activeColor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>fillColor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>checkColor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>focusColor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>hoverColor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>overlayColor</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>splashRadius</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>materialTapTargetSize</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>visualDensity</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>focusNode</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>autofocus</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>shape</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>side</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="5-下拉选：DropdownButton"><a href="#5-下拉选：DropdownButton" class="headerlink" title="5. 下拉选：DropdownButton"></a>5. 下拉选：DropdownButton</h3><ul>
+<li><p>DropdownButton属性 </p>
+<table>
+<thead>
+<tr>
+<th>DropdownButton属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>items</strong></td>
+<td>DropdownMenuItem</td>
+<td>下拉选项列表</td>
+</tr>
+<tr>
+<td><strong>onChanged</strong></td>
+<td></td>
+<td>选择 item 回调</td>
+</tr>
+<tr>
+<td>selectedItemBuilder</td>
+<td></td>
+<td>选项 item 构造器</td>
+</tr>
+<tr>
+<td>value</td>
+<td>T</td>
+<td>选中内容</td>
+</tr>
+<tr>
+<td>hint</td>
+<td></td>
+<td>启动状态下默认内容</td>
+</tr>
+<tr>
+<td>disabledHint</td>
+<td></td>
+<td>禁用状态下默认内容</td>
+</tr>
+<tr>
+<td>elevation</td>
+<td></td>
+<td>阴影高度</td>
+</tr>
+<tr>
+<td>style</td>
+<td></td>
+<td>选项列表 item 样式</td>
+</tr>
+<tr>
+<td>underline</td>
+<td></td>
+<td>按钮下划线</td>
+</tr>
+<tr>
+<td>icon</td>
+<td></td>
+<td>下拉按钮图标</td>
+</tr>
+<tr>
+<td>iconDisabledColor</td>
+<td></td>
+<td>禁用状态下图标颜色</td>
+</tr>
+<tr>
+<td>iconEnabledColor</td>
+<td></td>
+<td>启动时图标颜色</td>
+</tr>
+<tr>
+<td>iconSize</td>
+<td></td>
+<td>图标尺寸</td>
+</tr>
+<tr>
+<td>isDense</td>
+<td></td>
+<td>是否降低按钮高度</td>
+</tr>
+<tr>
+<td>isExpanded</td>
+<td></td>
+<td>是否将下拉列表内容设置水平填充</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>DropdownMenuItem属性</p>
+<table>
+<thead>
+<tr>
+<th>DropdownMenuItem属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>value</td>
+<td>T</td>
+<td>对应选中状态内容</td>
+</tr>
+<tr>
+<td>child</td>
+<td>Widget</td>
+<td>下拉列表 item 内容</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="6-进度条：-ProgressIndicator"><a href="#6-进度条：-ProgressIndicator" class="headerlink" title="6. 进度条：*ProgressIndicator"></a>6. 进度条：*ProgressIndicator</h3><ul>
+<li><p>条形进度条：LinearProgressIndicator</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>value</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>Color</td>
+<td></td>
+</tr>
+<tr>
+<td>Color</td>
+<td>Color</td>
+<td></td>
+</tr>
+<tr>
+<td>valueColor</td>
+<td>Animation&lt;Color?&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>minHeight</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>semanticsLabel</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>semanticsValue</td>
+<td>String</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>环形进度条：CircularProgressIndicator</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>value</td>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>Color</td>
+<td></td>
+</tr>
+<tr>
+<td>color</td>
+<td>Color</td>
+<td></td>
+</tr>
+<tr>
+<td>valueColor</td>
+<td>Animation&lt;Color?&gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>strokeWidth</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>semanticsLabel</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>semanticsValue</td>
+<td>String</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Slider：滑动进度条</p>
+</li>
+</ul>
+<h3 id="7-日历"><a href="#7-日历" class="headerlink" title="7. 日历"></a>7. 日历</h3><ul>
+<li><p>日期时间转换相关API</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取当前时间</span></span><br><span class="line"><span class="built_in">DateTime</span>.now();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取当前时间的时间戳</span></span><br><span class="line"><span class="built_in">DateTime</span>.now().microsecondsSinceEpoch;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 把时间戳转为为日期对象</span></span><br><span class="line"><span class="built_in">DateTime</span>.fromMicrosecondsSinceEpoch(<span class="number">1641950846731362</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第三方包（date_fromat）API：日期格式化</p>
+<ol>
+<li><p>添加第三方包依赖：date_format</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter pub add date_format</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入第三方包</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:date_format/date_format.dart&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>date_format相关API</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据指定格式格式化日期对象</span></span><br><span class="line">formatDate(<span class="built_in">DateTime</span>(<span class="number">1989</span>, <span class="number">02</span>, <span class="number">21</span>), [yyyy, <span class="string">&#x27;-&#x27;</span>, mm, <span class="string">&#x27;-&#x27;</span>, dd]);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>Flutter自带的日历组件：showDatePicker（返回Future异步结果）</p>
+<table>
+<thead>
+<tr>
+<th>showDatePicker 属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>context</td>
+<td>BuildContext</td>
+<td>组件上下文</td>
+</tr>
+<tr>
+<td>initialDate</td>
+<td>DateTime</td>
+<td>默认选中的时间</td>
+</tr>
+<tr>
+<td>firstDate</td>
+<td>DateTime</td>
+<td>日历时间上限</td>
+</tr>
+<tr>
+<td>lastDate</td>
+<td>DateTime</td>
+<td>日历时间下限</td>
+</tr>
+<tr>
+<td>currentDate</td>
+<td>DateTime</td>
+<td></td>
+</tr>
+<tr>
+<td>initialEntryMode</td>
+<td>DatePickerEntryMode</td>
+<td></td>
+</tr>
+<tr>
+<td>selectableDayPredicate</td>
+<td>SelectableDayPredicate</td>
+<td></td>
+</tr>
+<tr>
+<td>helpText</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>cancelText</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>confirmText</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>Locale</td>
+<td>locale</td>
+<td></td>
+</tr>
+<tr>
+<td>useRootNavigator</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>routeSettings</td>
+<td>RouteSettings</td>
+<td></td>
+</tr>
+<tr>
+<td>textDirection</td>
+<td>TextDirection</td>
+<td></td>
+</tr>
+<tr>
+<td>builder</td>
+<td>TransitionBuilder</td>
+<td></td>
+</tr>
+<tr>
+<td>initialDatePickerMode</td>
+<td>DatePickerMode</td>
+<td></td>
+</tr>
+<tr>
+<td>errorFormatText</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>errorInvalidText</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>fieldHintText</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>fieldLabelText</td>
+<td>String</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Flutter自带的时间组件：showTimePicker（返回Future异步结果）</p>
+<table>
+<thead>
+<tr>
+<th>showTimePicker属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>context</strong></td>
+<td>BuildContext</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>initialTime</strong></td>
+<td>TimeOfDay</td>
+<td></td>
+</tr>
+<tr>
+<td>builder</td>
+<td>TransitionBuilder</td>
+<td></td>
+</tr>
+<tr>
+<td>useRootNavigator</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>initialEntryMode</td>
+<td>TimePickerEntryMode</td>
+<td></td>
+</tr>
+<tr>
+<td>cancelText</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>confirmText</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>helpText</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>errorInvalidText</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>hourLabelText</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>minuteLabelText</td>
+<td>String</td>
+<td></td>
+</tr>
+<tr>
+<td>routeSettings</td>
+<td>RouteSettings</td>
+<td></td>
+</tr>
+<tr>
+<td>onEntryModeChanged</td>
+<td>EntryModeChangeCallback</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="9-第三方日历"><a href="#9-第三方日历" class="headerlink" title="9. 第三方日历"></a>9. 第三方日历</h3><ul>
+<li><p>下载第三方日历：flutter_datetime_picker</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter pub add date_time_picker</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入组件</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:date_time_picker/date_time_picker.dart&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="10-表单：Form"><a href="#10-表单：Form" class="headerlink" title="10. 表单：Form"></a>10. 表单：Form</h3><h3 id="11-表格"><a href="#11-表格" class="headerlink" title="11. 表格"></a>11. 表格</h3><h2 id="4-3-其他"><a href="#4-3-其他" class="headerlink" title="4.3 其他"></a>4.3 其他</h2><ol>
+<li>TabBar</li>
+<li>TabBarView</li>
+<li>TabController</li>
+<li>AlterDialog</li>
+<li>SimpleDialog</li>
+<li>Divider</li>
+<li>Chip</li>
+<li>Opacity</li>
+<li>ReorderableListView</li>
+</ol>
+<h1 id="第五章-容器组件"><a href="#第五章-容器组件" class="headerlink" title="第五章 容器组件"></a>第五章 容器组件</h1><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>容器组件是根据Widget功能方便学习而总结的，Flutter官方未指定什么是容器组件。容器组件主要功能是在布局中添加页面上内容的组件，容器类Widget一般只需要接收一个子Widget（child），他们直接或间接继承自（或包含）SingleChildRenderObjectWidget。并对其添加一些修饰（补白或背景色等）、变换(旋转或剪裁等)、或限制(大小等)。</p>
+<h2 id="5-1-内边距"><a href="#5-1-内边距" class="headerlink" title="5.1 内边距"></a>5.1 内边距</h2><h3 id="1-Padding"><a href="#1-Padding" class="headerlink" title="1. Padding"></a>1. Padding</h3><ul>
+<li><p>Padding：可以给其子节点添加填充（留白），和边距效果类似</p>
+<table>
+<thead>
+<tr>
+<th>Padding属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>padding</td>
+<td>EdgeInsetsGeometry</td>
+<td>是一个抽象类，开发中，我们一般都使用<code>EdgeInsets</code>类</td>
+</tr>
+<tr>
+<td>child</td>
+<td>Widget</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>EdgeInsets使用说明</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 分别指定四个方向的填充。</span></span><br><span class="line">EdgeInsets.fromLTRB(<span class="built_in">double</span> left, <span class="built_in">double</span> top, <span class="built_in">double</span> right, <span class="built_in">double</span> bottom);</span><br><span class="line"><span class="comment">// 所有方向均使用相同数值的填充</span></span><br><span class="line">EdgeInsets.all(<span class="built_in">double</span> value);</span><br><span class="line"><span class="comment">// 设置具体某个方向的填充(可以同时指定多个方向)</span></span><br><span class="line">EdgeInsets.only(&#123;left, top, right ,bottom &#125;);</span><br><span class="line"><span class="comment">// 用于设置对称方向的填充，vertical指top和bottom，horizontal指left和right。</span></span><br><span class="line">EdgeInsets.symmetric(&#123; vertical, horizontal &#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2-SafeArea"><a href="#2-SafeArea" class="headerlink" title="2. SafeArea"></a>2. SafeArea</h3><ul>
+<li><p>SafeArea属性</p>
+<table>
+<thead>
+<tr>
+<th>SafeArea属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>left</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>top</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>right</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>bottom</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>minimum</td>
+<td>EdgeInsets</td>
+<td></td>
+</tr>
+<tr>
+<td>maintainBottomViewPadding</td>
+<td>bool</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="5-2-容器尺寸"><a href="#5-2-容器尺寸" class="headerlink" title="5.2 容器尺寸"></a>5.2 容器尺寸</h2><h3 id="1-ConstrainedBox"><a href="#1-ConstrainedBox" class="headerlink" title="1. ConstrainedBox"></a>1. ConstrainedBox</h3><ul>
+<li><p>ConstrainedBox：用于对子控件添加额外的约束</p>
+<table>
+<thead>
+<tr>
+<th>ConstrainedBox属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>constraints</td>
+<td>BoxConstraints</td>
+<td>对子组件的宽高的限制<br /> - minWidth：最小宽度<br /> - maxWidth：最大宽度<br /> - minHeight：最小高度<br /> - maxHeight：最大高度</td>
+</tr>
+<tr>
+<td>child</td>
+<td>Widget</td>
+<td>子组件</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>案例代码</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Body</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> Body(&#123;Key? key&#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Center(</span><br><span class="line">      child: Container(</span><br><span class="line">        width: <span class="number">300</span>,</span><br><span class="line">        height: <span class="number">400</span>,</span><br><span class="line">        decoration: BoxDecoration(border: Border.all()),</span><br><span class="line">        <span class="comment">//利用UnconstrainedBox 消除之前限制</span></span><br><span class="line">        child: UnconstrainedBox(</span><br><span class="line">          <span class="comment">// 对child进行约束，</span></span><br><span class="line">          child: ConstrainedBox(</span><br><span class="line">            constraints: <span class="keyword">const</span> BoxConstraints(</span><br><span class="line">              minHeight: <span class="number">30</span>,</span><br><span class="line">              minWidth: <span class="number">30</span>,</span><br><span class="line">              maxHeight: <span class="number">150</span>,</span><br><span class="line">              maxWidth: <span class="number">150</span>),</span><br><span class="line">            <span class="comment">// 子组件最大不会大于被约束的高度</span></span><br><span class="line">            child: Container(</span><br><span class="line">              width: <span class="number">310</span>,</span><br><span class="line">              height: <span class="number">310</span>,</span><br><span class="line">              decoration: BoxDecoration(</span><br><span class="line">                borderRadius: BorderRadius.circular(<span class="number">20</span>),</span><br><span class="line">                gradient: <span class="keyword">const</span> LinearGradient(</span><br><span class="line">                  colors: [Colors.blue, Colors.purple]),</span><br><span class="line">              ),</span><br><span class="line">            ))),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2-UnconstrainedBox"><a href="#2-UnconstrainedBox" class="headerlink" title="2. UnconstrainedBox"></a>2. UnconstrainedBox</h3><ul>
+<li><p>UnconstrainedBox作用对 child 不添加任何约束，允许他以 “自然”大小进行渲染。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>child</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>textDirection</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>alignment</td>
+<td>Alignment</td>
+<td></td>
+</tr>
+<tr>
+<td>constrainedAxis</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>clipBehavior</td>
+<td>Clip</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="3-SizedBox"><a href="#3-SizedBox" class="headerlink" title="3. SizedBox"></a>3. SizedBox</h3><ul>
+<li><p>SizedBox两种用法：一是可用来设置两个widget之间的间距，二是可以用来限制子组件的大小。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>width</td>
+<td></td>
+<td>宽度</td>
+</tr>
+<tr>
+<td>height</td>
+<td></td>
+<td>高度</td>
+</tr>
+<tr>
+<td>child</td>
+<td>Widget</td>
+<td>子组件</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="4-AspectRatio"><a href="#4-AspectRatio" class="headerlink" title="4. AspectRatio"></a>4. AspectRatio</h3><ul>
+<li><p>AspectRatio纵横比：作用是根据父元素的设置调整子元素child的宽高比，宽高比是相对父容器的，子元素的宽是父容器的宽，高是根据指定的比例计算出来的</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>aspectRatio</td>
+<td>double</td>
+<td>宽/高</td>
+</tr>
+<tr>
+<td>child</td>
+<td>Widget</td>
+<td>子元素</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="5-LimtedBox"><a href="#5-LimtedBox" class="headerlink" title="5. LimtedBox"></a>5. LimtedBox</h3><ul>
+<li><p>LimtedBox：一个当其自身不受约束时才限制其大小的盒子</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>maxWidth</td>
+<td>double</td>
+<td>最大宽度</td>
+</tr>
+<tr>
+<td>maxHeight</td>
+<td>double</td>
+<td>最大高度</td>
+</tr>
+<tr>
+<td>child</td>
+<td>Widget</td>
+<td>子元素</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="6-FractionallySizedBox"><a href="#6-FractionallySizedBox" class="headerlink" title="6. FractionallySizedBox"></a>6. FractionallySizedBox</h3><ul>
+<li><p>FittedBox：用法与SizedBox类似，只不过FractionallySizedBox的宽高是百分比大小，widthFactor，heightFactor参数就是相对于父控件的比例。注意设置FractionallySizedBox宽高后，其子组件设置的宽高将不起作用</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>alignment</td>
+<td>Alignment</td>
+<td></td>
+</tr>
+<tr>
+<td>widthFactor</td>
+<td></td>
+<td>宽度百分比</td>
+</tr>
+<tr>
+<td>heightFactor</td>
+<td></td>
+<td>高度百分比</td>
+</tr>
+<tr>
+<td>child</td>
+<td>Widget</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="7-Align"><a href="#7-Align" class="headerlink" title="7. Align"></a>7. Align</h3><ul>
+<li><p>Align：可以调整子组件的位置，并且可以根据子组件的宽高来确定自身的的宽高，根据是两个缩放因子，会分别乘以子元素的宽、高，最终的结果就是Align 组件的宽高</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>alignment</td>
+<td>Alignment</td>
+<td>子组件在父组件中的起始位置</td>
+</tr>
+<tr>
+<td>widthFactor</td>
+<td></td>
+<td>确定Align 组件本身高的属性</td>
+</tr>
+<tr>
+<td>heightFactor</td>
+<td></td>
+<td>确定Align 组件本身宽的属性</td>
+</tr>
+<tr>
+<td>child</td>
+<td>Widget</td>
+<td>子组件</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="5-3-容器装饰"><a href="#5-3-容器装饰" class="headerlink" title="5.3 容器装饰"></a>5.3 容器装饰</h2><ol>
+<li><p>DecoratedBox</p>
+<ul>
+<li><p>DecoratedBox是个抽象类，具体实现使用BoxDecoration组件，可以给child增加显示效果，如颜色，阴影，边框等</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>color</td>
+<td>Color</td>
+<td>颜色</td>
+</tr>
+<tr>
+<td>image</td>
+<td>DecorationImage</td>
+<td>图片</td>
+</tr>
+<tr>
+<td>border</td>
+<td>BoxBorder</td>
+<td>边框</td>
+</tr>
+<tr>
+<td>borderRadius</td>
+<td>BorderRadiusGeometry</td>
+<td>圆角</td>
+</tr>
+<tr>
+<td>boxShadow</td>
+<td><code>List&lt;BoxShadow&gt;</code></td>
+<td>阴影,可以指定多个</td>
+</tr>
+<tr>
+<td>gradient</td>
+<td>Gradient</td>
+<td>渐变</td>
+</tr>
+<tr>
+<td>backgroundBlendMode</td>
+<td>BlendMode</td>
+<td>背景混合模式</td>
+</tr>
+<tr>
+<td>shape</td>
+<td>BoxShape</td>
+<td>形状</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="5-4-容器变形"><a href="#5-4-容器变形" class="headerlink" title="5.4 容器变形"></a>5.4 容器变形</h2><p>Transform</p>
+<p>AnimatedPadding</p>
+<p>RotateBox</p>
+<h2 id="5-5-剪裁"><a href="#5-5-剪裁" class="headerlink" title="5.5 剪裁"></a>5.5 剪裁</h2><ul>
+<li>ClipOval</li>
+<li>ClipRRect</li>
+<li>ClipRect</li>
+<li>ClipPath</li>
+<li>CustomClipper</li>
+</ul>
+<h2 id="5-6-其他"><a href="#5-6-其他" class="headerlink" title="5.6 其他"></a>5.6 其他</h2><ol>
+<li>Container</li>
+<li>Center</li>
+<li>OverflowBox</li>
+<li>SizedOverflowBox</li>
+</ol>
+<h1 id="第六章-布局组件"><a href="#第六章-布局组件" class="headerlink" title="第六章 布局组件"></a>第六章 布局组件</h1><p>5.Row（横向排布）<br>6.Column（纵向排布）<br>7.Expanded和Flexible<br>8.Stack和Positioned（层叠布局）<br>10.RefreshIndicator和ListView（下拉刷新）<br>20.Card（卡片式布局）</p>
+<table>
+<thead>
+<tr>
+<th>Widget</th>
+<th>说明</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LeafRenderObjectWidget</td>
+<td>非容器类组件基类</td>
+<td>Widget树的叶子节点，用于没有子节点的widget，通常基础组件都属于这一类，如Image。</td>
+</tr>
+<tr>
+<td>SingleChildRenderObjectWidget</td>
+<td>单子组件基类</td>
+<td>包含一个子Widget，如：ConstrainedBox、DecoratedBox等</td>
+</tr>
+<tr>
+<td>MultiChildRenderObjectWidget</td>
+<td>多子组件基类</td>
+<td>包含多个子Widget，一般都有一个children参数，接受一个Widget数组。如Row、Column、Stack等</td>
+</tr>
+</tbody></table>
+<p>尺寸限制类容器用于限制容器大小，Flutter中提供了多种这样的容器，如<code>ConstrainedBox</code>、<code>SizedBox</code>、<code>UnconstrainedBox</code>、<code>AspectRatio</code> 等，本节将介绍一些常用的。</p>
+<p>所谓线性布局，即指沿水平或垂直方向排列子组件。Flutter 中通过<code>Row</code>和<code>Column</code>来实现线性布局，类似于Android 中的<code>LinearLayout</code>控件。<code>Row</code>和<code>Column</code>都继承自<code>Flex</code>，我们将在弹性布局一节中详细介绍<code>Flex</code>。</p>
+<p>弹性布局（Flex）Wrap</p>
+<h2 id="Flow"><a href="#Flow" class="headerlink" title="Flow"></a>Flow</h2><p>Stack、Positioned</p>
+<h2 id="Align"><a href="#Align" class="headerlink" title="Align"></a>Align</h2><p>Alignment</p>
+<p>FractionalOffset</p>
+<p>Center</p>
+<p>LayoutBuilder、AfterLayout</p>
+<h1 id="第七章-滚动组件"><a href="#第七章-滚动组件" class="headerlink" title="第七章 滚动组件"></a>第七章 滚动组件</h1><ul>
+<li>列表：ListView</li>
+<li>列表：GridView</li>
+</ul>
+<h1 id="第八章-功能组件"><a href="#第八章-功能组件" class="headerlink" title="第八章 功能组件"></a>第八章 功能组件</h1><h1 id="第九章-事件与通知"><a href="#第九章-事件与通知" class="headerlink" title="第九章 事件与通知"></a>第九章 事件与通知</h1><p>14.PageView（滑动视图）<br>22.LinearGradient（颜色渐变）<br>24. GestureDetector(手势监控）<br>26.（透明度）<br>27.MediaQuery.removePadding(去除组件之间空格）<br>29.（拖拽排序组件）</p>
+<h1 id="第十章-动画"><a href="#第十章-动画" class="headerlink" title="第十章 动画"></a>第十章 动画</h1><h1 id="第十一章-自定义组件"><a href="#第十一章-自定义组件" class="headerlink" title="第十一章 自定义组件"></a>第十一章 自定义组件</h1><h1 id="第十二章-文件操作与网络请求"><a href="#第十二章-文件操作与网络请求" class="headerlink" title="第十二章 文件操作与网络请求"></a>第十二章 文件操作与网络请求</h1><h1 id="第十三章-国际化"><a href="#第十三章-国际化" class="headerlink" title="第十三章 国际化"></a>第十三章 国际化</h1><h1 id="第十四章-Flutter核心原理"><a href="#第十四章-Flutter核心原理" class="headerlink" title="第十四章 Flutter核心原理"></a>第十四章 Flutter核心原理</h1><h1 id="第十五章-Flutter项目总结"><a href="#第十五章-Flutter项目总结" class="headerlink" title="第十五章 Flutter项目总结"></a>第十五章 Flutter项目总结</h1>
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2006/03/01/0603-Flutter/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2008/01/01/0801-ElasticStack/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            0801-ElasticStack
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2006/03/01/0603-Vue/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">0603-Vue</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'x4LtuVoSSI8Fyi6hvbBmupL5-gzGzoHsz',
+        app_key: '47DsbAAlOYTY98njMBmsyEIm',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'true',
+        avatar: 'robohash',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020-2022
+        xiaoliuxuesheng
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279413779&amp;web_id=1279413779'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="乘风破浪 披荆斩棘"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>老板,来一杯Java</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['在钢铁水泥的森林里 路在何方', '在鱼龙混杂的江湖里 何去何从', ''],
+      startDelay: 0,
+      typeSpeed: 400,
+      loop: false,
+      backSpeed: 40,
+      showCursor: false
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/js/ayer.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1384718065&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>

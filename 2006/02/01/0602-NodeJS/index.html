@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="JAVA 全栈 前端 运维 架构师" />
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    0602-NodeJS |  乘风破浪 披荆斩棘
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="乘风破浪 披荆斩棘" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-0602-NodeJS" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  0602-NodeJS
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2006/02/01/0602-NodeJS/" class="article-date">
+  <time datetime="2006-01-31T16:04:00.000Z" itemprop="datePublished">2006-02-01</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%85%A8%E6%A0%88/">前端全栈</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.6k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">10分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="第一章-Node-js基础"><a href="#第一章-Node-js基础" class="headerlink" title="第一章 Node.js基础"></a>第一章 Node.js基础</h1><h2 id="1-1-Nodejs概述"><a href="#1-1-Nodejs概述" class="headerlink" title="1.1 Nodejs概述"></a>1.1 Nodejs概述</h2><ol>
+<li>Nodejs简介：Node.js发布于2009年5月，由Ryan Dahl开发，是一个基于Chrome V8引擎的JavaScript运行环境，使用了一个事件驱动、非阻塞式I/O模型，让JavaScript 运行在服务端的开发平台；</li>
+<li>Nodejs功能特性：Nodejs内置的相关API可以快速搭建网络服务器，相关的功能特性如：<ul>
+<li>文件读写：File System</li>
+<li>进程管理：Process</li>
+<li>网络通信：http、https</li>
+</ul>
+</li>
+</ol>
+<h2 id="1-2-Nodejs发展历史"><a href="#1-2-Nodejs发展历史" class="headerlink" title="1.2 Nodejs发展历史"></a>1.2 Nodejs发展历史</h2><ul>
+<li>2009年2月，Ryan Dahl在博客上宣布准备基于V8创建一个轻量级的Web服务器并提供一套库。</li>
+<li>2009年5月，Ryan Dahl在GitHub上发布了最初版本的部分Node包，随后几个月里，有人开始使用Node开发应用。</li>
+<li>2009年11月和2010年4月，两届JSConf大会都安排了Node.js的讲座。</li>
+<li>2010年年底，Node获得云计算服务商Joyent资助，创始人Ryan Dahl加入Joyent全职负责Node的发展。</li>
+<li>2011年7月，Node在微软的支持下发布Windows版本。</li>
+</ul>
+<h1 id="第二章-Nodejs相关工具"><a href="#第二章-Nodejs相关工具" class="headerlink" title="第二章 Nodejs相关工具"></a>第二章 Nodejs相关工具</h1><h2 id="2-1-nvm"><a href="#2-1-nvm" class="headerlink" title="2.1 nvm"></a>2.1 nvm</h2><ol>
+<li><p>nvm（node version manager）：Nodejs的版本管理工具</p>
+</li>
+<li><p>nvm安装</p>
+<ul>
+<li><p>Linux系统安装nvm</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash</span><br><span class="line"><span class="comment"># 刷新配置文件</span></span><br><span class="line"><span class="built_in">source</span> .bash_profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Window系统安装nvm：<a target="_blank" rel="noopener" href='https://github.com/coreybutler/nvm-windows/releases'>Github下载地址</a></p>
+</li>
+</ul>
+</li>
+<li><p>nvm命令说明</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>使用说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nvm list [available]</td>
+<td>列出已经安装的node.js版本 - 参数available：显示可下载版本的部分列表 - 参数installed：显示已安装的版本列表</td>
+</tr>
+<tr>
+<td>nvm install <code>&lt;version&gt;</code> [arch]</td>
+<td>下载安装nodejs - 参数version：选择指定版本 - 参数arch：指定安装32位或64位版本（默认为系统arch）</td>
+</tr>
+<tr>
+<td>nvm version</td>
+<td>显示当前运行的nvm版本，可以简写为nvm v</td>
+</tr>
+<tr>
+<td>nvm on</td>
+<td>启用node.js版本管理</td>
+</tr>
+<tr>
+<td>nvm off</td>
+<td>禁用node.js版本管理</td>
+</tr>
+<tr>
+<td>nvm uninstall <code>&lt;version&gt;</code></td>
+<td>卸载指定版本的nodejs</td>
+</tr>
+<tr>
+<td>nvm use [version]</td>
+<td>切换到使用指定的nodejs版本</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="2-2-npm"><a href="#2-2-npm" class="headerlink" title="2.2 npm"></a>2.2 npm</h2><ol>
+<li><p>npm（node package manager）：nodejs的包管理工具，一般Nodejs项目的包相关信息会定义在package.json配置文件中；</p>
+</li>
+<li><p>nodejs的包管理配置文件初始化</p>
+<ul>
+<li><p>初始化package.json</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置文件初始化参数说明</p>
+<blockquote>
+<ul>
+<li>name：包名。</li>
+<li>version：包的版本号。</li>
+<li>description：包的描述。</li>
+<li>main：main 字段指定了程序的主入口文件</li>
+<li>script：由脚本命令组成的hash对象,key是生命周期事件，value是要运行的命令。</li>
+<li>keyword：关键字</li>
+<li>author：包的作者姓名。</li>
+<li>license：要指定一个许可证，让人知道使用的权利和限制的。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>npm命令说明</p>
+<table>
+<thead>
+<tr>
+<th>npm命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>npm version</td>
+<td>查看模块版本</td>
+</tr>
+<tr>
+<td>npm help</td>
+<td>查看某条命令的详细帮助</td>
+</tr>
+<tr>
+<td>npm init</td>
+<td>在项目中引导创建一个package.json文件</td>
+</tr>
+<tr>
+<td>npm install 包名</td>
+<td>安装包<br /> - 选项–global = -g：表示是全局安装<br /> - 选项-S = –save：表示安装到dependence中<br /> - 选项-D = –save-dev：表示安装到DevDependence中</td>
+</tr>
+<tr>
+<td>npm uninstall 报名</td>
+<td>卸载包<br /> - 选项–gloable = -g：表示卸载的是全局包</td>
+</tr>
+<tr>
+<td>npm ls</td>
+<td>查看安装的模块</td>
+</tr>
+<tr>
+<td>npm outdated</td>
+<td>检查模块是否已经过时</td>
+</tr>
+<tr>
+<td>npm update <package></td>
+<td>把当前目录下<code>node_modules</code>子目录里边的对应模块更新至最新版本</td>
+</tr>
+<tr>
+<td>npm cache clear</td>
+<td>清空NPM本地缓存</td>
+</tr>
+<tr>
+<td>npm adduser</td>
+<td>用户登录</td>
+</tr>
+<tr>
+<td>npm publish</td>
+<td>向npm仓库发布包</td>
+</tr>
+<tr>
+<td>npm config set proxy=<a target="_blank" rel="noopener" href="http://xxx">http://xxx</a></td>
+<td>设置代理</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>package.json包管理说明</p>
+<ul>
+<li><p>-S, –save 安装包信息将加入到dependencies（生产阶段的依赖）:不要将测试或过渡性的依赖放在<code>dependencies</code>hash中</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// npm install gulp --save 或 npm install gulp -S</span></span><br><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;gulp&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.9.1&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-E, –save-exact 精确安装指定模块版本</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// npm install gulp --save-exact 或 npm install gulp -E</span></span><br><span class="line"><span class="attr">&quot;dependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;gulp&quot;</span><span class="punctuation">:</span> <span class="string">&quot;3.9.1&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-D, –save-dev 安装包信息将加入到devDependencies（开发阶段的依赖）:不需要在开发使用的外部测试或者文档框架，将这些附属的项目列在<code>devDependencies</code>中。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// npm install gulp --save-dev 或 npm install gulp -D</span></span><br><span class="line"><span class="attr">&quot;devDependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;gulp&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.9.1&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>-O, –save-optional 安装包信息将加入到optionalDependencies（可选阶段的依赖）</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// npm install gulp --save-optional 或 npm install gulp -O</span></span><br><span class="line"><span class="attr">&quot;optionalDependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;gulp&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^3.9.1&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>package.json中包的版本说明</p>
+<ul>
+<li><p>node包的版本号规范</p>
+<blockquote>
+<ul>
+<li>第一部分为主版本号，变化了表示有了一个不兼容上个版本的大更改。</li>
+<li>第二部分为次版本号，变化了表示增加了新功能，并且可以向后兼容。</li>
+<li>第三部分为修订版本号，变化了表示有bug修复，并且可以向后兼容。</li>
+<li>第四部分为日期版本号加希腊字母版本号，希腊字母版本号共有五种，分别为base、alpha、beta 、RC 、 release</li>
+</ul>
+</blockquote>
+</li>
+<li><p>库中版本号说明</p>
+<blockquote>
+<ul>
+<li><strong>version</strong>：必须匹配某个版本</li>
+<li><strong>&gt;version</strong>：必须大于某个版本</li>
+<li><strong>&gt;=version</strong>：可大于或等于某个版本</li>
+<li><strong>&lt;version</strong>：必须小于某个版本</li>
+<li><strong>&lt;=version</strong>：可以小于或等于某个版本</li>
+<li><strong>^version</strong>：主版本号确定，次版本号和修订版本是最新版本</li>
+<li><strong>~version</strong>：主版本号和此版本好确定，修订版本号是最新版本</li>
+<li>*****：最新版本</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>package.json的脚本命令</p>
+</li>
+</ol>
+<h2 id="2-3-nrm"><a href="#2-3-nrm" class="headerlink" title="2.3 nrm"></a>2.3 nrm</h2><ol>
+<li><p>nrm（npm registry manager）：npm的镜像源管理工具</p>
+</li>
+<li><p>下载nrm</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>nrm常用命令</p>
+<table>
+<thead>
+<tr>
+<th>nrm命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nrm ls</td>
+<td>查看可选的源</td>
+</tr>
+<tr>
+<td>nrm use taobao</td>
+<td>切换到taobao源</td>
+</tr>
+<tr>
+<td>nrm add <code>&lt;registry&gt;</code>  <code>&lt;url&gt;</code></td>
+<td>增加定制的源</td>
+</tr>
+<tr>
+<td>nrm del <code>&lt;registry&gt;</code></td>
+<td>删除对应的源</td>
+</tr>
+<tr>
+<td>nrm test</td>
+<td>测试相应源的响应时间</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="2-4-npx"><a href="#2-4-npx" class="headerlink" title="2.4 npx"></a>2.4 npx</h2><ol>
+<li>npx：帮助执行依赖包node_modules包里的二进制文件，而且不需要在命令行指定二进制文件的路径， npm5.2版本开始，就与npm捆绑在一起。</li>
+<li>npx说明：npm执行二进制文件原理：①默认情况下，首先检查路径中是否存在要执行的包（即在项目中）；②如果存在，它将执行；③若不存在，意味着尚未安装该软件包，npx将安装其最新版本，然后执行它；<ul>
+<li>阻止默认行为：npx  [package] –no-install（告诉npx ，它应该仅执行。[package]，如果之前未安装，则不安装。)</li>
+</ul>
+</li>
+</ol>
+<h1 id="第三章-脚本命令"><a href="#第三章-脚本命令" class="headerlink" title="第三章 脚本命令"></a>第三章 脚本命令</h1><h2 id="3-1-脚本命令介绍"><a href="#3-1-脚本命令介绍" class="headerlink" title="3.1 脚本命令介绍"></a>3.1 脚本命令介绍</h2><ol>
+<li>什么是npm脚本<ul>
+<li>在<code>package.json</code>文件里面，使用<code>scripts</code>字段定义脚本命令：<code>scripts</code>字段是一个对象。它的每一个属性，对应一段脚本。</li>
+<li>命令行下使用<code>npm run</code>命令，就可以执行这段脚本：这些定义在<code>package.json</code>里面的脚本，就称为 npm 脚本</li>
+</ul>
+</li>
+<li>原理：每当执行<code>npm run</code>，就会自动新建一个 Shell，在这个 Shell 里面执行指定的脚本命令。因此，只要是 Shell（一般是 Bash）可以运行的命令，就可以写在 npm 脚本里面。比较特别的是，<code>npm run</code>新建的这个 Shell，会将当前目录的<code>node_modules/.bin</code>子目录加入<code>PATH</code>变量，执行结束后，再将<code>PATH</code>变量恢复原样。</li>
+<li>npm run的四种简写形式<ul>
+<li><code>npm start</code>是<code>npm run start</code></li>
+<li><code>npm stop</code>是<code>npm run stop</code>的简写</li>
+<li><code>npm test</code>是<code>npm run test</code>的简写</li>
+<li><code>npm restart</code>是<code>npm run stop &amp;&amp; npm run restart &amp;&amp; npm run start</code>的简写</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-2-脚本命令基础"><a href="#3-2-脚本命令基础" class="headerlink" title="3.2 脚本命令基础"></a>3.2 脚本命令基础</h2><ol>
+<li><p>通配符：由于 npm 脚本就是 Shell 脚本，因为可以使用 Shell 通配符。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;lint&quot;</span>: <span class="string">&quot;jshint *.js&quot;</span>		<span class="comment">// `*`表示任意文件名，`**`表示任意一层子目录。</span></span><br><span class="line"><span class="string">&quot;lint&quot;</span>: <span class="string">&quot;jshint **/*.js&quot;</span>	</span><br><span class="line"><span class="string">&quot;test&quot;</span>: <span class="string">&quot;tap test/\*.js&quot;</span>	<span class="comment">// 如果要将通配符传入原始命令，防止被 Shell 转义，要将星号转义。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>传参：向 npm 脚本传入参数，要使用<code>--</code>标明。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;script&quot;</span>:&#123;</span><br><span class="line">    <span class="string">&quot;lint&quot;</span>: <span class="string">&quot;jshint **.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;lint:checkstyle&quot;</span>: <span class="string">&quot;npm run lint -- --reporter checkstyle &gt; checkstyle.xml&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向上面的npm run lint命令传入参数，必须写成下面这样。</span></span><br><span class="line">&gt; $ npm run lint --  --reporter checkstyle &gt; checkstyle.<span class="property">xml</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行顺序：如果 npm 脚本里面需要执行多个任务，那么需要明确它们的执行顺序。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm run script1.<span class="property">js</span> &amp; npm run script2.<span class="property">js</span>		<span class="comment">// 并行执行 &amp;</span></span><br><span class="line">npm run script1.<span class="property">js</span> &amp;&amp; npm run script2.<span class="property">js</span>	<span class="comment">// 继发执行</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>钩子：npm 脚本有<code>pre</code>和<code>post</code>两个钩子。举例来说，<code>build</code>脚本命令的钩子就是<code>prebuild</code>和<code>postbuild</code>。执行<code>npm run build</code>会自动按照下面的顺序执行：<code>npm run prebuild &amp;&amp; npm run build &amp;&amp; npm run postbuild</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;prebuild&quot;</span>: <span class="string">&quot;echo I run before the build script&quot;</span>,</span><br><span class="line"><span class="string">&quot;build&quot;</span>: <span class="string">&quot;cross-env NODE_ENV=production webpack&quot;</span>,</span><br><span class="line"><span class="string">&quot;postbuild&quot;</span>: <span class="string">&quot;echo I run after the build script&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>npm_lifecycle_event变量：返回当前正在运行的脚本名称</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">TARGET</span> = process.<span class="property">env</span>.<span class="property">npm_lifecycle_event</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable constant_">TARGET</span> === <span class="string">&#x27;test&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Running the test task!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable constant_">TARGET</span> === <span class="string">&#x27;pretest&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Running the pretest task!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable constant_">TARGET</span> === <span class="string">&#x27;posttest&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Running the posttest task!`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="3-3-脚本变量"><a href="#3-3-脚本变量" class="headerlink" title="3.3 脚本变量"></a>3.3 脚本变量</h2><ol>
+<li><p>脚本变量：npm 脚本有一个非常强大的功能，就是可以使用 npm 的内部变量。通过<code>npm_package_</code>前缀，npm 脚本可以拿到<code>package.json</code>里面的字段</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;foo&quot;</span><span class="punctuation">,</span> </span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1.2.5&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;view&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node view.js&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;obj&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;test&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">&gt; process.env.npm_package_name 		<span class="comment">// foo</span></span><br><span class="line">&gt; process.env.npm_package_obj_name	<span class="comment">// test</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>NODE_ENV环境变量：通常这个变量用来区分开发与生产环境，加载不同的配置。</p>
+<ul>
+<li><p>配置：node中有全局变量process表示当前node进程，process.env包含着关于系统环境的信息。但是process.env中并不存在NODE_ENV这个东西，NODE_ENV只是一个用户自定义的变量，当我们在服务启动时配置NODE_ENV,或在代码中给process.env.NODE_ENV赋值，js便能通过process.env.NODE_ENV获取信息。<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NODE_ENV=production  node index.js&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">&gt; process.env.NODE_ENV 	<span class="comment">// production</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Windows与Linux兼容性处理：跨平台方案，第三方插件cross-env：windows不支持<code>NODE_ENV=development</code>的设置方式。</p>
+<ul>
+<li><p>安装cross-env</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cross-env --save-dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>跨平台兼容性配置</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cross-env NODE_ENV=production  node index.js&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2006/02/01/0602-NodeJS/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSFW/" rel="tag">JSFW</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2006/03/01/0603-TypesScript/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            0603-TypesScript
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2006/02/01/0602-%E6%A8%A1%E5%9D%97%E5%8C%96/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">0602-模块化</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'x4LtuVoSSI8Fyi6hvbBmupL5-gzGzoHsz',
+        app_key: '47DsbAAlOYTY98njMBmsyEIm',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'true',
+        avatar: 'robohash',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020-2022
+        xiaoliuxuesheng
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279413779&amp;web_id=1279413779'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="乘风破浪 披荆斩棘"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>老板,来一杯Java</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['在钢铁水泥的森林里 路在何方', '在鱼龙混杂的江湖里 何去何从', ''],
+      startDelay: 0,
+      typeSpeed: 400,
+      loop: false,
+      backSpeed: 40,
+      showCursor: false
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/js/ayer.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1384718065&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>

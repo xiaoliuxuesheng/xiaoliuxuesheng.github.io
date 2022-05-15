@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="JAVA 全栈 前端 运维 架构师" />
+   
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    0603-Vue |  乘风破浪 披荆斩棘
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="乘风破浪 披荆斩棘" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-0603-Vue" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  0603-Vue
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2006/03/01/0603-Vue/" class="article-date">
+  <time datetime="2006-02-28T16:02:00.000Z" itemprop="datePublished">2006-03-01</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%85%A8%E6%A0%88/">前端全栈</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">11.4k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">50分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="第三章-组件化开发"><a href="#第三章-组件化开发" class="headerlink" title="第三章 组件化开发"></a>第三章 组件化开发</h1><h2 id="3-1-组件化入门"><a href="#3-1-组件化入门" class="headerlink" title="3.1 组件化入门"></a>3.1 组件化入门</h2><h3 id="1-组件概述"><a href="#1-组件概述" class="headerlink" title="1. 组件概述"></a>1. 组件概述</h3><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>前端代码开发中，程序实现是希望尽可能多的做到代码重用，然而前端在代码重用中可能会产生CSS样式和JS业务逻辑的冲突；由此产生的Web Components开发标准：其核心思想是通过创建封装特定功能的定制元素（Vue的实现方式是用一个自定义标签封装独立的前端代码并且具有特定的功能），并且能够解决冲突问题；</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>但是这个Web Components标准没有被浏览器广泛支持，但是Vue部分实现了Web Components开发标准。把不同的功能在不同的组件中开发，通过组件组合的方式实现功能的同一实现。</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>组件设计是将不同的功能封装在不同的组件中，通过组件的整合形成完整意义上的一个应用；</p>
+<p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Vue中组件分为全局组件和局部组件，在Vue组件本质也是一个Vue实例，拥有Vue对象的全部属性：如data、methods等等；组件注册实际上是将定义好的组件绑定到Vue实例中，可以将组件定义在Vue对象（java中称类）上，称为全局组件，这样所有的vue实例都可以使用该组件；如果将组件定义在Vue实例上，称为局部组件，可以在当前Vue实例范围内使用；</p>
+<h3 id="2-组件分类"><a href="#2-组件分类" class="headerlink" title="2. 组件分类"></a>2. 组件分类</h3><ul>
+<li>根据组件的使用范围：①全局组件②局部组件</li>
+<li>根据组件的引用关系：①父组件②子组件</li>
+</ul>
+<h3 id="3-组件特点"><a href="#3-组件特点" class="headerlink" title="3. 组件特点"></a>3. 组件特点</h3><ul>
+<li><strong>组件使用的三个基础步骤</strong>：①创建组件、②注册组件、③使用组件；</li>
+<li><strong>组件是可复用的 Vue 实例</strong>：组件与 <code>new Vue</code> 接收相同的选项，例如 <code>data</code>、<code>computed</code>、<code>watch</code>、<code>methods</code> 以及生命周期钩子等。仅有的例外是像 <code>el</code> 这样根实例特有的选项；</li>
+<li><strong>组件的 data 选项</strong>：必须是一个函数，因此每个实例可以维护一份被返回对象的独立的拷贝；</li>
+<li><strong>组件树</strong>：通常一个应用会以一棵嵌套的组件树的形式来组织，根组件是Vue实例，其他组件必须先注册便于Vue识别：有两种注册类型全局注册和局部注册；</li>
+<li><strong>每个组件必须只有一个根元素</strong>：组件中可以将模板的内容包裹在一个父元素内。</li>
+</ul>
+<h2 id="3-2-组件创建"><a href="#3-2-组件创建" class="headerlink" title="3.2 组件创建"></a>3.2 组件创建</h2><h3 id="1-extend"><a href="#1-extend" class="headerlink" title="1. extend"></a>1. extend</h3><ul>
+<li><p>Vue组件创建的底层函数：使用textend()方法根据传递的参数选项创建组件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&#x27;app&#x27;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span></span><br><span class="line">        3. 使用组件</span><br><span class="line">    <span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cpn</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="comment">// 1. 创建组件对象</span></span></span><br><span class="line"><span class="language-javascript">	<span class="keyword">const</span> cpn = <span class="title class_">Vue</span>.<span class="title function_">extend</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 组件选项</span></span></span><br><span class="line"><span class="language-javascript">    	<span class="comment">// ... ...</span></span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 2 注册全局组件</span></span></span><br><span class="line"><span class="language-javascript">    <span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&#x27;组件名称&#x27;</span>, cpn)</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 2. 注册局部组件</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> vm = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">components</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="string">&#x27;组件名称&#x27;</span>: cpn</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2-extend语法糖"><a href="#2-extend语法糖" class="headerlink" title="2. extend语法糖"></a>2. extend语法糖</h3><ul>
+<li><p>为简化使用extend()创建组件步骤，Vue提供组件创建语法糖：将组件的创建和注册在语法上整合在一起</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&#x27;app&#x27;</span>&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">h3</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        3. 使用组件</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">cpn</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">// 2 注册全局组件</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&#x27;组件名称&#x27;</span>, &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">// 组件选项</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    	<span class="comment">// ... ...</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">// 2. 注册局部组件</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> vm = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">components</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="string">&#x27;组件名称&#x27;</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">// 组件选项</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">// ... ...</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="3-template抽取-lt-script-gt"><a href="#3-template抽取-lt-script-gt" class="headerlink" title="3. template抽取&lt;script&gt;"></a>3. template抽取<code>&lt;script&gt;</code></h3><ul>
+<li><p>在上述方法中，组件模板内容是定义在template的字符串中，这并适合前端代码开发，所以需要将组件模块内容定义在html文本区域;</p>
+</li>
+<li><p>方案一：定义在<code>&lt;script&gt;</code>标签中，使用script作为模板的根标签，script标签的type必须是<code>text/x-template</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 1.定义组件模板内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/x-template&quot;</span> <span class="attr">id</span>=<span class="string">&quot;自定义组件模板名称&quot;</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    	组件内容</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 2. 创建组件时候使用 template 引用组件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> component = <span class="title class_">Vue</span>.<span class="title function_">extend</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">   	 	<span class="attr">template</span>: <span class="string">&#x27;#id值&#x27;</span></span></span><br><span class="line"><span class="language-javascript">	&#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="4-template抽取-lt-template-gt"><a href="#4-template抽取-lt-template-gt" class="headerlink" title="4. template抽取&lt;template&gt;"></a>4. template抽取<code>&lt;template&gt;</code></h3><ul>
+<li><p>方案二：使用<code>&lt;template&gt;</code>标签作为组件根标签</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;自定义组件模板名称&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>组件内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> component = <span class="title class_">Vue</span>.<span class="title function_">extend</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">   	 	<span class="attr">template</span>: <span class="string">&#x27;#id值&#x27;</span></span></span><br><span class="line"><span class="language-javascript">	&#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="5-template模块化"><a href="#5-template模块化" class="headerlink" title="5. template模块化"></a>5. template模块化</h3><ul>
+<li>方案三：将组件选项单独定义为ES6的一个模块，在这个模块中export组件对象，在父组件中import这个模块中的组件对象并注册到父组件中；</li>
+</ul>
+<h3 id="5-vue-cli组件"><a href="#5-vue-cli组件" class="headerlink" title="5. vue-cli组件"></a>5. vue-cli组件</h3><ul>
+<li>使用vue-cli创建</li>
+</ul>
+<h2 id="3-3-组件数据"><a href="#3-3-组件数据" class="headerlink" title="3.3 组件数据"></a>3.3 组件数据</h2><h3 id="1-父传子"><a href="#1-父传子" class="headerlink" title="1. 父传子"></a>1. 父传子</h3><ul>
+<li><p><strong>props数组</strong>：Prop 是可以在组件上注册的一些自定义 attribute。当一个值传递给一个 prop attribute 的时候，它就变成了那个组件实例的一个 property。可以用一个 <code>props</code> 选项将其包含在该组件可接受的 prop 列表中：列表中可以拥有任意数量的 prop，任何值都可以传递给任何 prop。子组件实例中访问这个值，就像访问 <code>data</code> 中的值一样。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">title</span>=<span class="string">&quot;My journey with Vue&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">title</span>=<span class="string">&quot;Blogging with Vue&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blog-post</span> <span class="attr">title</span>=<span class="string">&quot;Why Vue is so fun&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-handlebars"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    Vue.component(&#x27;blog-post&#x27;, &#123;</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">      props: [&#x27;title&#x27;],</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">      template: &#x27;<span class="tag">&lt;<span class="name">h3</span>&gt;</span></span><span class="template-variable">&#123;&#123; <span class="name">title</span> &#125;&#125;</span><span class="language-xml"><span class="tag">&lt;/<span class="name">h3</span>&gt;</span>&#x27;</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars">    &#125;)</span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>props对象</strong>：props中的参数可以以对象形式列出 prop，这些 property 的名称和值分别是 prop 各自的名称和类型；并且可以为 <code>props</code> 中的值提供一个带有验证需求的对象，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&#x27;my-component&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">props</span>: &#123;</span><br><span class="line">    <span class="comment">// 基础的类型检查 (`null` 和 `undefined` 会通过任何类型验证)</span></span><br><span class="line">    <span class="attr">propA</span>: <span class="title class_">Number</span>,</span><br><span class="line">    <span class="comment">// 多个可能的类型</span></span><br><span class="line">    <span class="attr">propB</span>: [<span class="title class_">String</span>, <span class="title class_">Number</span>],</span><br><span class="line">    <span class="comment">// 必填的字符串</span></span><br><span class="line">    <span class="attr">propC</span>: &#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="title class_">String</span>,</span><br><span class="line">      <span class="attr">required</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 带有默认值的数字</span></span><br><span class="line">    <span class="attr">propD</span>: &#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="title class_">Number</span>,</span><br><span class="line">      <span class="attr">default</span>: <span class="number">100</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 带有默认值的对象</span></span><br><span class="line">    <span class="attr">propE</span>: &#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="title class_">Object</span>,</span><br><span class="line">      <span class="comment">// 对象或数组默认值必须从一个工厂函数获取</span></span><br><span class="line">      <span class="attr">default</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123; <span class="attr">message</span>: <span class="string">&#x27;hello&#x27;</span> &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 自定义验证函数</span></span><br><span class="line">    <span class="attr">propF</span>: &#123;</span><br><span class="line">      <span class="attr">validator</span>: <span class="keyword">function</span> (<span class="params">value</span>) &#123;</span><br><span class="line">        <span class="comment">// 这个值必须匹配下列字符串中的一个</span></span><br><span class="line">        <span class="keyword">return</span> [<span class="string">&#x27;success&#x27;</span>, <span class="string">&#x27;warning&#x27;</span>, <span class="string">&#x27;danger&#x27;</span>].<span class="title function_">indexOf</span>(value) !== -<span class="number">1</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2-子传父"><a href="#2-子传父" class="headerlink" title="2. 子传父"></a>2. 子传父</h3><ul>
+<li><p><strong>自定义事件注意点</strong>：不同于组件和 prop，事件名不会被用作一个 JavaScript 变量名或 property 名，所以不建议使用驼峰命名；由于html大小写不敏感，事件名称会转为全小写，在事件命名推荐使用中横线连接符；</p>
+</li>
+<li><p>数据传输原理是通过子组件的自定义事件将数据以参数的方式传递出去，在使用组件的地方绑定事件并接收参数完成数据传递</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">1. 子组件中定义事件并绑定参数</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">&quot;cpn&quot;</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        子组件输入框: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> @<span class="attr">input</span>=<span class="string">&quot;inputChange&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> cpn = <span class="title class_">Vue</span>.<span class="title function_">extend</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">template</span>: <span class="string">`#cpn`</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            inputChange (event)&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="variable language_">this</span>.$emit(<span class="string">&#x27;sub-change&#x27;</span>,event.<span class="property">data</span>)</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">2. 在使用组件的部分绑定事件并接收参数</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    子组件-- <span class="tag">&lt;<span class="name">cpn</span> @<span class="attr">sub-change</span>=<span class="string">&quot;subChange&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">cpn</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> vm = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">components</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">cpn</span>: cpn</span></span><br><span class="line"><span class="language-javascript">        &#125;,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">            subChange (data) &#123;</span></span><br><span class="line"><span class="language-javascript">               <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>.sync 修饰符</strong>：</p>
+</li>
+<li><p><strong>.native 修饰符</strong>：</p>
+</li>
+</ul>
+<h3 id="3-同级传值"><a href="#3-同级传值" class="headerlink" title="3. 同级传值"></a>3. 同级传值</h3><ul>
+<li><p><strong>一般大型的项目，推荐使用Vuex来管理组件之间的通信</strong></p>
+</li>
+<li><p>同级组件不能直接传值，需要一个中间桥梁，可以先将数据传递给公共的父组件，然后父组件再将数据传递给需要的子组件。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 1. 创建一个公共桥梁作为</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> bus = <span class="keyword">new</span> <span class="title class_">Vue</span>()</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 2. 在数据发送方自定义事件将数据发送桥梁</span></span></span><br><span class="line"><span class="language-javascript">    <span class="attr">methods</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="title function_">cpn1Change</span>(<span class="params">event</span>)&#123;</span></span><br><span class="line"><span class="language-javascript">            bus.$emit(<span class="string">&#x27;cnp-one-change&#x27;</span>,event.<span class="property">data</span>)</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 3. 在数据接收方的mounted时间钩子函数中始化完成，就开始执行定义的方法</span></span></span><br><span class="line"><span class="language-javascript">    mounted () &#123;</span></span><br><span class="line"><span class="language-javascript">        bus.$on(<span class="string">&#x27;cnp-one-change&#x27;</span>,<span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        &#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="4-refs"><a href="#4-refs" class="headerlink" title="4. $refs"></a>4. $refs</h3><ul>
+<li><p>ref：被用来给元素或子组件注册引用信息，如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- `vm.$refs.p` DOM 元素 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">ref</span>=<span class="string">&quot;p&quot;</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- `vm.$refs.child` 组件实例 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">child-component</span> <span class="attr">ref</span>=<span class="string">&quot;child&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">child-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>$refs：ref引用信息将会注册在父组件的 <code>$refs</code> 对象上</p>
+<ul>
+<li>当 <code>v-for</code> 用于元素或组件的时候，引用信息将是包含 DOM 节点或组件实例的数组。</li>
+<li>当引入DOM元素时候：ref 本身是作为渲染结果被创建的，在初始渲染的时候你不能访问它们</li>
+<li>当引入组件实例时候：<code>$refs</code> 也不是响应式的，不应该在模板中做数据绑定。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-root"><a href="#5-root" class="headerlink" title="5. $root"></a>5. $root</h3><ul>
+<li>当前组件树的根 Vue 实例。</li>
+</ul>
+<h3 id="6-parent"><a href="#6-parent" class="headerlink" title="6. $parent"></a>6. $parent</h3><ul>
+<li>父实例，如果当前实例有的话。</li>
+</ul>
+<h3 id="7-children"><a href="#7-children" class="headerlink" title="7. $children"></a>7. $children</h3><ul>
+<li>当前实例的直接子组件。<strong>需要注意 <code>$children</code> 并不保证顺序，也不是响应式的。</strong>如果你发现自己正在尝试使用 <code>$children</code> 来进行数据绑定，考虑使用一个数组配合 <code>v-for</code> 来生成子组件，并且使用 Array 作为真正的来源。</li>
+</ul>
+<h2 id="3-3-组件插槽"><a href="#3-3-组件插槽" class="headerlink" title="3.3 组件插槽"></a>3.3 组件插槽</h2><h3 id="1-插槽概述"><a href="#1-插槽概述" class="headerlink" title="1. 插槽概述"></a>1. 插槽概述</h3><h3 id="2-插槽入门"><a href="#2-插槽入门" class="headerlink" title="2. 插槽入门"></a>2. 插槽入门</h3><h3 id="3-插槽：name"><a href="#3-插槽：name" class="headerlink" title="3. 插槽：name"></a>3. 插槽：name</h3><h3 id="4-插槽：slot-scope"><a href="#4-插槽：slot-scope" class="headerlink" title="4. 插槽：slot-scope"></a>4. 插槽：slot-scope</h3><h1 id="第五章-vue-router"><a href="#第五章-vue-router" class="headerlink" title="第五章 vue-router"></a>第五章 vue-router</h1><h2 id="5-1-路由概述"><a href="#5-1-路由概述" class="headerlink" title="5.1 路由概述"></a>5.1 路由概述</h2><h3 id="1-VueRouter是什么"><a href="#1-VueRouter是什么" class="headerlink" title="1. VueRouter是什么"></a>1. VueRouter是什么</h3><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><strong>路由</strong>是网络工程中的术语，维基百科对其的解释是通过互联网把信息从源地址传输到目的地址的活动；随着IT技术的发展由后端路由发展到前端路由；</p>
+<ul>
+<li><strong>后端路由</strong>：在互联网发展早期，浏览器发送请求到服务器，服务器将数据渲染为html并返回，所以前端页面的跳转是由服务器完成，即后端控制请求并路由；</li>
+<li><strong>前端路由</strong>：指浏览器改变URL不会向服务器发送请求，并且可以进行页面跳转的页面渲染，即前端控制请求并路由到指定页面；</li>
+</ul>
+<h3 id="2-VueRouter原理"><a href="#2-VueRouter原理" class="headerlink" title="2. VueRouter原理"></a>2. VueRouter原理</h3><p><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>SPA(single page application)：单一页面应用程序，只有一个完整的页面；它在加载页面时，不会加载整个页面，而是只更新某个指定的容器中内容。<strong>单页面应用(SPA)的核心之一是：更新视图而不重新请求页面</strong>；vue-router在实现单页面前端路由时，提供了两种方式：Hash模式和History模式；根据配置mode参数来决定采用哪一种方式。</p>
+<ul>
+<li><p><strong>hash ：vue-router 默认 hash 模式 —— 使用 URL 的 hash 来模拟一个完整的 URL，于是当 URL 改变时，页面不会重新加载。</strong> hash（#）是URL 的锚点，代表的是网页中的一个位置，单单改变#后的部分，浏览器只会滚动到相应位置，不会重新加载网页，也就是说<strong>hash 出现在 URL 中，但不会被包含在 http 请求中，对后端完全没有影响，因此改变 hash 不会重新加载页面</strong>；同时每一次改变#后的部分，都会在浏览器的访问历史中增加一个记录，使用”后退”按钮，就可以回到上一个位置；所以说<strong>Hash模式通过锚点值的改变，根据不同的值，渲染指定DOM位置的不同数据。hash 模式的原理是 onhashchange 事件(监测hash值变化)，可以在 window 对象上监听这个事件</strong>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location.<span class="property">hash</span>=<span class="string">&#x27;url hash&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>history **：由于hash模式会在url中自带#，如果不想要很丑的 hash，我们可以用路由的 history 模式，只需要在配置路由规则时，加入”mode: ‘history’”,</strong>这种模式充分利用了html5 history interface 中新增的 pushState() 和 replaceState() 方法。这两个方法应用于浏览器记录栈，在当前已有的 back、forward、go 基础之上，它们提供了对历史记录修改的功能。只是当它们执行修改时，虽然改变了当前的 URL ，但浏览器不会立即向后端发送请求**。当你使用 history 模式时，URL 就像正常的 url；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">history.<span class="title function_">pushStatus</span>(&#123;&#125;,<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;url&#x27;</span>);</span><br><span class="line">history.<span class="title function_">back</span>();</span><br><span class="line">history.<span class="title function_">forward</span>();</span><br><span class="line">history.<span class="title function_">replaceStatus</span>(&#123;&#125;,<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;url&#x27;</span>);</span><br><span class="line">history.<span class="title function_">go</span>(索引);	<span class="comment">// 索引为正数向前跳, 索引为负数向后跳</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="3-VueRouter使用方式"><a href="#3-VueRouter使用方式" class="headerlink" title="3. VueRouter使用方式"></a>3. VueRouter使用方式</h3><ul>
+<li>方式1：直接修改地址栏</li>
+<li>方式2：this.$router.push(‘路由地址’)</li>
+<li>方式3：<code>&lt;router-link to=&quot;路由地址&quot;&gt;&lt;/router-link&gt;</code></li>
+</ul>
+<h2 id="5-2-VueRouter安装"><a href="#5-2-VueRouter安装" class="headerlink" title="5.2 VueRouter安装"></a>5.2 VueRouter安装</h2><h3 id="1-方式一：基础"><a href="#1-方式一：基础" class="headerlink" title="1. 方式一：基础"></a>1. 方式一：基础</h3><ul>
+<li><p>下载路由组件：<code>npm install vue-router --save</code></p>
+</li>
+<li><p>新增router包（<em>路由组件会单独定义一个文件夹，在vue项目中成为包</em>），自定义路由入口文件：<code>router/index.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一步 导入路由对象,并且挂载到Vue对象中</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">VueRouter</span> <span class="keyword">from</span> <span class="string">&quot;vue-router&quot;</span>;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">VueRouter</span>);</span><br><span class="line"><span class="comment">// 第二步 创建路由实例,并且设置路由映射配置</span></span><br><span class="line"><span class="keyword">const</span> routes = [&#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;Home&quot;</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="title class_">Home</span>,</span><br><span class="line">    &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&quot;history&quot;</span>,</span><br><span class="line">    routes,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置router入口组件到main.js，将路由组件挂载到Vue实例上，为全局添加了两个属性：$router和$route；全局添加了两个组件：<code>&lt;router-link&gt;</code>和<code>&lt;router-view&gt;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;./router&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  router,</span><br><span class="line">  <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> <span class="title function_">h</span>(<span class="title class_">App</span>)</span><br><span class="line">&#125;).$mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2-方式二：分模块"><a href="#2-方式二：分模块" class="headerlink" title="2. 方式二：分模块"></a>2. 方式二：分模块</h3><ul>
+<li><p>下载路由组件：<code>npm install vue-router --save</code></p>
+</li>
+<li><p>新增router包，自定义路由入口文件：<code>router/index.js</code>，并在Vue实例上安装router组件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">VueRouter</span> <span class="keyword">from</span> <span class="string">&#x27;vue-router&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">VueRouter</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&#x27;history&#x27;</span>,</span><br><span class="line">  routes</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在router包中新增model包，将需要拆分的路由模块单独定义，新增路由的方式采用函数的方式追加到路由映射表中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> (<span class="params">router</span>)&#123;</span><br><span class="line">    router.<span class="title function_">push</span>(&#123;</span><br><span class="line">        <span class="attr">path</span>:<span class="string">&#x27;/router&#x27;</span>,</span><br><span class="line">        <span class="attr">component</span>:<span class="function">()=&gt;</span><span class="title function_">import</span>(<span class="string">&#x27;../../views/Demo01Router&#x27;</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后将自定义模块添加到router入口组件中，并调入函数，传入路由映射表作为参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入路由模块</span></span><br><span class="line"><span class="keyword">import</span> basic <span class="keyword">from</span> <span class="string">&#x27;./models/basic&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = []</span><br><span class="line"><span class="title function_">basic</span>(routes)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置router入口组件到main.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&#x27;./router&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  router,</span><br><span class="line">  <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> <span class="title function_">h</span>(<span class="title class_">App</span>)</span><br><span class="line">&#125;).$mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="5-3-VueRouter基础"><a href="#5-3-VueRouter基础" class="headerlink" title="5.3 VueRouter基础"></a>5.3 VueRouter基础</h2><h3 id="1-路由配置"><a href="#1-路由配置" class="headerlink" title="1. 路由配置"></a>1. 路由配置</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&#x27;history&#x27;</span>,		<span class="comment">// 路由模式：hash | history</span></span><br><span class="line">  routes,				<span class="comment">// 路由映射表，是个数组</span></span><br><span class="line">  <span class="attr">linkActiveClass</span>:<span class="string">&#x27;&#x27;</span>	<span class="comment">// 全局配置link激活</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-router-link"><a href="#2-router-link" class="headerlink" title="2. router-link"></a>2. router-link</h3><ul>
+<li><p>是vue-router已经内置的一个组件，默认会被渲染为<code>&lt;a&gt;</code>标签；</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 字符串 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">&quot;home&quot;</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 使用 v-bind 的 JS 表达式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">v-bind:to</span>=<span class="string">&quot;&#x27;home&#x27;&quot;</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 不写 v-bind 也可以，就像绑定别的属性一样 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">&quot;&#x27;home&#x27;&quot;</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 属性绑定，修改属性改变路由 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">&quot;home&quot;</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 同上 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">&quot;&#123; path: &#x27;home&#x27; &#125;&quot;</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 命名的路由 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">&quot;&#123; name: &#x27;user&#x27;, params: &#123; userId: 123 &#125;&#125;&quot;</span>&gt;</span>User<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 带查询参数，下面的结果为 /register?plan=private --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">&quot;&#123; path: &#x27;register&#x27;, query: &#123; plan: &#x27;private&#x27; &#125;&#125;&quot;</span>&gt;</span>Register<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><strong>to</strong>（必选参数）：表示目标路由的链接，可以是一个字符串，或是动态绑定的描述目标位置的对象</li>
+<li><strong>tag</strong>：默认值a，<code>&lt;router-link&gt;</code> 渲染成tag属性所指定的标签</li>
+<li><strong>replace</strong>：默认值</li>
+<li><strong>active-class</strong>：默认值<code>router-link-active</code>，设置 链接激活时使用的 CSS 类名，默认值可以通过路由的构造选项 linkActiveClass 来全局配置</li>
+<li><strong>exact-active-class</strong>：默认值<code>router-link-exact-active</code>，当链接被精确匹配的时候应该激活的 class。默认值也是可以通过路由构造函数选项 linkExactActiveClass 进行全局配置的。</li>
+<li><strong>exact</strong>：类型Boolean，默认值false，表示是否激活</li>
+<li><strong>event</strong>：默认值<code>click</code>，声明可以用来触发导航的事件。可以是一个字符串。</li>
+<li><strong>append</strong>：设置 append 属性后，则在当前 (相对) 路径前添加基路径，<em>例如，我们从 /a 导航到一个相对路径 b，如果没有配置 append，则路径为 /b，如果配了，则为 /a/b</em></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-router-view"><a href="#3-router-view" class="headerlink" title="3. router-view"></a>3. router-view</h3><ul>
+<li><p><strong>作用</strong>：改标签会根据当前的路径，动态的替换路径所映射的组件，路由切换时，切换的是<code>&lt;router-view&gt;</code>挂载的组件；</p>
+</li>
+<li><p><strong>视图命名</strong>：如果希望同时展示多个视图，而不是嵌套视图，可以在界面中定义多个单独命名的视图；如果 <code>router-view</code> 没有设置名字，那么默认为 <code>default</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-view</span> <span class="attr">name</span>=<span class="string">&quot;a&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-view</span> <span class="attr">name</span>=<span class="string">&quot;b&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">	<span class="comment">// 一个视图使用一个组件渲染，因此对于同个路由，多个视图就需要多个组件</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">routes</span>: [</span></span><br><span class="line"><span class="language-javascript">            &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">components</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">default</span>: <span class="title class_">Foo</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">a</span>: <span class="title class_">Bar</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">b</span>: <span class="title class_">Baz</span></span></span><br><span class="line"><span class="language-javascript">                &#125;</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        ]</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>嵌套命名视图</strong>：用命名视图创建嵌套视图的复杂布局：例如</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>User Settings<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">NavBar</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-view</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-view</span> <span class="attr">name</span>=<span class="string">&quot;helper&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">const</span> routers = [</span></span><br><span class="line"><span class="language-javascript">        &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">path</span>: <span class="string">&#x27;/settings&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="comment">// 你也可以在顶级路由就配置命名视图</span></span></span><br><span class="line"><span class="language-javascript">            <span class="attr">component</span>: <span class="title class_">UserSettings</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">children</span>: [&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">path</span>: <span class="string">&#x27;emails&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">component</span>: <span class="title class_">UserEmailsSubscriptions</span></span></span><br><span class="line"><span class="language-javascript">            &#125;, &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">path</span>: <span class="string">&#x27;profile&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">components</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">default</span>: <span class="title class_">UserProfile</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">helper</span>: <span class="title class_">UserProfilePreview</span></span></span><br><span class="line"><span class="language-javascript">                &#125;</span></span><br><span class="line"><span class="language-javascript">            &#125;]</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    ]</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="4-router"><a href="#4-router" class="headerlink" title="4. $router"></a>4. $router</h3><ul>
+<li><p>说明：指的是router实例</p>
+</li>
+<li><p>$router的属性</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$router.app</td>
+<td>配置了router的Vue根实例</td>
+</tr>
+<tr>
+<td>$router.mode</td>
+<td>路由模式， hash | history</td>
+</tr>
+<tr>
+<td>$router.currentRoute</td>
+<td>当前路由的路由信息对象，包含了当前匹配路由的信息</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>$router的方法</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$router.addRoutes(routes)</td>
+<td>动态添加路由规则，参数为符合routes选项要求的数组</td>
+</tr>
+<tr>
+<td>$router.beforeEach(to,from,next)</td>
+<td>全局前置守卫</td>
+</tr>
+<tr>
+<td>$router.beforeResolve()</td>
+<td>全局解析守卫 , 在导航被确认之前，且在锁头组件内守卫和异步路由组件被解析之后调用，参数和全局前置守卫相同；</td>
+</tr>
+<tr>
+<td>$router.afterEach()</td>
+<td>全局后置守卫</td>
+</tr>
+<tr>
+<td>$router.go(n)</td>
+<td>接受一个整数作为参数，类似window.history.go(n)，在浏览器历史记录中前进或后退几步</td>
+</tr>
+<tr>
+<td>$router.push( location )</td>
+<td>跳转导航的方法，这种方法会向history栈添加一个新的记录</td>
+</tr>
+<tr>
+<td>$router.replace( location )</td>
+<td>替换掉当前的history记录，不会添加新的记录</td>
+</tr>
+<tr>
+<td>$router.back()</td>
+<td>相当于router.go(-1)</td>
+</tr>
+<tr>
+<td>$router.forward()</td>
+<td>相当于router.go(1)</td>
+</tr>
+<tr>
+<td>$router.resolve(location)</td>
+<td>解析目标路由，接受一个地址参数，返回location,route,href等属性信息，还可以接受当前默认路由current和当前路由上附加路径append两个参数</td>
+</tr>
+<tr>
+<td>$router.onReady(callback)</td>
+<td>把一个回调排队，在路由完成初始导航时调用。</td>
+</tr>
+<tr>
+<td>$router.onError(callback)</td>
+<td>注册一个回调，该回调会在路由导航过程中出错的时候被调用<br /> - 在一个路由守卫函数中被同步抛出<br /> - 在一个路由守卫函数中通过调用next(error)的方式异步捕获并处理<br/> - 渲染一个路由的过程中，需要尝试解析一个异步组件时发生错误</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="5-route"><a href="#5-route" class="headerlink" title="5. $route"></a>5. $route</h3><ul>
+<li><p>说明：每次路由导航成功后都会产生一个新的对象。是当前激活的路由信息对象，是只读属性，不可更改，但是可以watch（监听）</p>
+</li>
+<li><p>$route属性</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$route.fullPath</td>
+<td>完成解析后的url，包含查询参数和hash的完整路径</td>
+</tr>
+<tr>
+<td>$route.path</td>
+<td>路径，字符串类型，解析为绝对路径</td>
+</tr>
+<tr>
+<td>$route.hash</td>
+<td>当前路由的hash值（带#号的），如果没有hash值则为空字符串</td>
+</tr>
+<tr>
+<td>$route.name</td>
+<td>当前路由的名称，如果有的话（用于命名路由）</td>
+</tr>
+<tr>
+<td>$route.params</td>
+<td>一个键值对对象，路由参数</td>
+</tr>
+<tr>
+<td>$route.query</td>
+<td>一个键值对对象，表示url查询参数</td>
+</tr>
+<tr>
+<td>$route.matched</td>
+<td>一个包含了当前路由的所有嵌套路径片段的路由记录</td>
+</tr>
+<tr>
+<td>$route.redirectedFrom</td>
+<td>重定向来源的路由的名字，如果存在重定向的话</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="6-入门案例"><a href="#6-入门案例" class="headerlink" title="6. 入门案例"></a>6. 入门案例</h3><ul>
+<li><p>安装路由并初始化路由模块：<code>src/router/index.js</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">VueRouter</span> <span class="keyword">from</span> <span class="string">&quot;vue-router&quot;</span>;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">VueRouter</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line"></span><br><span class="line">]</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">    <span class="attr">mode</span>:<span class="string">&quot;history&quot;</span>,</span><br><span class="line">    routes</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>首先在项目目录中定义好需要映射的组件，Vue脚手架的项目结构中：①components用于存放页面组件②views中存放页面（本质也是组件），例：在components中定义<code>VueComponent.vue</code>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        VueComponent.vue</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        name: &quot;VueComponent&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在router模块中导入需要路由的组件并在路由表中配置路由</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Router01Map</span> <span class="keyword">from</span> <span class="string">&quot;../components/router/Router01Map&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&#x27;/map&#x27;</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="title class_">Router01Map</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在Vue根组件App.vue中新增路由标签，启动项目测试路由</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">&quot;/map&quot;</span>&gt;</span>XX<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">name</span>: <span class="string">&#x27;App&#x27;</span></span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="5-4-VueRouter核心"><a href="#5-4-VueRouter核心" class="headerlink" title="5.4 VueRouter核心"></a>5.4 VueRouter核心</h2><blockquote>
+<p>使用模块化编程首先导入Vue和VueRouter，要调用 Vue.use(VueRouter)</p>
+</blockquote>
+<h3 id="1-路由导航"><a href="#1-路由导航" class="headerlink" title="1. 路由导航"></a>1. 路由导航</h3><h4 id="①-路由组件映射：导入"><a href="#①-路由组件映射：导入" class="headerlink" title="① 路由组件映射：导入"></a>① 路由组件映射：导入</h4><ul>
+<li><p>定义 (路由) 组件，可以从其他文件 import 进来</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> 组件对象 <span class="keyword">from</span> <span class="string">&quot;组件路径&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    &#123;<span class="attr">path</span>: <span class="string">&#x27;路由&#x27;</span>,<span class="attr">component</span>: 组件对象&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><strong>path</strong>：URI</li>
+<li><strong>component</strong>：可以是①通过 Vue.extend() 创建的组件构造器②一个组件对象③一个组件配置对象（在嵌套路由中使用）</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h4 id="②-路由组件映射：懒加载"><a href="#②-路由组件映射：懒加载" class="headerlink" title="② 路由组件映射：懒加载"></a>② 路由组件映射：懒加载</h4><ul>
+<li><p>如果使用import语法在组件映射之前就将组件导入，当打包构建应用时，就会将所有组件打包为一个非常大的文件，影响页面加载；使用懒加载方式可以在打包的时候把不同的路由对应的组件分隔成独立的文件，然后当路由被访问时候才加载对应的组件，可以提高效率；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    &#123;<span class="attr">path</span>: <span class="string">&#x27;路由&#x27;</span>,<span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&quot;组件路径&quot;</span>)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果每一个异步块打包为一个单独的文件，打包后的文件就会很多；有时候可以把多个路由下的组件打包为同异步块中（chunk），只需要使用命名chunk语法：<strong>/* webpackChunkName: “chunk块名称” */</strong>，例如下：两个路径下的组件都会打包到名称为A的js文件中了；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    &#123;<span class="attr">path</span>: <span class="string">&#x27;路由&#x27;</span>,<span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="comment">/* webpackChunkName: &quot;A&quot; */</span><span class="string">&quot;组件路径&quot;</span>)&#125;,</span><br><span class="line">    &#123;<span class="attr">path</span>: <span class="string">&quot;路由&quot;</span>,<span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="comment">/* webpackChunkName: &quot;A&quot; */</span><span class="string">&quot;组件路径&quot;</span>)&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="③-路由命名组件映射"><a href="#③-路由命名组件映射" class="headerlink" title="③ 路由命名组件映射"></a>③ 路由命名组件映射</h4><ul>
+<li><p>命名路由映射：改名称就会作为路由的标识</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;路由名称&quot;</span>,</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&quot;路由&quot;</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&quot;组件路径&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命名路由的使用</p>
+<ol>
+<li><p>链接到一个命名路由：绑定一个对象类型，name属性指向路由的name标识</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">&quot;&#123; name: &#x27;路由名称&#x27;&quot;</span>&gt;</span>XX<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用导航式路由指定一个名称的路由</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;routerName&quot;</span>&gt;</span>routerName<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">methods</span>:&#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">routerName</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(&#123;<span class="attr">name</span>:<span class="string">&#x27;Name&#x27;</span>&#125;)</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="④-路由通配符映射组件"><a href="#④-路由通配符映射组件" class="headerlink" title="④ 路由通配符映射组件"></a>④ 路由通配符映射组件</h4><ul>
+<li><p><strong>路由通配符</strong><code>*</code>：含有通配符的路由应该放在最后，当使用一个<em>通配符</em>时，<code>$route.params</code> 内会自动添加一个名为 <code>pathMatch</code> 参数。它包含了 URL 通过<em>通配符</em>被匹配的部分；</p>
+<blockquote>
+<p><strong>一般把通配符配置在最后一个，用于客户端的404错误；</strong></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    &#123;</span><br><span class="line">      	<span class="attr">path</span>: <span class="string">&#x27;*&#x27;</span>		<span class="comment">// 会匹配所有路径</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(<span class="string">&#x27;/non-existing&#x27;</span>)</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$route</span>.<span class="property">params</span>.<span class="property">pathMatch</span>  <span class="comment">// &#x27;/non-existing&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&#x27;/user-*&#x27;</span>	<span class="comment">// 会匹配以 `/user-` 开头的任意路径</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(<span class="string">&#x27;/user-admin&#x27;</span>)</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$route</span>.<span class="property">params</span>.<span class="property">pathMatch</span> <span class="comment">// &#x27;admin&#x27;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="⑤-路由优先级"><a href="#⑤-路由优先级" class="headerlink" title="⑤ 路由优先级"></a>⑤ 路由优先级</h4><ul>
+<li>同一个路径可以匹配多个路由，此时，匹配的优先级就按照路由的定义顺序：<strong>谁先定义的，谁的优先级就最高</strong>。</li>
+</ul>
+<h4 id="⑥-编程式导航"><a href="#⑥-编程式导航" class="headerlink" title="⑥ 编程式导航"></a>⑥ 编程式导航</h4><ul>
+<li><p>借助 router 的实例方法，通过编写代码来实现。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串</span></span><br><span class="line">router.<span class="title function_">push</span>(<span class="string">&#x27;home&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对象</span></span><br><span class="line">router.<span class="title function_">push</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;home&#x27;</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 命名的路由</span></span><br><span class="line">router.<span class="title function_">push</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;user&#x27;</span>, <span class="attr">params</span>: &#123; <span class="attr">userId</span>: <span class="string">&#x27;123&#x27;</span> &#125;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 带查询参数，变成 /register?plan=private</span></span><br><span class="line">router.<span class="title function_">push</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;register&#x27;</span>, <span class="attr">query</span>: &#123; <span class="attr">plan</span>: <span class="string">&#x27;private&#x27;</span> &#125;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果提供了 path，params 会被忽略</span></span><br><span class="line"><span class="keyword">const</span> userId = <span class="string">&#x27;123&#x27;</span></span><br><span class="line">router.<span class="title function_">push</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;user&#x27;</span>, <span class="attr">params</span>: &#123; userId &#125;&#125;) <span class="comment">// -&gt; /user/123</span></span><br><span class="line">router.<span class="title function_">push</span>(&#123; <span class="attr">path</span>: <span class="string">`/user/<span class="subst">$&#123;userId&#125;</span>`</span> &#125;) <span class="comment">// -&gt; /user/123</span></span><br><span class="line"><span class="comment">// 这里的 params 不生效</span></span><br><span class="line">router.<span class="title function_">push</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;/user&#x27;</span>, <span class="attr">params</span>: &#123; userId &#125;&#125;) <span class="comment">// -&gt; /user</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2-路由重定向"><a href="#2-路由重定向" class="headerlink" title="2. 路由重定向"></a>2. 路由重定向</h3><h4 id="①-重定向到其他路由"><a href="#①-重定向到其他路由" class="headerlink" title="① 重定向到其他路由"></a>① 重定向到其他路由</h4><ul>
+<li><p>redirect值是字符串默认会匹配路由映射表中的path属性实现重定向；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">    <span class="attr">routes</span>: [</span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">&#x27;/a&#x27;</span>, <span class="attr">redirect</span>: <span class="string">&#x27;/b&#x27;</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="②-重定向到命名路由"><a href="#②-重定向到命名路由" class="headerlink" title="② 重定向到命名路由"></a>② 重定向到命名路由</h4><ul>
+<li><p>redirect的值是对象，如果指定name属性会根据路由名称进行匹配实现重定向</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">    <span class="attr">routes</span>: [</span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">&#x27;/a&#x27;</span>, <span class="attr">redirect</span>: &#123; <span class="attr">name</span>: <span class="string">&#x27;foo&#x27;</span> &#125;&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 编程式导航</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(&#123;<span class="attr">name</span>:<span class="string">&quot;nameRouter&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="③-重定向到函数"><a href="#③-重定向到函数" class="headerlink" title="③ 重定向到函数"></a>③ 重定向到函数</h4><ul>
+<li><p>redirect的值也可以是一个函数：参数是目标路由对象，返回值可以是字符串或对象；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">    <span class="attr">routes</span>: [</span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">&#x27;/a&#x27;</span>, <span class="attr">redirect</span>: <span class="function"><span class="params">to</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// 方法接收 目标路由 作为参数</span></span><br><span class="line">            <span class="comment">// return 重定向的 字符串路径/路径对象</span></span><br><span class="line">        &#125;&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="④-路由别名重定向"><a href="#④-路由别名重定向" class="headerlink" title="④ 路由别名重定向"></a>④ 路由别名重定向</h4><ul>
+<li><p>在嵌套路由内的组件的路由是多级结构的；“别名”的功能可以自由地将 UI 结构映射到任意的 URL，而不是受限于配置的嵌套路由结构。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">    <span class="attr">routes</span>: [</span><br><span class="line">        &#123; <span class="attr">path</span>: <span class="string">&#x27;/a&#x27;</span>, <span class="attr">component</span>: A, <span class="attr">alias</span>: <span class="string">&#x27;/b&#x27;</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="3-路由传参"><a href="#3-路由传参" class="headerlink" title="3. 路由传参"></a>3. 路由传参</h3><h4 id="①-name传参"><a href="#①-name传参" class="headerlink" title="① name传参"></a>① name传参</h4><ul>
+<li><p>name作为路由标识：可以当做一个参数传递，但是只能是一个参数，使用$route.name接收参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;Hello&#x27;</span>,</span><br><span class="line">      <span class="attr">component</span>: <span class="title class_">Hello</span></span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="②-动态路由参数：params"><a href="#②-动态路由参数：params" class="headerlink" title="② 动态路由参数：params"></a>② 动态路由参数：params</h4><blockquote>
+<p>使用params传参路由导航只能使用name属性，参数可以定义在url中</p>
+</blockquote>
+<ul>
+<li><p><strong>路由参数params</strong>：使用路由导航时候可以为路由添加params的对象类型参数，在目标组件中使用$route.params的方式接受params对象；<code>&lt;router-link&gt;</code>的to属性绑定的对象中必须使用命名组件进行路由，并指定params参数对象；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link :to=<span class="string">&quot;&#123;name: &#x27;param&#x27;,params:&#123;name:&#x27;JJ&#x27;,age:1111&#125;&#125;&quot;</span>&gt;参数传递&lt;/router-link&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>动态路由导航</strong>：有时候需要在路由中显示这些参数，则使用动态路由参数将参数绑定到路由参数中，在路由中定义参数的格式：<code>/:key</code>，路由中参数的key要和params中的key相匹配；<strong>参数以路径形式显示在路由中</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&quot;/param/:name/:age&quot;</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&quot;组件路径&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>使用标签导航时候指定路由参数</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">&quot;&#123;name:&#x27;dyParam&#x27;,params:&#123;name:&#x27;Tom&#x27;,age:23&#125;&#125;&quot;</span>&gt;</span>标签导航<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用编程式导航并制定路由参数</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;param&quot;</span>&gt;</span>编程式导航<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">methods</span>:&#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">param</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(&#123;<span class="attr">name</span>:<span class="string">&#x27;dyParam&#x27;</span>,<span class="attr">params</span>:&#123;<span class="attr">name</span>:<span class="string">&quot;Admin&quot;</span>,<span class="attr">age</span>:<span class="string">&#x27;12&#x27;</span>&#125;&#125;)</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="③-路由参数：query"><a href="#③-路由参数：query" class="headerlink" title="③ 路由参数：query"></a>③ 路由参数：query</h4><blockquote>
+<p>使用query传参数，路由导航可以使用path或name属性，并且参数会以？方式显示在url中</p>
+</blockquote>
+<ul>
+<li><p>使用query传参：定义组件并配置路由</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&quot;路由&quot;</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&quot;组件路径&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>使用<code>&lt;router-link&gt;</code>进行路由导航并定义参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link :to=<span class="string">&quot;&#123;path:&#x27;/query&#x27;,query:&#123;age:12&#125;&#125;&quot;</span>&gt;Query&lt;/router-link&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用编程式路由导航</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;query&quot;</span>&gt;</span>编程式路由导航 query<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">methods</span>:&#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">query</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(&#123;<span class="attr">path</span>:<span class="string">&#x27;/query&#x27;</span>,<span class="attr">query</span>:&#123;<span class="attr">name</span>:<span class="string">&quot;Admin&quot;</span>,<span class="attr">age</span>:<span class="string">&#x27;12&#x27;</span>&#125;&#125;)</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="④-路由组件传参：props"><a href="#④-路由组件传参：props" class="headerlink" title="④ 路由组件传参：props"></a>④ 路由组件传参：props</h4><ul>
+<li><strong>组件传值优势</strong>：在组件中使用 <code>$route</code> 会使之与其对应路由形成高度耦合，从而使组件只能在某些特定的 URL 上使用，限制了其灵活性。</li>
+</ul>
+<h3 id="4-嵌套路由"><a href="#4-嵌套路由" class="headerlink" title="4. 嵌套路由"></a>4. 嵌套路由</h3><ul>
+<li><p>在实际页面中，通常由多层嵌套的组件组合而成，同样的url中隔断路由也需要按对应的嵌套各层组件，借助 <code>vue-router</code>，使用嵌套路由配置，就可以很简单地表达这种嵌套关系。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&quot;路由&quot;</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&quot;组件路径&quot;</span>),</span><br><span class="line">        <span class="attr">children</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">path</span>: <span class="string">&#x27;子路由&#x27;</span>,</span><br><span class="line">                <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&quot;组件路径&quot;</span>),</span><br><span class="line">                <span class="attr">children</span>:[</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">path</span>: <span class="string">&#x27;子路由的子路由&#x27;</span>,</span><br><span class="line">                        <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&quot;组件路径&quot;</span>)</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><strong>如果子路由非<code>/</code>开头</strong>：①嵌套的路径会层级结构②子路由组件会映射在子组件的<code>&lt;router-view&gt;</code>中；</li>
+<li><strong>如果子路是<code>/</code>开头</strong>：①嵌套路径会被当作根路径②组件会映射在根<code>&lt;router-view&gt;</code>中；</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="5-导航守卫"><a href="#5-导航守卫" class="headerlink" title="5. 导航守卫"></a>5. 导航守卫</h3><h4 id="〇-完整的导航解析流程"><a href="#〇-完整的导航解析流程" class="headerlink" title="〇 完整的导航解析流程"></a>〇 完整的导航解析流程</h4><ol>
+<li>导航被触发。</li>
+<li>在失活的组件里调用 <code>beforeRouteLeave</code> 守卫。</li>
+<li>调用全局的 <code>beforeEach</code> 守卫。</li>
+<li>在重用的组件里调用 <code>beforeRouteUpdate</code> 守卫 (2.2+)。</li>
+<li>在路由配置里调用 <code>beforeEnter</code>。</li>
+<li>解析异步路由组件。</li>
+<li>在被激活的组件里调用 <code>beforeRouteEnter</code>。</li>
+<li>调用全局的 <code>beforeResolve</code> 守卫 (2.5+)。</li>
+<li>导航被确认。</li>
+<li>调用全局的 <code>afterEach</code> 钩子。</li>
+<li>触发 DOM 更新。</li>
+<li>调用 <code>beforeRouteEnter</code> 守卫中传给 <code>next</code> 的回调函数，创建好的组件实例会作为回调函数的参数传入。</li>
+</ol>
+<h4 id="①-全局前置守卫"><a href="#①-全局前置守卫" class="headerlink" title="① 全局前置守卫"></a>① 全局前置守卫</h4><ul>
+<li><h4 id="②-全局解析守卫"><a href="#②-全局解析守卫" class="headerlink" title="② 全局解析守卫"></a>② 全局解析守卫</h4></li>
+<li><p>是在导航被确认之前，<strong>同时在所有组件内守卫和异步路由组件被解析之后</strong>，解析守卫就被调用。</p>
+</li>
+</ul>
+<h4 id="③-全局后置钩子"><a href="#③-全局后置钩子" class="headerlink" title="③ 全局后置钩子"></a>③ 全局后置钩子</h4><ul>
+<li>后置钩子不会接受 <code>next</code> 函数也不会改变导航本身：</li>
+</ul>
+<h4 id="④-路由独享的守卫"><a href="#④-路由独享的守卫" class="headerlink" title="④ 路由独享的守卫"></a>④ 路由独享的守卫</h4><ul>
+<li><p>在路由配置上直接定义 <code>beforeEnter</code> 守卫：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&#x27;/foo&#x27;</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="title class_">Foo</span>,</span><br><span class="line">        <span class="attr">beforeEnter</span>: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">// ...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="⑤-组件内的守卫"><a href="#⑤-组件内的守卫" class="headerlink" title="⑤ 组件内的守卫"></a>⑤ 组件内的守卫</h4><ul>
+<li><h3 id="6-路由行为"><a href="#6-路由行为" class="headerlink" title="6. 路由行为"></a>6. 路由行为</h3></li>
+<li><p>过渡效果</p>
+</li>
+<li><p>滚动功能</p>
+</li>
+</ul>
+<h3 id="7-接口数据获取"><a href="#7-接口数据获取" class="headerlink" title="7. 接口数据获取"></a>7. 接口数据获取</h3><h4 id="①-导航完成之后获取"><a href="#①-导航完成之后获取" class="headerlink" title="① 导航完成之后获取"></a>① 导航完成之后获取</h4><h4 id="②-导航完成后获取数据"><a href="#②-导航完成后获取数据" class="headerlink" title="② 导航完成后获取数据"></a>② 导航完成后获取数据</h4><h1 id="第六章-Vuex"><a href="#第六章-Vuex" class="headerlink" title="第六章 Vuex"></a>第六章 Vuex</h1><h2 id="6-1-Vuex基础"><a href="#6-1-Vuex基础" class="headerlink" title="6.1 Vuex基础"></a>6.1 Vuex基础</h2><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><ul>
+<li><p>vuex是专门为Vue开发的状态管理工具，vuex采用集中式存储管理应用中的所有状态，并提供状态维护的方式，使应用对状态的管理可以做到响应式</p>
+<blockquote>
+<ul>
+<li><p><strong>状态</strong>：在单组件中成为组件的数据属性，封装在data函数的中；在多组件中共享的数据则成为状态，是统一维护在Vuex；</p>
+</li>
+<li><p><strong>状态管理</strong>：指的是在多组件中维护共享的数据状态；</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="2-安装与配置"><a href="#2-安装与配置" class="headerlink" title="2. 安装与配置"></a>2. 安装与配置</h3><ul>
+<li><p>使用npm安装vuex4</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### <span class="number">3.</span> 项目结构</span><br><span class="line"></span><br><span class="line">- <span class="title class_">Vuex</span>在实际开发中管理的状态会很多，需要将相关代码分隔到模块中，一般公司约定的统一的项目结构，方便管理与维护</span><br><span class="line"></span><br><span class="line">  <span class="string">``</span><span class="string">`tex</span></span><br><span class="line"><span class="string">  ├── index.html</span></span><br><span class="line"><span class="string">  ├── main.js</span></span><br><span class="line"><span class="string">  ├── api</span></span><br><span class="line"><span class="string">  │   └── ... # 抽取出API请求</span></span><br><span class="line"><span class="string">  ├── components</span></span><br><span class="line"><span class="string">  │   ├── App.vue</span></span><br><span class="line"><span class="string">  │   └── ...</span></span><br><span class="line"><span class="string">  └── store</span></span><br><span class="line"><span class="string">      ├── index.js          # 我们组装模块并导出 store 的地方</span></span><br><span class="line"><span class="string">      ├── actions.js        # 根级别的 action</span></span><br><span class="line"><span class="string">      ├── mutations.js      # 根级别的 mutation</span></span><br><span class="line"><span class="string">      └── modules</span></span><br><span class="line"><span class="string">          ├── cart.js       # 购物车模块</span></span><br><span class="line"><span class="string">          └── products.js   # 产品模块</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="6-2-核心概念"><a href="#6-2-核心概念" class="headerlink" title="6.2 核心概念"></a>6.2 核心概念</h2><h2 id="6-3-Vuex实践"><a href="#6-3-Vuex实践" class="headerlink" title="6.3 Vuex实践"></a>6.3 Vuex实践</h2><h1 id="第七章-axios"><a href="#第七章-axios" class="headerlink" title="第七章 axios"></a>第七章 axios</h1><h2 id="7-1-前端网络请求"><a href="#7-1-前端网络请求" class="headerlink" title="7.1 前端网络请求"></a>7.1 前端网络请求</h2><ol>
+<li>XMLHTTPRequest：原生JavaScript请求</li>
+<li>jQuery：ajax网络qingq</li>
+<li>JSONP：跨域伪造访问</li>
+<li>Axios：基于promise的HTTP 库，可以用在浏览器和node.js中</li>
+</ol>
+<h2 id="7-2-Vue中安装Axios"><a href="#7-2-Vue中安装Axios" class="headerlink" title="7.2 Vue中安装Axios"></a>7.2 Vue中安装Axios</h2><h3 id="1-加载axios安装包"><a href="#1-加载axios安装包" class="headerlink" title="1. 加载axios安装包"></a>1. 加载axios安装包</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install axios --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-配置axios到Vue实例"><a href="#2-配置axios到Vue实例" class="headerlink" title="2. 配置axios到Vue实例"></a>2. 配置axios到Vue实例</h3><ul>
+<li><p><strong>方案一</strong>：将axios挂载到Vue实例，可以全局访问axios的API</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js：基础配置方法</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$axios</span> = axios</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  axios</span><br><span class="line">  <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> <span class="title function_">h</span>(<span class="title class_">App</span>)</span><br><span class="line">&#125;).$mount(<span class="string">&#x27;#app&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在其他模块的方法中可以使用axios api</span></span><br><span class="line"><span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="title function_">funcName</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">$axios</span>.<span class="title function_">get</span>(&#123;</span><br><span class="line">            <span class="attr">url</span>: <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">        &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>方案二</strong>：将axios单独封装为模块，创建并配置axios实例对象，然后将实例对象导出到main.js入口文件中，那么和接口请求的相关配置都可以定义在这个单独的axios模块中了;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义api目录：/api/index.js：避免每个vue模块都使用this.$axios的api，避免业务与axios高耦合</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"><span class="keyword">const</span> requests = axios.<span class="title function_">create</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  requests</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;@/api&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 其他模块可以引用api模块进行接口调用</span></span><br><span class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">&#x27;@/api&#x27;</span></span><br><span class="line"><span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="title function_">funcName</span>(<span class="params"></span>) &#123;</span><br><span class="line">        request.<span class="title function_">get</span>(&#123;</span><br><span class="line">            <span class="attr">url</span>: <span class="string">&#x27;xxx&#x27;</span></span><br><span class="line">        &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>方案三</strong>：一般项目开发中会将接口的请求与业务方法分离，第一步会定义独立模块封装接口调用的方法，第二步在业务模块中调用接口模块传入接口参数获取接口响应；在方案二的基础上需要额外定义一个封装接口的模块：如order模块的相关接口都定义在一个js文件中；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @/api/order/index.js：将后台Order服务的相关接口定义在当前模块中</span></span><br><span class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">&#x27;@/api&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">getList</span> (param) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">order</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;/order/list&#x27;</span>,</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;get&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: param</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 然后在order组件的method中直接调用</span></span><br><span class="line"><span class="keyword">import</span> &#123;getList&#125; <span class="keyword">from</span> <span class="string">&#x27;@/api/order/index&#x27;</span></span><br><span class="line"><span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="title function_">funcName</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> param = &#123;&#125;</span><br><span class="line">        <span class="title function_">getList</span>(param).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>方案四</strong>：如果前端项目需要调用多个服务的接口，而且接口的规则不统一，则需要将axios模块化，不同的服务对应各自的axios实例对象，并分别配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @/api/index.js</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> order = axios.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="attr">baseURL</span>: <span class="string">&#x27;http://Order&#x27;</span>,</span><br><span class="line">    <span class="attr">timeout</span>: <span class="number">5000</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = axios.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="attr">baseURL</span>: <span class="string">&#x27;http://Usre&#x27;</span>,</span><br><span class="line">    <span class="attr">timeout</span>: <span class="number">5000</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> axiosReq = axios.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="attr">baseURL</span>: <span class="string">&#x27;http://Other&#x27;</span>,</span><br><span class="line">    <span class="attr">timeout</span>: <span class="number">5000</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    order, user, axiosReq</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// @/api/order/index.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Api</span> <span class="keyword">from</span> <span class="string">&#x27;../&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">orderList</span> (param) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Api</span>.<span class="title function_">order</span>(&#123;</span><br><span class="line">        <span class="attr">url</span>: <span class="string">&#x27;/order/list&#x27;</span>,</span><br><span class="line">        <span class="attr">method</span>: <span class="string">&#x27;get&#x27;</span>,</span><br><span class="line">        <span class="attr">data</span>: param</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="3-axios响应结构"><a href="#3-axios响应结构" class="headerlink" title="3. axios响应结构"></a>3. axios响应结构</h3><ul>
+<li><p>基本结构</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    data<span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    status<span class="punctuation">:</span> <span class="number">200</span><span class="punctuation">,</span></span><br><span class="line">    statusText<span class="punctuation">:</span> &#x27;OK&#x27;<span class="punctuation">,</span></span><br><span class="line">    headers<span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    config<span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    request<span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结构说明</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>data</td>
+<td>由服务器提供的响应</td>
+</tr>
+<tr>
+<td>status</td>
+<td>来自服务器响应的 HTTP 状态码</td>
+</tr>
+<tr>
+<td>headers</td>
+<td>服务器响应的头</td>
+</tr>
+<tr>
+<td>config</td>
+<td>是为请求提供的配置信息</td>
+</tr>
+<tr>
+<td>request</td>
+<td>生成此响应的请求</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h2 id="7-3-axiosAPI"><a href="#7-3-axiosAPI" class="headerlink" title="7.3 axiosAPI"></a>7.3 axiosAPI</h2><h3 id="1-配置axios请求"><a href="#1-配置axios请求" class="headerlink" title="1. 配置axios请求"></a>1. 配置axios请求</h3><ul>
+<li><p>axios常用配置案例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 发送 POST 请求</span></span><br><span class="line"><span class="title function_">axios</span>(&#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;/user/12345&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">firstName</span>: <span class="string">&#x27;Fred&#x27;</span>,</span><br><span class="line">        <span class="attr">lastName</span>: <span class="string">&#x27;Flintstone&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 获取远端图片</span></span><br><span class="line"><span class="title function_">axios</span>(&#123;</span><br><span class="line">    <span class="attr">method</span>:<span class="string">&#x27;get&#x27;</span>,</span><br><span class="line">    <span class="attr">url</span>:<span class="string">&#x27;http://bit.ly/2mTM3nY&#x27;</span>,</span><br><span class="line">    <span class="attr">responseType</span>:<span class="string">&#x27;stream&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">    response.<span class="property">data</span>.<span class="title function_">pipe</span>(fs.<span class="title function_">createWriteStream</span>(<span class="string">&#x27;ada_lovelace.jpg&#x27;</span>))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>axios请求方法别名：使用别名方法时， <code>url</code>、<code>method</code>、<code>data</code> 这些属性的使用有区别</p>
+<table>
+<thead>
+<tr>
+<th>别名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>axios.request(config)</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.get(url[, config])</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.delete(url[, config])</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.head(url[, config])</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.options(url[, config])</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.post(url[, data[, config]])</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.put(url[, data[, config]])</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.patch(url[, data[, config]])</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>并发</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>axios.all(iterable)</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.spread(callback)</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="2-axios实例"><a href="#2-axios实例" class="headerlink" title="2. axios实例"></a>2. axios实例</h3><ul>
+<li><p>创建axios实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> instance = axios.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="attr">baseURL</span>: <span class="string">&#x27;https://some-domain.com/api/&#x27;</span>,</span><br><span class="line">    <span class="attr">timeout</span>: <span class="number">1000</span>,</span><br><span class="line">    <span class="attr">headers</span>: &#123;<span class="string">&#x27;X-Custom-Header&#x27;</span>: <span class="string">&#x27;foobar&#x27;</span>&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实例方法</p>
+<table>
+<thead>
+<tr>
+<th>别名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>axios.request(config)</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.get(url[, config])</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.delete(url[, config])</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.head(url[, config])</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.options(url[, config])</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.post(url[, data[, config]])</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.put(url[, data[, config]])</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.patch(url[, data[, config]])</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>并发</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>axios.all(iterable)</td>
+<td></td>
+</tr>
+<tr>
+<td>axios.spread(callback)</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="3-axios配置"><a href="#3-axios配置" class="headerlink" title="3. axios配置"></a>3. axios配置</h3><ul>
+<li><p><strong>axios的config配置说明</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="comment">// `url` 是用于请求的服务器 URL</span></span><br><span class="line">    url<span class="punctuation">:</span> &#x27;/user&#x27;<span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `method` 是创建请求时使用的方法</span></span><br><span class="line">    method<span class="punctuation">:</span> &#x27;get&#x27;<span class="punctuation">,</span> <span class="comment">// default</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `baseURL` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL。</span></span><br><span class="line">    <span class="comment">// 它可以通过设置一个 `baseURL` 便于为 axios 实例的方法传递相对 URL</span></span><br><span class="line">    baseURL<span class="punctuation">:</span> &#x27;https<span class="punctuation">:</span><span class="comment">//some-domain.com/api/&#x27;,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `transformRequest` 允许在向服务器发送前，修改请求数据</span></span><br><span class="line">    <span class="comment">// 只能用在 &#x27;PUT&#x27;, &#x27;POST&#x27; 和 &#x27;PATCH&#x27; 这几个请求方法</span></span><br><span class="line">    <span class="comment">// 后面数组中的函数必须返回一个字符串，或 ArrayBuffer，或 Stream</span></span><br><span class="line">    transformRequest<span class="punctuation">:</span> <span class="punctuation">[</span>function (data<span class="punctuation">,</span> headers) <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// 对 data 进行任意转换处理</span></span><br><span class="line">        return data;</span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `transformResponse` 在传递给 then/catch 前，允许修改响应数据</span></span><br><span class="line">    transformResponse<span class="punctuation">:</span> <span class="punctuation">[</span>function (data) <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// 对 data 进行任意转换处理</span></span><br><span class="line">        return data;</span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `headers` 是即将被发送的自定义请求头</span></span><br><span class="line">    headers<span class="punctuation">:</span> <span class="punctuation">&#123;</span>&#x27;X-Requested-With&#x27;<span class="punctuation">:</span> &#x27;XMLHttpRequest&#x27;<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `params` 是即将与请求一起发送的 URL 参数</span></span><br><span class="line">    <span class="comment">// 必须是一个无格式对象(plain object)或 URLSearchParams 对象</span></span><br><span class="line">    params<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        ID<span class="punctuation">:</span> <span class="number">12345</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `paramsSerializer` 是一个负责 `params` 序列化的函数</span></span><br><span class="line">    <span class="comment">// (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)</span></span><br><span class="line">    paramsSerializer<span class="punctuation">:</span> function(params) <span class="punctuation">&#123;</span></span><br><span class="line">        return Qs.stringify(params<span class="punctuation">,</span> <span class="punctuation">&#123;</span>arrayFormat<span class="punctuation">:</span> &#x27;brackets&#x27;<span class="punctuation">&#125;</span>)</span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `data` 是作为请求主体被发送的数据</span></span><br><span class="line">    <span class="comment">// 只适用于这些请求方法 &#x27;PUT&#x27;, &#x27;POST&#x27;, 和 &#x27;PATCH&#x27;</span></span><br><span class="line">    <span class="comment">// 在没有设置 `transformRequest` 时，必须是以下类型之一：</span></span><br><span class="line">    <span class="comment">// - string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams</span></span><br><span class="line">    <span class="comment">// - 浏览器专属：FormData, File, Blob</span></span><br><span class="line">    <span class="comment">// - Node 专属： Stream</span></span><br><span class="line">    data<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        firstName<span class="punctuation">:</span> &#x27;Fred&#x27;</span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `timeout` 指定请求超时的毫秒数(0 表示无超时时间)</span></span><br><span class="line">    <span class="comment">// 如果请求话费了超过 `timeout` 的时间，请求将被中断</span></span><br><span class="line">    timeout<span class="punctuation">:</span> <span class="number">1000</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `withCredentials` 表示跨域请求时是否需要使用凭证</span></span><br><span class="line">    withCredentials<span class="punctuation">:</span> <span class="keyword">false</span><span class="punctuation">,</span> <span class="comment">// default</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `adapter` 允许自定义处理请求，以使测试更轻松</span></span><br><span class="line">    <span class="comment">// 返回一个 promise 并应用一个有效的响应 (查阅 [response docs](#response-api)).</span></span><br><span class="line">    adapter<span class="punctuation">:</span> function (config) <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">/* ... */</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `auth` 表示应该使用 HTTP 基础验证，并提供凭据</span></span><br><span class="line">    <span class="comment">// 这将设置一个 `Authorization` 头，覆写掉现有的任意使用 `headers` 设置的自定义 `Authorization`头</span></span><br><span class="line">    auth<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        username<span class="punctuation">:</span> &#x27;janedoe&#x27;<span class="punctuation">,</span></span><br><span class="line">        password<span class="punctuation">:</span> &#x27;s00pers3cret&#x27;</span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `responseType` 表示服务器响应的数据类型，可以是 &#x27;arraybuffer&#x27;, &#x27;blob&#x27;, &#x27;document&#x27;, &#x27;json&#x27;, &#x27;text&#x27;, &#x27;stream&#x27;</span></span><br><span class="line">    responseType<span class="punctuation">:</span> &#x27;json&#x27;<span class="punctuation">,</span> <span class="comment">// default</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `responseEncoding` indicates encoding to use for decoding responses</span></span><br><span class="line">    <span class="comment">// Note: Ignored for `responseType` of &#x27;stream&#x27; or client-side requests</span></span><br><span class="line">    responseEncoding<span class="punctuation">:</span> &#x27;utf8&#x27;<span class="punctuation">,</span> <span class="comment">// default</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `xsrfCookieName` 是用作 xsrf token 的值的cookie的名称</span></span><br><span class="line">    xsrfCookieName<span class="punctuation">:</span> &#x27;XSRF-TOKEN&#x27;<span class="punctuation">,</span> <span class="comment">// default</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `xsrfHeaderName` is the name of the http header that carries the xsrf token value</span></span><br><span class="line">    xsrfHeaderName<span class="punctuation">:</span> &#x27;X-XSRF-TOKEN&#x27;<span class="punctuation">,</span> <span class="comment">// default</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `onUploadProgress` 允许为上传处理进度事件</span></span><br><span class="line">    onUploadProgress<span class="punctuation">:</span> function (progressEvent) <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// Do whatever you want with the native progress event</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `onDownloadProgress` 允许为下载处理进度事件</span></span><br><span class="line">    onDownloadProgress<span class="punctuation">:</span> function (progressEvent) <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="comment">// 对原生进度事件的处理</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `maxContentLength` 定义允许的响应内容的最大尺寸</span></span><br><span class="line">    maxContentLength<span class="punctuation">:</span> <span class="number">2000</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `validateStatus` 定义对于给定的HTTP 响应状态码是 resolve 或 reject  promise 。如果 `validateStatus` 返回 `true` (或者设置为 `null` 或 `undefined`)，promise 将被 resolve; 否则，promise 将被 rejecte</span></span><br><span class="line">    validateStatus<span class="punctuation">:</span> function (status) <span class="punctuation">&#123;</span></span><br><span class="line">        return status &gt;= <span class="number">200</span> &amp;&amp; status &lt; <span class="number">300</span>; <span class="comment">// default</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `maxRedirects` 定义在 node.js 中 follow 的最大重定向数目</span></span><br><span class="line">    <span class="comment">// 如果设置为0，将不会 follow 任何重定向</span></span><br><span class="line">    maxRedirects<span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span> <span class="comment">// default</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `socketPath` defines a UNIX Socket to be used in node.js.</span></span><br><span class="line">    <span class="comment">// e.g. &#x27;/var/run/docker.sock&#x27; to send requests to the docker daemon.</span></span><br><span class="line">    <span class="comment">// Only either `socketPath` or `proxy` can be specified.</span></span><br><span class="line">    <span class="comment">// If both are specified, `socketPath` is used.</span></span><br><span class="line">    socketPath<span class="punctuation">:</span> <span class="keyword">null</span><span class="punctuation">,</span> <span class="comment">// default</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `httpAgent` 和 `httpsAgent` 分别在 node.js 中用于定义在执行 http 和 https 时使用的自定义代理。允许像这样配置选项：</span></span><br><span class="line">    <span class="comment">// `keepAlive` 默认没有启用</span></span><br><span class="line">    httpAgent<span class="punctuation">:</span> new http.Agent(<span class="punctuation">&#123;</span> keepAlive<span class="punctuation">:</span> <span class="keyword">true</span> <span class="punctuation">&#125;</span>)<span class="punctuation">,</span></span><br><span class="line">    httpsAgent<span class="punctuation">:</span> new https.Agent(<span class="punctuation">&#123;</span> keepAlive<span class="punctuation">:</span> <span class="keyword">true</span> <span class="punctuation">&#125;</span>)<span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// &#x27;proxy&#x27; 定义代理服务器的主机名称和端口</span></span><br><span class="line">    <span class="comment">// `auth` 表示 HTTP 基础验证应当用于连接代理，并提供凭据</span></span><br><span class="line">    <span class="comment">// 这将会设置一个 `Proxy-Authorization` 头，覆写掉已有的通过使用 `header` 设置的自定义 `Proxy-Authorization` 头。</span></span><br><span class="line">    proxy<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        host<span class="punctuation">:</span> &#x27;<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>&#x27;<span class="punctuation">,</span></span><br><span class="line">        port<span class="punctuation">:</span> <span class="number">9000</span><span class="punctuation">,</span></span><br><span class="line">        auth<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            username<span class="punctuation">:</span> &#x27;mikeymike&#x27;<span class="punctuation">,</span></span><br><span class="line">            password<span class="punctuation">:</span> &#x27;rapunz3l&#x27;</span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// `cancelToken` 指定用于取消请求的 cancel token</span></span><br><span class="line">    <span class="comment">// （查看后面的 Cancellation 这节了解更多）</span></span><br><span class="line">    cancelToken<span class="punctuation">:</span> new CancelToken(function (cancel) <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="punctuation">&#125;</span>)</span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>全局的axios配置</strong>：<code>axios.defaults</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="property">defaults</span>.<span class="property">baseURL</span> = <span class="string">&#x27;https://api.example.com&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>axios实例的默认配置</strong>：<code>axios.create().defaults</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> instance = axios.<span class="title function_">create</span>(&#123;</span><br><span class="line">  <span class="attr">baseURL</span>: <span class="string">&#x27;https://api.example.com&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line">instance.<span class="property">defaults</span>.<span class="property">headers</span>.<span class="property">common</span>[<span class="string">&#x27;Authorization&#x27;</span>] = <span class="variable constant_">AUTH_TOKEN</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>axios配置的优先级</strong></p>
+<ol>
+<li>请求的 <code>config</code> 参数</li>
+<li>实例的 <code>defaults</code> 属性</li>
+<li>在 <code>lib/defaults.js</code> 找到的库的默认值</li>
+</ol>
+</li>
+</ul>
+<h2 id="7-4-axios拦截器"><a href="#7-4-axios拦截器" class="headerlink" title="7.4 axios拦截器"></a>7.4 axios拦截器</h2><h3 id="1-请求拦截器"><a href="#1-请求拦截器" class="headerlink" title="1. 请求拦截器"></a>1. 请求拦截器</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">config</span>) &#123;</span><br><span class="line">    <span class="comment">// 在发送请求之前做些什么</span></span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">&#125;, <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// 对请求错误做些什么</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-响应拦截器"><a href="#2-响应拦截器" class="headerlink" title="2. 响应拦截器"></a>2. 响应拦截器</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="comment">// 对响应数据做点什么</span></span><br><span class="line">    <span class="keyword">return</span> response;</span><br><span class="line">&#125;, <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// 对响应错误做点什么</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-移除拦截器"><a href="#3-移除拦截器" class="headerlink" title="3. 移除拦截器"></a>3. 移除拦截器</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myInterceptor = axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;<span class="comment">/*...*/</span>&#125;);</span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">eject</span>(myInterceptor);</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-5-axios二次封装"><a href="#7-5-axios二次封装" class="headerlink" title="7.5 axios二次封装"></a>7.5 axios二次封装</h2><ol>
+<li><p>目录结构说明</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">src:</span> </span><br><span class="line">	<span class="attr">api:</span> </span><br><span class="line">		<span class="attr">index.js:</span> <span class="string">作为API总入口</span></span><br><span class="line">		<span class="attr">common:</span> </span><br><span class="line">			<span class="attr">http.js:</span> <span class="string">在该模块中封装多域名的axios服务</span></span><br><span class="line">		<span class="attr">servers:</span> </span><br><span class="line">			<span class="attr">xxx.js:</span> <span class="string">表示具体的http请求</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>首先对axios进行封装：/src/api/common/http.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&quot;axios&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">&#x27;qs&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 举例：Order域名服务</span></span><br><span class="line"><span class="keyword">const</span> httpOrder = axios.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="attr">baseURL</span>: <span class="title function_">orderBaseUrl</span>(),</span><br><span class="line">    <span class="attr">timeout</span>: <span class="number">10</span> * <span class="number">1000</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 举例：这些配置可以提取到对应环境的配置文件中</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">orderBaseUrl</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">switch</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span>) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;production&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;http://localhost:8080/order&#x27;</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;development&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;http://localhost:8081/order&#x27;</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;test&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span>  <span class="string">&#x27;http://localhost:8082/order&#x27;</span>;</span><br><span class="line">        <span class="attr">default</span>:</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;环境变量配置错误&quot;</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="title class_">Error</span>(<span class="string">&#x27;orderBaseUrl 环境变量配置错误&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 举例：User域名服务</span></span><br><span class="line"><span class="keyword">const</span> httpUser = axios.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="attr">baseURL</span>: <span class="title function_">userBaseUrl</span>(),</span><br><span class="line">    <span class="attr">timeout</span>: <span class="number">10</span> * <span class="number">1000</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 举例：这些配置可以提取到对应环境的配置文件中</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">userBaseUrl</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">switch</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span>) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;production&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;http://localhost:9080/user&#x27;</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;development&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;http://localhost:9081/user&#x27;</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;test&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span>  <span class="string">&#x27;http://localhost:9082/user&#x27;</span>;</span><br><span class="line">        <span class="attr">default</span>:</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;环境变量配置错误&quot;</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="title class_">Error</span>(<span class="string">&#x27;userBaseUrl 环境变量配置错误&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    httpOrder,</span><br><span class="line">    httpUser</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>举例：order服务的order模块添加http请求-&gt;getOrder</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> http <span class="keyword">from</span> <span class="string">&#x27;../common/http&#x27;</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getOrder</span> = data =&gt; http.<span class="property">httpOrder</span>.<span class="title function_">get</span>(<span class="string">&#x27;/order&#x27;</span>,&#123;data&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    getOrder</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>举例：order服务的order模块添加http请求-&gt;addUser</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> http <span class="keyword">from</span> <span class="string">&#x27;../common/http2&#x27;</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">addUser</span> = data =&gt; http.<span class="property">httpUser</span>.<span class="title function_">post</span>(<span class="string">&#x27;/user&#x27;</span>,&#123;data&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    addUser</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过api.js将多个http模块进行统一导出</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> order <span class="keyword">from</span> <span class="string">&#x27;./servers/order&#x27;</span></span><br><span class="line"><span class="keyword">import</span> user <span class="keyword">from</span> <span class="string">&#x27;./servers/user&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    order,user</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将api挂载到Vue实例之上：main.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> api <span class="keyword">from</span> <span class="string">&#x27;./api&#x27;</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$api</span>=api</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>举例：通过$api发送对应模块的请求</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;getOrder&quot;</span>&gt;</span>getOrder<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;addUser&quot;</span>&gt;</span>user<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">name</span>: <span class="string">&#x27;App&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">methods</span>:&#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">getOrder</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">$api</span>.<span class="property">order</span>.<span class="title function_">getOrder</span>(&#123;<span class="attr">id</span>:<span class="number">1</span>&#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;,</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">addUser</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">$api</span>.<span class="property">user</span>.<span class="title function_">addUser</span>(&#123;<span class="attr">name</span>:<span class="string">&#x27;zone&#x27;</span>&#125;)</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="7-6-axios封装案例"><a href="#7-6-axios封装案例" class="headerlink" title="7.6 axios封装案例"></a>7.6 axios封装案例</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Notify</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vant&#x27;</span></span><br><span class="line"><span class="comment">// import Vue from &#x27;vue&#x27;</span></span><br><span class="line"><span class="comment">// import store from &#x27;@/store&#x27;  // 我此项目没有用到vuex，所以vuex代码的都注释了，需要的自己打开使用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// import &#123;ACCESS_TOKEN&#125; from &#x27;@/store/mutation-types&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建 axios 实例</span></span><br><span class="line"><span class="keyword">const</span> requests = axios.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="attr">baseURL</span>: process.<span class="property">env</span>.<span class="property">VUE_APP_API</span>, <span class="comment">// 基础url,如果是多环境配置这样写，也可以像下面一行的写死。</span></span><br><span class="line">    <span class="comment">// baseURL: &#x27;http://168.192.0.123&#x27;,</span></span><br><span class="line">    <span class="attr">timeout</span>: <span class="number">6000</span> <span class="comment">// 请求超时时间</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 错误处理函数</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">err</span> = (<span class="params">error</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (error.<span class="property">response</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> data = error.<span class="property">response</span>.<span class="property">data</span></span><br><span class="line">        <span class="comment">// const token = Vue.ls.get(ACCESS_TOKEN)</span></span><br><span class="line">        <span class="keyword">if</span> (error.<span class="property">response</span>.<span class="property">status</span> === <span class="number">403</span>) &#123;</span><br><span class="line">            <span class="title class_">Notify</span>(&#123;</span><br><span class="line">                <span class="attr">type</span>: <span class="string">&#x27;danger&#x27;</span>,</span><br><span class="line">                <span class="attr">message</span>: data.<span class="property">message</span> || data.<span class="property">msg</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (error.<span class="property">response</span>.<span class="property">status</span> === <span class="number">401</span>) &#123;</span><br><span class="line">            <span class="title class_">Notify</span>(&#123;</span><br><span class="line">                <span class="attr">type</span>: <span class="string">&#x27;danger&#x27;</span>,</span><br><span class="line">                <span class="attr">message</span>: <span class="string">&#x27;你没有权限。&#x27;</span></span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="comment">// if (token) &#123;</span></span><br><span class="line">            <span class="comment">//   store.dispatch(&#x27;Logout&#x27;).then(() =&gt; &#123;</span></span><br><span class="line">            <span class="comment">//     setTimeout(() =&gt; &#123;</span></span><br><span class="line">            <span class="comment">//       window.location.reload()</span></span><br><span class="line">            <span class="comment">//     &#125;, 1500)</span></span><br><span class="line">            <span class="comment">//   &#125;)</span></span><br><span class="line">            <span class="comment">// &#125;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// request interceptor(请求拦截器)</span></span><br><span class="line">requests.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//   const token = Vue.ls.get(ACCESS_TOKEN)</span></span><br><span class="line">    <span class="keyword">const</span> token = <span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;token&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> (token) &#123;</span><br><span class="line">        config.<span class="property">headers</span>[<span class="string">&#x27;token&#x27;</span>] = token <span class="comment">// 让每个请求携带自定义 token 请根据实际情况自行修改</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> config</span><br><span class="line">&#125;, err)</span><br><span class="line"></span><br><span class="line"><span class="comment">// response interceptor（接收拦截器）</span></span><br><span class="line">requests.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> res = response.<span class="property">data</span></span><br><span class="line">    <span class="keyword">if</span> (res.<span class="property">code</span> !== <span class="number">0</span> &amp;&amp; res.<span class="property">code</span> !== <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="title class_">Notify</span>(&#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&#x27;danger&#x27;</span>,</span><br><span class="line">            <span class="attr">message</span>: res.<span class="property">message</span> || res.<span class="property">msg</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">// 401:未登录;</span></span><br><span class="line">        <span class="keyword">if</span> (res.<span class="property">code</span> === <span class="number">401</span> || res.<span class="property">code</span> === <span class="number">403</span> || res.<span class="property">code</span> === <span class="number">999</span>) &#123;</span><br><span class="line">            <span class="title class_">Notify</span>(&#123;</span><br><span class="line">                <span class="attr">type</span>: <span class="string">&#x27;danger&#x27;</span>,</span><br><span class="line">                <span class="attr">message</span>: <span class="string">&#x27;请登录&#x27;</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(<span class="string">&#x27;error&#x27;</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, err)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    requests</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="第八章-Vite-Vue3-TS"><a href="#第八章-Vite-Vue3-TS" class="headerlink" title="第八章 Vite+Vue3+TS"></a>第八章 Vite+Vue3+TS</h1><ol>
+<li><p>下载安装Vite</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i -g create-vite-app@1.18.0</span><br><span class="line">yarn global add create-vite-app@1.18.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>整合element-plus</p>
+<ul>
+<li><p>安装element-plus</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install element-plus --save</span><br><span class="line">yarn add element-plus</span><br><span class="line">pnpm install element-plus</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完整引入：main.ts</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ElementPlus</span> <span class="keyword">from</span> <span class="string">&#x27;element-plus&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;element-plus/dist/index.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>(<span class="title class_">App</span>)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="title class_">ElementPlus</span>)</span><br><span class="line">app.<span class="title function_">mount</span>(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按需导入：【推荐】</p>
+<ol>
+<li><p>首先需要下载两个插件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -D unplugin-vue-components unplugin-auto-import</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改Vite配置文件</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">AutoImport</span> <span class="keyword">from</span> <span class="string">&#x27;unplugin-auto-import/vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Components</span> <span class="keyword">from</span> <span class="string">&#x27;unplugin-vue-components/vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ElementPlusResolver</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;unplugin-vue-components/resolvers&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="title class_">AutoImport</span>(&#123;</span><br><span class="line">      <span class="attr">resolvers</span>: [<span class="title class_">ElementPlusResolver</span>()],</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="title class_">Components</span>(&#123;</span><br><span class="line">      <span class="attr">resolvers</span>: [<span class="title class_">ElementPlusResolver</span>()],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>配置Network：修改vite配置文件server配置</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// https://vitejs.dev/config/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">vue</span>()],</span><br><span class="line">  <span class="attr">server</span>:&#123;</span><br><span class="line">    <span class="attr">host</span>: <span class="string">&#x27;0.0.0.0&#x27;</span>,</span><br><span class="line">    <span class="attr">port</span>: <span class="number">18080</span>,</span><br><span class="line">    <span class="attr">open</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置vue-router</p>
+<ul>
+<li><p>安装vue-router@4</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-router@<span class="number">4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ul>
+</li>
+</ol>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong s>
+              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
+                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2006/03/01/0603-Vue/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSFW/" rel="tag">JSFW</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2006/03/01/0603-Flutter/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            0603-Flutter
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2006/03/01/0603-TypesScript/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">0603-TypesScript</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: 'x4LtuVoSSI8Fyi6hvbBmupL5-gzGzoHsz',
+        app_key: '47DsbAAlOYTY98njMBmsyEIm',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'true',
+        avatar: 'robohash',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020-2022
+        xiaoliuxuesheng
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1279413779&amp;web_id=1279413779'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    <aside class="sidebar">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="乘风破浪 披荆斩棘"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>老板,来一杯Java</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/share.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['在钢铁水泥的森林里 路在何方', '在鱼龙混杂的江湖里 何去何从', ''],
+      startDelay: 0,
+      typeSpeed: 400,
+      loop: false,
+      backSpeed: 40,
+      showCursor: false
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      $('.toc-link').removeClass('is-active-link');
+      $(`a[href=${e.target.hash}]`).addClass('is-active-link');
+      $(e.target.hash).scrollIntoView();
+      return false;
+    }
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/js/ayer.js"></script>
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1384718065&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>
